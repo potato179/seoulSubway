@@ -1,0 +1,26 @@
+{
+  "name": "seoulsubway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ps_member.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/potato179/seoulSubway.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/potato179/seoulSubway/issues"
+  },
+  "homepage": "https://github.com/potato179/seoulSubway#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mysql": "^2.18.1"
+  }
+}
