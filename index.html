@@ -1,0 +1,72 @@
+<!doctype html>
+    <html lang="en">
+    <head>
+        <title>QSpace</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>수도권 전동차 정보</title>
+        <script src = "https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity = "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin = "anonymous"></script>
+        <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity = "sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin = "anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity = "sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin = "anonymous"></script>
+        <script src = "https://kit.fontawesome.com/06fb83cb17.js" crossorigin = "anonymous"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://potato179.github.io/style/potato-min.css">
+        <style>
+            body{
+                font-family: 'Nanum Gothic', sans-serif;        
+            }
+        </style>
+    </head>
+    <body class = "box-black">
+        <nav class = "navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
+            <div class = "container">
+                <a class="navbar-brand" href="#" style = "font-weight: bold;">SeoulSubway</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class = "collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./index.html">홈<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./codingquiz.html">역 정보<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./community.html">전동차 정보<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./community.html">공지사항<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./community.html">커뮤니티<span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                    <a style = "margin: 5px " class="btn btn-outline-primary" id = "log_in_out" type = "button" onclick = 'window.location.href = "login.html"'>로그인</a>
+                    <a style = "margin: 5px "class="btn btn-outline-primary" id = "btn_join" type = "button" onclick = 'window.location.href = "join.html"'>회원가입</a>
+                </div>
+            </div>
+        </nav>
+        <main role="main" class="container">
+            <br><br><br>
+            <br><hr><br>
+            <div class = "center outline-solid">
+                <a href="">[공지]</a><br>
+                <p class = "red">본 사이트에 있는 정보는 실시간으로 제공되는 정보가 아니며 일부 정보는 사용자들로 입력되는 정보로, 정보의 정확성, 안전성 및 신뢰성을 보증하지 않습니다. <br>본 사이트의 정보는 공식적인 근거로 사용될 수 없으며, 본 사이트와 관련된 정보로 운영사에 민원 및 문의를 넣치 마십시오. <br>사이트에서 제공되는 정보는 운영사의 요청에 따라 예고 없이 중단될 수 있습니다.</p>
+            </div>
+            <br><hr><br>
+            <h1 class = "intro center bold white">역명으로 검색</h1>
+            <br><hr><br>
+            <h1 class = "intro center bold white">열차번호로 검색</h1>
+        </main>
+        <script>
+            $("#log_in_out").css("color", "black");
+            $("#btn_join").css("color", "black");
+
+        </script>
+
+    </body>
+</html>
