@@ -47,10 +47,6 @@ app.get("/community.html", function(req, res, next){
     res.sendfile("community.html", {root: __dirname});
 });
 
-app.get("/codingquiz.html", function(req, res, next){
-    res.sendfile("codingtest.html", {root: __dirname});
-})
-
 urls.forEach(function(element, index){
     app.get(element.url, element.ps);
 });
