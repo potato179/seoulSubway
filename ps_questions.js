@@ -1,4 +1,4 @@
-const mysqlconfig = require("./js/mysql_con.js");
+const mysqlconfig = require('./public/js/mysql_con.js');
 var con = mysqlconfig.con;
 
 function get_questions(req, res, next){

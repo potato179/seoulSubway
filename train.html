@@ -19,7 +19,7 @@
             }
         </style>
     </head>
-    <body class = "box-black">
+    <body class = "box-black" onload = "logincookie()">
         <nav class = "navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
             <div class = "container">
                 <a class="navbar-brand" href="#" style = "font-weight: bold;">SeoulSubway</a>
@@ -67,22 +67,38 @@
             </div>
             <br><br><br>
             <div class = "center">
-                <h3 class = "center"><i class="fas fa-subway"></i> 318편성</h3>
-                <p>GEC 쵸퍼 (개조)</p>
-                <img src="./img/318_319+341_344.png" alt="" style = "width: 15%;">
+                <h3 class = "center"><i class="fas fa-subway"></i> <span>-</span>편성</h3>
+                <p>-</p>
+                <img src="./public/img/334_335+346_348.png" alt="" style = "width: 15%;">
             </div>
             <br><br><br>
             <h3 class = "center"><i class="fas fa-clock"></i> 열차 운행 정보</h3>
-            <h4 class = "center">대곡~화정 <span class = "yellow">1분 33초</span><span class = "red"> 지연</span> 운행중</h4>
+            <h4 class = "center"><span>-</span>~<span>-</span> <span class = "yellow">-</span><span class = "red"> -</span> <span>-</span></h4>
             <button>전체 운행 시간표 보기</button><br>
             <br><hr><br>
             <br><br><br><br><br><br>
         </main>
+        <script src = "../public/js/jquery.cookie.js"></script>
         <script>
-            $("#log_in_out").css("color", "black");
-            $("#btn_join").css("color", "black");
+            function logincookie(){
+                var userEmail =$.cookie("userEmail");
+                if(userEmail != '' && userEmail != null){
+                    console.log("쿠키 존재: " + userEmail);
+                    $("#log_in_out").html("로그아웃");
+                    $("#log_in_out").attr("onclick", 'window.location.href = "logout"');
+                    var username = $.cookie("username");
+                    $("#btn_join").html(username + "님, 반갑습니다");
+                    var t = document.getElementById("btn_join");
+                    t.style.color = "red";
+                    $("#btn_join").attr("onclick", '');
+                }   
+                else{
+                    console.log("쿠키가 존재하지 않습니다");
 
+                    $("#log_in_out").html("로그인");
+                    $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
+                }
+            }
         </script>
-
     </body>
 </html>

@@ -30,13 +30,14 @@
             <a class="btn btn-lg btn-block" href="./index.html">취소</a>
         </form>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src = "../public/js/jquery.cookie.js"></script>
         <script>
             function join() {
                 var name = $('#name').val();
                 var email = $('#email').val();
                 var pw = $('#pw').val();
                 var pwc = $('#pwc').val();
-                var sendData =  {name: name, email: email, pw: pw, phone: phone};
+                var sendData =  {name: name, email: email, pw: pw};
 
                 if(pw !== pwc){
                     alert("비밀번호가 일치하지 않습니다. 다시하세요");

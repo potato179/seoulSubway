@@ -1,7 +1,7 @@
 {
   "name": "seoulsubway",
   "version": "1.0.0",
-  "description": "",
+  "description": "- 전동차 및 역 정보를 쉽게 검색할 수 있다.\r - 사용자 간 전동차 편성 정보를 공유할 수 있다.",
   "main": "ps_member.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/potato179/seoulSubway#readme",
   "dependencies": {
     "cookie-parser": "^1.4.5",
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "mysql": "^2.18.1"

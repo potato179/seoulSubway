@@ -3,7 +3,7 @@ const express = require("express");
 const fs = require("fs");
 const app = express();
 
-const mysqlconfig = require("./js/mysql_con.js");
+const mysqlconfig = require("./public/js/mysql_con.js");
 const con = mysqlconfig.con;
 
 const ps_users = require("./ps_member.js");
@@ -31,6 +31,7 @@ process.argv.forEach(function(item, index) {
 });
 
 app.use("/public", express.static("public"));
+
 app.listen(port, hostname, () => {
     console.log(port, hostname);
 });
@@ -41,6 +42,18 @@ app.get("/", function(req, res, next){
 
 app.get("/index.html", function(req, res, next){
     res.sendfile("index.html", {root: __dirname});
+});
+
+app.get("/station.html", function(req, res, next){
+    res.sendfile("station.html", {root: __dirname});
+});
+
+app.get("/train.html", function(req, res, next){
+    res.sendfile("train.html", {root: __dirname});
+});
+
+app.get("/notice.html", function(req, res, next){
+    res.sendfile("notice.html", {root: __dirname});
 });
 
 app.get("/community.html", function(req, res, next){

@@ -19,7 +19,7 @@
             }
         </style>
     </head>
-    <body class = "box-black">
+    <body class = "box-black" onload = "logincookie()">
         <nav class = "navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
             <div class = "container">
                 <a class="navbar-brand" href="#" style = "font-weight: bold;">SeoulSubway</a>
@@ -58,11 +58,27 @@
             <br><hr><br>
             <br><br><br><br><br><br>
         </main>
+        <script src = "../public/js/jquery.cookie.js"></script>
         <script>
-            $("#log_in_out").css("color", "black");
-            $("#btn_join").css("color", "black");
+            function logincookie(){
+                var userEmail = $.cookie("userEmail");
+                if(userEmail != '' && userEmail != null){
+                    console.log("쿠키 존재: " + userEmail);
+                    $("#log_in_out").html("로그아웃");
+                    $("#log_in_out").attr("onclick", 'window.location.href = "logout"');
+                    var username = $.cookie("username");
+                    $("#btn_join").html(username + "님, 반갑습니다");
+                    var t = document.getElementById("btn_join");
+                    t.style.color = "red";
+                    $("#btn_join").attr("onclick", '');
+                }
+                else{
+                    console.log("쿠키가 존재하지 않습니다");
 
+                    $("#log_in_out").html("로그인");
+                    $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
+                }
+            }
         </script>
-
     </body>
 </html>

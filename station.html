@@ -19,7 +19,7 @@
             }
         </style>
     </head>
-    <body class = "box-black">
+    <body class = "box-black" onload = "logincookie()">
         <nav class = "navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
             <div class = "container">
                 <a class="navbar-brand" href="#" style = "font-weight: bold;">SeoulSubway</a>
@@ -79,16 +79,16 @@
                 <th>문산.임진강 방면</th>
                 <th>서울.지평 방면</th>
                 <tr>
-                    <td><span class = "yellow">대곡</span><span>행 </span><span class = "orange">13분</span> 후 <span class = "yellow">종착</span>예정</td>
-                    <td><span class = "yellow">용문</span><span class = "red">경의선구간급행 </span><span class = "orange">6분</span> 후 <span>도착</span>예정</td>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
                 </tr>
                 <tr>
-                    <td><span class = "yellow">문산기지</span><span class = "blue">시운전 </span><span class = "orange">25분</span> 후 <span class = "blue">통과</span>예정</td>
-                    <td><span class = "yellow">서울</span><span>행 </span><span class = "orange">28분</span> 후 <span class = "yellow">출발</span>예정</td>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
                 </tr>
                 <tr>
-                    <td><span class = "yellow">문산</span><span class = "red">급행 </span><span class = "orange">29분</span> 후 <span>도착</span>예정</td>
-                    <td><span class = "yellow">덕소</span><span>행 </span><span class = "orange">36분</span> 후 <span>도착</span>예정</td>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
                 </tr>
             </table>
             <button>전체 운행 시간표 보기</button><br>
@@ -117,11 +117,27 @@
             <br><hr><br>
             <br><br><br><br><br><br>
         </main>
+        <script src = "../public/js/jquery.cookie.js"></script>
         <script>
-            $("#log_in_out").css("color", "black");
-            $("#btn_join").css("color", "black");
+            function logincookie(){
+                var userEmail =$.cookie("userEmail");
+                if(userEmail != '' && userEmail != null){
+                    console.log("쿠키 존재: " + userEmail);
+                    $("#log_in_out").html("로그아웃");
+                    $("#log_in_out").attr("onclick", 'window.location.href = "logout"');
+                    var username = $.cookie("username");
+                    $("#btn_join").html(username + "님, 반갑습니다");
+                    var t = document.getElementById("btn_join");
+                    t.style.color = "red";
+                    $("#btn_join").attr("onclick", '');
+                }
+                else{
+                    console.log("쿠키가 존재하지 않습니다");
 
+                    $("#log_in_out").html("로그인");
+                    $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
+                }
+            }
         </script>
-
     </body>
 </html>
