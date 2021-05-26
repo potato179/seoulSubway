@@ -20,9 +20,8 @@ var urls = [
     {url: "/join.html", ps: ps_users.join_html},
     {url: "/get_questions", ps: ps_questions.get_questions},
     {url: "/view_question", ps: ps_questions.view_question},
-    {url: "/modify_question", ps: ps_questions.modify_question},
     {url: "/write_question", ps: ps_questions.write_question},
-    {url: "/delete_question", ps: ps_questions.delete_question}
+    {url: "/writequestion.html", ps: ps_questions.write_question_page}
 ];
 
 process.argv.forEach(function(item, index) {

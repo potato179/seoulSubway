@@ -1,6 +1,9 @@
 const mysqlconfig = require('./public/js/mysql_con.js');
 var con = mysqlconfig.con;
 
+const crypto = require("crypto");
+var shasum = crypto.createHash("sha256");
+
 function join_html(req, res, next){
     res.sendFile('join.html', {root: __dirname});
 }
@@ -12,7 +15,8 @@ function login_html(req, res, next){
 function login(req, res, next){
     console.log(req.query.email);
     var email = req.query.email;
-    var pw = req.query.pw;
+    shasum.update(req.query.pw)
+    var pw = shasum.digest("hex")
 
     var q = `select * from users where email = "${email}"`
     con.query(q, function (err, result) {
@@ -52,8 +56,9 @@ function logout(req, res, next){
 function join(req, res, next){
     var name = req.query.name;
     var email = req.query.email;
-    var pw = req.query.pw;
-
+    shasum.update(req.query.pw)
+    var pw = shasum.digest("hex")
+    
     var f = `select * from users where email = "${email}"`;
     con.query(f, function (err, result) {
         if (err) throw err;

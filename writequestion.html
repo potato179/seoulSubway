@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질문하기</title>
+</head>
+<body>
+    <form style="text-align: center;" class="form-signin">
+        <h2 class="h3 mb-3 font-weight-normal">질문을 하세요</h2>
+            <input id = "title" name = "title" type = "text" class = "form-control" placeholder = "제목" required></input>
+            <input id = "content" name = "content" type = "text" class = "form-control" placeholder = "내용" type = "tel"></input>
+        <button class="btn btn-lg btn-outline-success  btn-block" type="button" onclick = "postQuestion();">질문하기</button>
+        <a class="btn btn-lg btn-block" href="./community.html">취소</a>
+    </form>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src = "../public/js/jquery.cookie.js"></script>
+    <script>
+        function postQuestion() {
+            var userEmail = $.cookie("userEmail");
+            if(userEmail != '' && userEmail != null){
+                console.log("쿠키 존재: " + userEmail);
+                var username = $.cookie("username");
+
+                var title = $('#title').val();
+                var content = $('#content').val();
+                var sendData =  {title: title, content: content, writer: username, category: "답변대기"};
+
+                var ajaxData = { 
+                    type: "GET", 
+                    url : "write_question",
+                    data: sendData, 
+                    dataType: "json", 
+                    success :  onSuccess,
+                    error: onError
+                };
+
+                $.ajax(ajaxData);
+                window.location.href = "/community.html";
+            }
+            else{
+                console.log("쿠키가 존재하지 않습니다");
+                alert("로그인 후 작성하세요!");
+                window.location.href = "/";
+
+            }
+        }
+
+        function onSuccess (data, status, xhr) { 
+            console.log(data);
+            if(data.condition == "register"){
+                alert(data.message);        
+                window.location.href = "/community.html"
+            }
+        }
+
+        function onError (jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR.responseText); 
+        }
+    </script>
+</body>
+</html>

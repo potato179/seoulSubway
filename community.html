@@ -41,7 +41,7 @@
                             <a class="nav-link" href="./notice.html">공지사항<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="./community.html">커뮤니티<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="./community.html">질문게시판<span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                     <a style = "margin: 5px " class="btn btn-outline-primary" id = "log_in_out" type = "button" onclick = 'window.location.href = "login.html"'>로그인</a>
@@ -52,12 +52,29 @@
         <main role="main" class="container">
             <br><br><br>
             <br><hr><br>
-            <h1 class = "center bold white">커뮤니티</h1><br>
+            <h1 class = "center bold white">질문게시판</h1><br>
             <br><hr><br>
-            <div class = "questionlist"></div>
+            <button id = "writequestion" onclick = "window.location.href = 'writequestion.html'">글쓰기</button>
+            <div id="view_q">
+
+            </div>
+            <table id="q_table" class="table">
+                <thead>
+                    <tr class = "gray">
+                        <th scope = "col">#</th>
+                        <th scope = "col">제목</th>
+                        <th scope = "col">글쓴이</th>
+                        <th scope = "col">처리현황</th>
+                    </tr>
+                </thead>
+                <tbody id="q_list">
+                </tbody>
+            </table>
+            </div>            
             <br><hr><br>
             <br><br><br><br><br><br>
         </main>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script src = "../public/js/jquery.cookie.js"></script>
         <script>
             function logincookie(){
@@ -78,6 +95,86 @@
                     $("#log_in_out").html("로그인");
                     $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
                 }
+
+                var ajaxData = { 
+                    type: "GET", 
+                    url : "get_questions",
+                    data: {}, 
+                    dataType: "json",
+                    success: function(data, status, xhr){
+                        console.log(data);
+                        //$("#questions").html("daflasdhfkadhfakds");
+                        var tempStr = "";
+                        data.forEach(function(item, index){
+                            tempStr += `<tr class = "white" onclick = 'ViewQuestion(${item.id})'>
+                                    <th scope="row">${item.id}</th>
+                                    <td>${item.title}</td>
+                                    <td>${item.writer}</td>
+                                    <td>${item.category}</td>
+                                </tr>
+                            `
+                        });
+                        $("#q_list").html(tempStr);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                    }
+                };
+                $.ajax(ajaxData);
+
+            }
+
+            function comment(id){
+                var comments = document.getElementById("comment").value;
+                var ajaxData = {
+                    type: "GET",
+                    url: "write_comment",
+                    data: {comments: comments, id: id, email: $.cookie("userEmail"), userName: $.cookie("username")},
+                    dataType: "json",
+                    success: function(data, status, xhr){
+                        console.log(data)
+                        alert(data.message);
+                        window.location.href = "index.html";
+                    }
+                }
+                $.ajax(ajaxData)
+            }
+
+            function ViewQuestion(id){
+                console.log(`질문: ` + id);
+
+                var ajaxData = { 
+                    type: "GET", 
+                    url : "view_question",
+                    data: {id: id}, 
+                    dataType: "json", 
+                    success :  function(data, status, xhr){
+                        console.log(data);
+
+                        $('#q_table').html('');
+
+                        let question_info;
+                        question_info = `<br><h1>${data.title}</h1><br><br>
+                        ${data.content}
+                        <br><br><br><br><br>
+                        <button onclick = window.location.href='/community.html'>목록으로</button>
+                        `
+
+                        if(data.comment != undefined){
+                            var commentList = JSON.parse(data.comment);
+                            if(commentList){
+                                commentList.forEach(function(element, index){
+                                    console.log(element);
+                                    question_info += `<br><div>${element.name}: ${element.text}</div>`
+                                });
+                            }
+                        }
+                        $('#view_q').html(question_info);
+                    },
+                    error:  function(jqXHR, textStatus, errorThrown){
+                    }
+                };
+
+                $.ajax(ajaxData);
             }
         </script>
     </body>
