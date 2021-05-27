@@ -7,7 +7,8 @@ const mysqlconfig = require("./public/js/mysql_con.js");
 const con = mysqlconfig.con;
 
 const ps_users = require("./ps_member.js");
-const ps_questions = require("./ps_questions");
+const ps_questions = require("./ps_questions.js");
+const ps_notice = require("./ps_notice.js");
 
 const hostname = "127.0.0.1";
 const port = "3000";
@@ -21,7 +22,11 @@ var urls = [
     {url: "/get_questions", ps: ps_questions.get_questions},
     {url: "/view_question", ps: ps_questions.view_question},
     {url: "/write_question", ps: ps_questions.write_question},
-    {url: "/writequestion.html", ps: ps_questions.write_question_page}
+    {url: "/writequestion.html", ps: ps_questions.write_question_page},
+    {url: "/get_notice", ps: ps_notice.get_notice},
+    {url: "/view_notice", ps: ps_notice.view_notice},
+    {url: "/write_notice", ps: ps_notice.write_notice},
+    {url: "/writenotice.html", ps: ps_notice.write_notice_page}
 ];
 
 process.argv.forEach(function(item, index) {

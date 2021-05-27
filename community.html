@@ -153,7 +153,8 @@
                         $('#q_table').html('');
 
                         let question_info;
-                        question_info = `<br><h1>${data.title}</h1><br><br>
+                        question_info = `<br><h1>${data.title}</h1>
+                        <p>작성자: ${data.writer}</p><br><br>
                         ${data.content}
                         <br><br><br><br><br>
                         <button onclick = window.location.href='/community.html'>목록으로</button>
