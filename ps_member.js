@@ -17,12 +17,11 @@ function login(req, res, next){
     var email = req.query.email;
     shasum.update(req.query.pw)
     var pw = shasum.digest("hex")
-
+    
     var q = `select * from users where email = "${email}"`
     con.query(q, function (err, result) {
         if (err) throw err;
         console.log(result);
-
         if(result[0] === undefined){
             res.send({
                 condition: "fail",
