@@ -1,7 +1,6 @@
 const http = require("http");
 const express = require("express");
 const fs = require("fs");
-var passport = require("passport"); 
 const app = express();
 
 const mysqlconfig = require("./public/js/mysql_con.js");
@@ -64,15 +63,6 @@ app.get("/notice.html", function(req, res, next){
 app.get("/community.html", function(req, res, next){
     res.sendfile("community.html", {root: __dirname});
 });
-
-app.get("/naverlogin.html", function(req, res, next){
-    res.sendfile("naverlogin.html", {root: __dirname});
-});
-
-app.get("/callback.html", function(req, res, next){
-    res.sendfile("callback.html", {root: __dirname});
-});
-
 
 urls.forEach(function(element, index){
     app.get(element.url, element.ps);
