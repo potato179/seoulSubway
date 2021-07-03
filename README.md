@@ -50,7 +50,7 @@ CREATE TABLE users (
 
 테이블 에시
 |lineno|id|delay|formation|
-|---|---|---|---|---|
+|---|---|---|---|
 |3|S3328|671|334|
 
 명령어
