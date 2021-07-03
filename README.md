@@ -15,11 +15,11 @@
 테이블 설명
 |칼럼|설명|
 |---|---|
-|id|고유 ID(자동 부여)|
+|id|고유 ID(자동갱신)|
 |name|사용자의 닉네임|
 |email|사용자의 이메일|
 |password|사용자의 비밀번호(암호화로 저장됨)|
-|reg_date|사용자의 가입 날짜(자동 부여)|
+|reg_date|사용자의 가입 날짜(자동갱신)|
 
 테이블 에시
 |id|name|email|password|reg_date|
@@ -60,6 +60,36 @@ CREATE TABLE users (
     id varchar(16) NOT NULL,
     delay INT(16) NOT NULL,
     formation varchar(16) NOT NULL
+);
+```
+
+### 3) 질문게시판(questions)
+테이블 설명
+|칼럼|설명|
+|---|---|
+|id|질문 고유 ID(자동갱신)|
+|title|글 제목|
+|content|내용|
+|category|답변현황|
+|writer|글쓴이(자동갱신)|
+|comments|답변내용|
+|reg_date|등록일자(자동갱신)|
+
+테이블 에시
+|id|title|content|category|writer|comments|reg_date|
+|---|---|---|---|---|---|---|
+|348|버그신고|지하철 노선도에 버그가 있습니다. 고쳐주세요.|해결완료|홍은표|해결했습니다. 감사합니다|2020-06-15 12:11:57|
+
+명령어
+```sql
+CREATE TABLE questions (
+    id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title varchar(256) NOT NULL,
+    content longtext NOT NULL,
+    category varchar(50) NOT NULL,
+    writer varchar(16) NOT NULL,
+    comments longtext NOT NULL,
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 ```
 
