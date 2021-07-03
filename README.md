@@ -10,7 +10,58 @@
 - [ ] 사용자 간 전동차 편성 정보 공유
 - [ ] 사용자 간 커뮤니티에서 각종 정보 공유
 
-## 2. DB, 테이블 구성
+## 2. 데이터베이스 구성
+### 1) 회원(users)
+테이블 설명
+|칼럼|설명|
+|---|---|
+|id|고유 ID(자동 부여)|
+|name|사용자의 닉네임|
+|email|사용자의 이메일|
+|password|사용자의 비밀번호(암호화로 저장됨)|
+|reg_date|사용자의 가입 날짜(자동 부여)|
+
+테이블 에시
+|id|name|email|password|reg_date|
+|---|---|---|---|---|
+|712|홍은표|hackg179@gmail.com|abc123|2020-06-15 12:11:57|
+
+명령어
+```sql
+CREATE TABLE users (
+    id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name varchar(16) NOT NULL,
+    email longtext NOT NULL,
+    password longtext NOT NULL,
+    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
+### 2) 전동차 정보(train)
+* 여기에 없는 정보는 공사로부터 제공받는 정보를 호출합니다.
+
+테이블 설명
+|칼럼|설명|
+|---|---|
+|lineno|전동차 호선|
+|id|전동차의 열차번호|
+|delay|지연 시간(초)|
+|formation|전동차의 편성번호|
+
+테이블 에시
+|lineno|id|delay|formation|
+|---|---|---|---|---|
+|3|S3328|671|334|
+
+명령어
+```sql
+CREATE TABLE users (
+    lineno varchar(16) NOT NULL,
+    id varchar(16) NOT NULL,
+    delay INT(16) NOT NULL,
+    formation varchar(16) NOT NULL
+);
+```
 
 ## 제작자 및 도움을 주신 분들
 - 사이트 총 책임자: 홍은표(potato179)
