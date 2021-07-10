@@ -1,0 +1,146 @@
+<!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>수도권 전동차 정보</title>
+        <script src = "https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity = "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin = "anonymous"></script>
+        <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity = "sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin = "anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity = "sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin = "anonymous"></script>
+        <script src = "https://kit.fontawesome.com/06fb83cb17.js" crossorigin = "anonymous"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://potato179.github.io/style/potato-min.css">
+        <style>
+            body{
+                font-family: 'Nanum Gothic', sans-serif;        
+            }
+        </style>
+    </head>
+    <body class = "" onload = "logincookie()">
+        <nav class = "navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
+            <div class = "container">
+                <a class="navbar-brand" href="#" style = "font-weight: bold;">SeoulSubway</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class = "collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./index.html">홈<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./station.html">역 정보<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./train.html">전동차 정보<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./notice.html">공지사항<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./community.html">질문게시판<span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                    <a style = "margin: 5px " class="btn btn-outline-primary" id = "log_in_out" type = "button" onclick = 'window.location.href = "login.html"'>로그인</a>
+                    <a style = "margin: 5px "class="btn btn-outline-primary" id = "btn_join" type = "button" onclick = 'window.location.href = "join.html"'>회원가입</a>
+                </div>
+            </div>
+        </nav>
+        <main role="main" class="container">
+            <br><br><br>
+            <br><hr><br>
+            <div class = "center outline-solid">
+                <a href="">[공지] 이용 약관 및 개인정보 처리방침</a><br>
+                <a href="">[공지] 사이트 오픈 안내!</a><br>
+                <a href="">[공지] 본 사이트의 정보는 정확하지 않을 수 있습니다.</a><br>
+                <p class = "red">본 사이트에 있는 정보는 실시간으로 제공되는 정보가 아니며 일부 정보는 사용자들로 입력되는 정보로, 정보의 정확성, 안전성 및 신뢰성을 보증하지 않습니다. <br>본 사이트의 정보는 공식적인 근거로 사용될 수 없으며, 본 사이트와 관련된 정보로 운영사에 민원 및 문의를 넣지 마십시오. <br>사이트에서 제공되는 정보는 운영사의 요청에 따라 예고 없이 중단될 수 있습니다.</p>
+            </div>
+            <br><hr><br>
+            <h1 class = "center bold white">역 정보</h1><br>
+            <p id = "demo"></p>
+            <div class = "center outline-solid" style = "outline-color: #77C4A3; line-height: 150%;">
+                <p>한국철도공사 경의중앙선</p>
+                <p style = "font-size: 250%;">대곡</p>
+                <p>Daegok · 大谷 · テゴク</p>
+                <h4>환승 <a href = "" style = "color: #EF7C1C;">● 3호선</a></h4>
+                <h4><a href = "">◀ 능곡</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href = "">곡산 ▶</a></h4>
+            </div>
+            <br><br><br>
+            <h3 class = "center"><i class="fas fa-arrow-right"></i> 내리는 문: 왼쪽(본선) / 오른쪽(경의선구간)</h3><br><br>
+            <h3 class = "center"><i class="fas fa-map-signs"></i> 승강장 횡단: 가능</h3><br><br>
+            <h3 class = "center"><i class="fas fa-restroom"></i> 게이트 내 화장실: 있음</h3><br><br>
+
+            <h3 class = "center"><i class="fas fa-sign-out-alt"></i> 빠른 출구 및 시설</h3>
+            <div class = "center"><span class = "yellow">1~5번 출구 / 3호선 환승 / 화장실&nbsp;</span><span class = "gray">서울, 지평 방면&nbsp;</span>에스컬레이터: 5-3, 엘리베이터: 7-1, 계단: 8-2&nbsp;<span class = "gray">문산, 임진강 방면&nbsp;</span>에스컬레이터: 4-2, 엘리베이터: 2-4, 계단: 1-3&nbsp;</div><br><br><br>
+            <h3 class = "center"><i class="fas fa-clock"></i> 열차 도착 정보</h3>
+            <table border = "1" width = "100%" class = "center">
+                <th>문산.임진강 방면</th>
+                <th>서울.지평 방면</th>
+                <tr>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
+                </tr>
+                <tr>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
+                </tr>
+                <tr>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
+                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
+                </tr>
+            </table>
+            <button>전체 운행 시간표 보기</button><br>
+            <br><br>
+            <h3 class = "center"><i class="fas fa-info-circle"></i> 기타 정보</h3>
+            <table border = "1" width = "100%">
+                <th class = "center" style = "width: 25%;">역 번호</th>
+                <th>K322</th>
+                <tr>
+                    <td class = "center">주소</td>
+                    <td>경기도 고양시 덕양구 대주로107번길 71-81 (대장동)</td>
+                </tr>
+                <tr>
+                    <td class = "center">문의</td>
+                    <td>1544-7788</td>
+                </tr>
+                <tr>
+                    <td class = "center">개업일</td>
+                    <td>1996/01/30</td>
+                </tr>
+                <tr>
+                    <td class = "center">역명 유래</td>
+                    <td>1996년 개통 당시 인근의 동명이었던 대장동과 내곡동의 이름을 따서 명명</td>
+                </tr>
+            </table>
+            <br><hr><br>
+            <br><br><br><br><br><br>
+        </main>
+        <script src = "../public/js/jquery.cookie.js"></script>
+        <script>
+            function logincookie(){
+                var userEmail =$.cookie("userEmail");
+                if(userEmail != '' && userEmail != null){
+                    console.log("쿠키 존재: " + userEmail);
+                    $("#log_in_out").html("로그아웃");
+                    $("#log_in_out").attr("onclick", 'window.location.href = "logout"');
+                    var username = $.cookie("username");
+                    $("#btn_join").html(username + "님, 반갑습니다");
+                    var t = document.getElementById("btn_join");
+                    t.style.color = "red";
+                    $("#btn_join").attr("onclick", '');
+                }
+                else{
+                    console.log("쿠키가 존재하지 않습니다");
+
+                    $("#log_in_out").html("로그인");
+                    $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
+                }
+
+                getStation()
+            }
+        </script>
+    </body>
+</html>
