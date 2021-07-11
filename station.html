@@ -59,25 +59,33 @@
                 <p class = "red">본 사이트에 있는 정보는 실시간으로 제공되는 정보가 아니며 일부 정보는 사용자들로 입력되는 정보로, 정보의 정확성, 안전성 및 신뢰성을 보증하지 않습니다. <br>본 사이트의 정보는 공식적인 근거로 사용될 수 없으며, 본 사이트와 관련된 정보로 운영사에 민원 및 문의를 넣지 마십시오. <br>사이트에서 제공되는 정보는 운영사의 요청에 따라 예고 없이 중단될 수 있습니다.</p>
             </div>
             <br><hr><br>
-            <h1 class = "center bold white">역 정보</h1><br>
+            <h1 class = "intro center bold">역명으로 검색</h1><br>
+            <div class="input-group mb-3">
+                <input id = "searchtext" type = "text" class = "form-control" placeholder = "역명">
+                <button onclick = "searchstation()" class = "btn btn-outline-secondary" type = "button">검색</button>
+            </div>
+            <br><hr><br>
+            <h1 class = "center bold">역 정보</h1><br>
             <div class = "center outline-solid" style = "outline-color: #77C4A3; line-height: 150%;">
-                <p>한국철도공사 경의중앙선</p>
-                <p style = "font-size: 250%;">대곡</p>
-                <p>Daegok · 大谷 · テゴク</p>
-                <h4>환승 <a href = "" style = "color: #EF7C1C;">● 3호선</a></h4>
+                <p id = "lineno">한국철도공사 경의중앙선</p>
+                <p id = "name" style = "font-size: 250%;">대곡</p>
+                <p id = "foreign">Daegok · 大谷 · テゴク</p>
+                <h4 id = "transfer">환승 <a href = "" style = "color: #EF7C1C;">● 3호선</a></h4>
                 <h4><a href = "">◀ 능곡</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href = "">곡산 ▶</a></h4>
             </div>
             <br><br><br>
-            <h3 class = "center"><i class="fas fa-arrow-right"></i> 내리는 문: 왼쪽(본선) / 오른쪽(경의선구간)</h3><br><br>
-            <h3 class = "center"><i class="fas fa-map-signs"></i> 승강장 횡단: 가능</h3><br><br>
-            <h3 class = "center"><i class="fas fa-restroom"></i> 게이트 내 화장실: 있음</h3><br><br>
+            <h3 class = "center"><i class="fas fa-arrow-right"></i> 내리는 문: <p id = "doors"></p></h3><br><br>
+            <h3 class = "center"><i class="fas fa-map-signs"></i> 승강장 횡단: <p id = "crossable"></p></h3><br><br>
+            <h3 class = "center"><i class="fas fa-restroom"></i> 게이트 내 화장실: <p id = "restroom"></p></h3><br><br>
 
-            <h3 class = "center"><i class="fas fa-sign-out-alt"></i> 빠른 출구 및 시설</h3>
-            <div class = "center"><span class = "yellow">1~5번 출구 / 3호선 환승 / 화장실&nbsp;</span><span class = "gray">서울, 지평 방면&nbsp;</span>에스컬레이터: 5-3, 엘리베이터: 7-1, 계단: 8-2&nbsp;<span class = "gray">문산, 임진강 방면&nbsp;</span>에스컬레이터: 4-2, 엘리베이터: 2-4, 계단: 1-3&nbsp;</div><br><br><br>
+            <h3 class = "center"><i class="fas fa-sign-out-alt"></i> 출구 정보</h3>
+            <p id = "exitinfo"></p>
+            <br><br>
+
             <h3 class = "center"><i class="fas fa-clock"></i> 열차 도착 정보</h3>
             <table border = "1" width = "100%" class = "center">
-                <th>문산.임진강 방면</th>
-                <th>서울.지평 방면</th>
+                <th class = "box-dimgray white">문산.임진강 방면</th>
+                <th class = "box-dimgray white">서울.지평 방면</th>
                 <tr>
                     <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
                     <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
@@ -93,34 +101,80 @@
             </table>
             <button>전체 운행 시간표 보기</button><br>
             <br><br>
+
+            <h3 class = "center"><i class="fas fa-calendar-times"></i> 첫막차 시간표</h3>
+            <table border = "1" width = "100%" class = "center">
+                <th class = "box-dimgray white">상행</th>
+                <th class = "box-dimgray white">첫차</th>
+                <th class = "box-dimgray white">막차</th>
+                <tr>
+                    <td class = "box-dimgray white">평일</td>
+                    <td id = "weekday_f">#XXXX -발 -행 -시 -분</td>
+                    <td id = "weekday_l">#XXXX -발 -행 -시 -분</td>
+                </tr>
+                <tr>
+                    <td class = "box-dimgray white">토요일</td>
+                    <td id = "saturday_f">#XXXX -발 -행 -시 -분</td>
+                    <td id = "saturday_l">#XXXX -발 -행 -시 -분</td>
+                </tr>
+                <tr>
+                    <td class = "box-dimgray white">공휴일</td>
+                    <td id = "sunday_f">#XXXX -발 -행 -시 -분</td>
+                    <td id = "sunday_l">#XXXX -발 -행 -시 -분</td>
+                </tr>
+            </table>
+            <br>
+            <table border = "1" width = "100%" class = "center">
+                <th class = "box-dimgray white">하행</th>
+                <th class = "box-dimgray white">첫차</th>
+                <th class = "box-dimgray white">막차</th>
+                <tr>
+                    <td class = "box-dimgray white">평일</td>
+                    <td id = "weekday_f">#XXXX -발 -행 -시 -분</td>
+                    <td id = "weekday_l">#XXXX -발 -행 -시 -분</td>
+                </tr>
+                <tr>
+                    <td class = "box-dimgray white">토요일</td>
+                    <td id = "saturday_f">#XXXX -발 -행 -시 -분</td>
+                    <td id = "saturday_l">#XXXX -발 -행 -시 -분</td>
+                </tr>
+                <tr>
+                    <td class = "box-dimgray white">공휴일</td>
+                    <td id = "sunday_f">#XXXX -발 -행 -시 -분</td>
+                    <td id = "sunday_l">#XXXX -발 -행 -시 -분</td>
+                </tr>
+            </table>
+            <br><br>
+
             <h3 class = "center"><i class="fas fa-info-circle"></i> 기타 정보</h3>
             <table border = "1" width = "100%">
-                <th class = "center" style = "width: 25%;">역 번호</th>
-                <th>K322</th>
+                <th class = "center box-dimgray white">역 번호</th>
+                <th id = "stationno">K322</th>
                 <tr>
-                    <td class = "center">주소</td>
-                    <td>경기도 고양시 덕양구 대주로107번길 71-81 (대장동)</td>
+                    <td class = "center box-dimgray white">주소</td>
+                    <td id = "address">경기도 고양시 덕양구 대주로107번길 71-81 (대장동)</td>
                 </tr>
                 <tr>
-                    <td class = "center">문의</td>
-                    <td>1544-7788</td>
+                    <td class = "center box-dimgray white">문의</td>
+                    <td id = "callno">1544-7788</td>
                 </tr>
                 <tr>
-                    <td class = "center">개업일</td>
-                    <td>1996/01/30</td>
+                    <td class = "center box-dimgray white">개업일</td>
+                    <td id = "opendate">1996/01/30</td>
                 </tr>
                 <tr>
-                    <td class = "center">역명 유래</td>
-                    <td>1996년 개통 당시 인근의 동명이었던 대장동과 내곡동의 이름을 따서 명명</td>
+                    <td class = "center box-dimgray white">역명 유래</td>
+                    <td id = "nameorigin">1996년 개통 당시 인근의 동명이었던 대장동과 내곡동의 이름을 따서 명명</td>
                 </tr>
             </table>
             <br><hr><br>
             <br><br><br><br><br><br>
         </main>
         <script src = "../public/js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script>
             function logincookie(){
-                var userEmail =$.cookie("userEmail");
+                var userEmail = $.cookie("userEmail");
                 if(userEmail != '' && userEmail != null){
                     console.log("쿠키 존재: " + userEmail);
                     $("#log_in_out").html("로그아웃");
@@ -137,6 +191,40 @@
                     $("#log_in_out").html("로그인");
                     $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
                 }
+            }
+
+            function searchstation() {
+                var searchtext = $('#searchtext').val();
+                var sendData =  {searchtext: searchtext};
+
+                var ajaxData = { 
+                    type: "GET", 
+                    url : "getstationinfo",
+                    data: sendData, 
+                    dataType: "json", 
+                    success : onSuccess,
+                    error: onError
+                };
+
+                $.ajax( ajaxData );
+            }
+
+            function onSuccess (data, status, xhr) { 
+                console.log(data);
+
+                if(data.condition == "success"){
+                    // 로그인 성공 메인화면 가게 해준다.
+                    alert(data.message);        
+                    window.location.href = "index.html"
+                }
+                else if(data.condition == "fail"){
+                    //존재하지 않은 유저 || 비밀번호 불일치
+                    alert(data.message);
+                }
+            }
+
+            function onError (jqXHR, textStatus, errorThrown) { 
+                console.log(jqXHR.responseText); 
             }
         </script>
     </body>

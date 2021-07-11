@@ -6,9 +6,10 @@ const app = express();
 const mysqlconfig = require("./public/js/mysql_con.js");
 const con = mysqlconfig.con;
 
-const ps_users = require("./ps_member.js");
+const ps_users = require("./ps_users.js");
 const ps_questions = require("./ps_questions.js");
 const ps_notice = require("./ps_notice.js");
+const ps_getstation = require("./ps_getstation.js")
 
 const hostname = "127.0.0.1";
 const port = "3000";
@@ -26,7 +27,9 @@ var urls = [
     {url: "/get_notice", ps: ps_notice.get_notice},
     {url: "/view_notice", ps: ps_notice.view_notice},
     {url: "/write_notice", ps: ps_notice.write_notice},
-    {url: "/writenotice.html", ps: ps_notice.write_notice_page}
+    {url: "/writenotice.html", ps: ps_notice.write_notice_page},
+    {url: "/getstationinfo", ps: ps_getstation.getstationinfo},
+    {url: "/station.html", ps: ps_getstation.station_html}
 ];
 
 process.argv.forEach(function(item, index) {
@@ -46,10 +49,6 @@ app.get("/", function(req, res, next){
 
 app.get("/index.html", function(req, res, next){
     res.sendfile("index.html", {root: __dirname});
-});
-
-app.get("/station.html", function(req, res, next){
-    res.sendfile("station.html", {root: __dirname});
 });
 
 app.get("/train.html", function(req, res, next){

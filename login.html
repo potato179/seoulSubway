@@ -31,7 +31,6 @@
         </form>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script>
-
             function signin() {
                 var email = $('#email').val();
                 var pw = $('#pw').val();
@@ -50,7 +49,6 @@
             }
 
             function onSuccess (data, status, xhr) { 
-
                 console.log(data);
 
                 if(data.condition == "success"){
@@ -62,7 +60,6 @@
                     //존재하지 않은 유저 || 비밀번호 불일치
                     alert(data.message);
                 }
-
             }
 
             function onError (jqXHR, textStatus, errorThrown) { 
