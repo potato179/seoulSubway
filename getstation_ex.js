@@ -8,6 +8,7 @@ var stationcd = "0240"
 
 for(var i = 0; i < stationlist.length; i++){
     if(stationlist[i].station_cd === stationcd){
+        console.log(`${stationlist[i].line_num}`);
         console.log(`${stationlist[i].station_nm}(${stationlist[i].station_cd})역 정보`);
         var stationname = stationlist[i].station_nm
     }
@@ -23,7 +24,7 @@ for(var i = 0; i < seoulmetro_endtrain.DATA.length; i++){
         if (seoulmetro_endtrain.DATA[i].inout_tag === "1") inout = "상행"
         else if (seoulmetro_endtrain.DATA[i].inout_tag === "2") inout = "하행"
 
-        console.log(`[첫차] ${day} ${inout} ${ seoulmetro_endtrain.DATA[i].first_time} ${seoulmetro_endtrain.DATA[i].f_subwaysname}역(${seoulmetro_endtrain.DATA[i].f_originstation}) 출발 ${seoulmetro_endtrain.DATA[i].f_subwayename}(${seoulmetro_endtrain.DATA[i].f_deststation})행`)
+        console.log(`[첫차] ${day} ${inout} ${ seoulmetro_endtrain.DATA[i].first_time} ${seoulmetro_endtrain.DATA[i].f_subwaysname}(${seoulmetro_endtrain.DATA[i].f_originstation})발 ${seoulmetro_endtrain.DATA[i].f_subwayename}(${seoulmetro_endtrain.DATA[i].f_deststation})행`)
     }
 }
 
@@ -37,7 +38,7 @@ for(var i = 0; i < seoulmetro_endtrain.DATA.length; i++){
         if (seoulmetro_endtrain.DATA[i].inout_tag === "1") inout = "상행"
         else if (seoulmetro_endtrain.DATA[i].inout_tag === "2") inout = "하행"
 
-        console.log(`[막차] ${day} ${inout} ${ seoulmetro_endtrain.DATA[i].last_time} ${seoulmetro_endtrain.DATA[i].l_subwaysname}역(${seoulmetro_endtrain.DATA[i].l_originstation}) 출발 ${seoulmetro_endtrain.DATA[i].l_subwayename}(${seoulmetro_endtrain.DATA[i].l_deststation})행`)
+        console.log(`[막차] ${day} ${inout} ${ seoulmetro_endtrain.DATA[i].last_time} ${seoulmetro_endtrain.DATA[i].l_subwaysname}(${seoulmetro_endtrain.DATA[i].l_originstation})발 ${seoulmetro_endtrain.DATA[i].l_subwayename}(${seoulmetro_endtrain.DATA[i].l_deststation})행`)
     }
 }
 
