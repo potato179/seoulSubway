@@ -534,7 +534,6 @@
     {"line_num":"경춘선","station_cd":"1327","station_nm":"김유정","fr_code":"P138"},
     {"line_num":"경춘선","station_cd":"1328","station_nm":"남춘천","fr_code":"P139"},
     {"line_num":"경춘선","station_cd":"1329","station_nm":"춘천","fr_code":"P140"},
-
     
     {"line_num":"경강선","station_cd":"1501","station_nm":"판교","fr_code":"K410"},
     {"line_num":"경강선","station_cd":"1502","station_nm":"이매","fr_code":"K411"},
