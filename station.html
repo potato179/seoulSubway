@@ -50,124 +50,56 @@
             </div>
         </nav>
         <main role="main" class="container">
-            <br><br><br>
-            <br><hr><br>
-            <div class = "center outline-solid">
-                <a href="">[공지] 이용 약관 및 개인정보 처리방침</a><br>
-                <a href="">[공지] 사이트 오픈 안내!</a><br>
-                <a href="">[공지] 본 사이트의 정보는 정확하지 않을 수 있습니다.</a><br>
-                <p class = "red">본 사이트에 있는 정보는 실시간으로 제공되는 정보가 아니며 일부 정보는 사용자들로 입력되는 정보로, 정보의 정확성, 안전성 및 신뢰성을 보증하지 않습니다. <br>본 사이트의 정보는 공식적인 근거로 사용될 수 없으며, 본 사이트와 관련된 정보로 운영사에 민원 및 문의를 넣지 마십시오. <br>사이트에서 제공되는 정보는 운영사의 요청에 따라 예고 없이 중단될 수 있습니다.</p>
-            </div>
-            <br><hr><br>
-            <h1 class = "intro center bold">역명으로 검색</h1><br>
+            <br><br><br><br><br>
             <div class="input-group mb-3">
                 <input id = "searchtext" type = "text" class = "form-control" placeholder = "역명">
                 <button onclick = "searchstation()" class = "btn btn-outline-secondary" type = "button">검색</button>
             </div>
             <br><hr><br>
-            <h1 class = "center bold">역 정보</h1><br>
-            <div class = "center outline-solid" style = "outline-color: #77C4A3; line-height: 150%;">
-                <p id = "lineno">한국철도공사 경의중앙선</p>
-                <p id = "name" style = "font-size: 250%;">대곡</p>
-                <p id = "foreign">Daegok · 大谷 · テゴク</p>
-                <h4 id = "transfer">환승 <a href = "" style = "color: #EF7C1C;">● 3호선</a></h4>
-                <h4><a href = "">◀ 능곡</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href = "">곡산 ▶</a></h4>
+            <div style = "display: flex; justify-content: center; align-items: center;">
+                <div style = "width: 100%; background-color: #77C4A3; border-radius: 2em; padding: 0.25em; padding-left: 1em; padding-right: 1em; position: relative;">
+                    <div class = "left" style = "float: left">대곡</div>
+                    <div class = "right">행신</div>
+                </div>
+                <div class = "center" style = "width: 50%; background-color: white; border: 0.25em solid #77C4A3; border-radius: 2em; padding: 0.25em; position: absolute; display: table-cell; vertical-align: middle;">
+                    <h1>동대문역사문화공원</h1>
+                </div>
             </div>
-            <br><br><br>
-            <h3 class = "center"><i class="fas fa-arrow-right"></i> 내리는 문: <p id = "doors"></p></h3><p class = "center">당역출발 또는 당역종착 열차이거나 통과열차를 대기할 경우 내리는 문이 다를 수 있습니다.</p><br><br>
-            <h3 class = "center"><i class="fas fa-map-signs"></i> 승강장 횡단: <p id = "crossable"></p></h3><br><br>
-            <h3 class = "center"><i class="fas fa-restroom"></i> 게이트 내 화장실: <p id = "restroom"></p></h3><br><br>
-
-            <h3 class = "center"><i class="fas fa-sign-out-alt"></i> 출구 정보</h3>
-            <p id = "exitinfo"></p>
             <br><br>
-
-            <h3 class = "center"><i class="fas fa-clock"></i> 열차 도착 정보</h3>
+            <div>
+                <div class = "left" style = "float: left">K322 | 경의중앙선</div>
+                <button style = "float: right;">첫막차정보</button>
+                <button style = "float: right;">시간표</button>
+            </div>
             <table border = "1" width = "100%" class = "center">
-                <th class = "box-dimgray white">문산.임진강 방면</th>
-                <th class = "box-dimgray white">서울.지평 방면</th>
+                <th></th>
+                <th></th>
                 <tr>
-                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
-                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
+                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">문산행</span><span class = "right red">6분</span></td>
+                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">서울행</span><span class = "right red">3분</span></td>
                 </tr>
                 <tr>
-                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
-                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
+                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">문산행</span><span class = "right red">25분</span></td>
+                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">용문행</span><span class = "right red">21분</span></td>
                 </tr>
                 <tr>
-                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
-                    <td><span class = "yellow">-</span><span>행 </span><span class = "orange">-</span>분 후 <span>-</span>예정</td>
-                </tr>
-            </table>
-            <button>전체 운행 시간표 보기</button><br>
-            <br><br>
-
-            <h3 class = "center"><i class="fas fa-calendar-times"></i> 첫막차 시간표</h3>
-            <table border = "1" width = "100%" class = "center">
-                <th class = "box-dimgray white">상행</th>
-                <th class = "box-dimgray white">첫차</th>
-                <th class = "box-dimgray white">막차</th>
-                <tr>
-                    <td class = "box-dimgray white">평일</td>
-                    <td id = "weekday_f">#XXXX -발 -행 -시 -분</td>
-                    <td id = "weekday_l">#XXXX -발 -행 -시 -분</td>
-                </tr>
-                <tr>
-                    <td class = "box-dimgray white">토요일</td>
-                    <td id = "saturday_f">#XXXX -발 -행 -시 -분</td>
-                    <td id = "saturday_l">#XXXX -발 -행 -시 -분</td>
-                </tr>
-                <tr>
-                    <td class = "box-dimgray white">공휴일</td>
-                    <td id = "sunday_f">#XXXX -발 -행 -시 -분</td>
-                    <td id = "sunday_l">#XXXX -발 -행 -시 -분</td>
+                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">문산행</span><span class = "right red">42분</span></td>
+                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">덕소행</span><span class = "right red">46분</span></td>
                 </tr>
             </table>
-            <br>
-            <table border = "1" width = "100%" class = "center">
-                <th class = "box-dimgray white">하행</th>
-                <th class = "box-dimgray white">첫차</th>
-                <th class = "box-dimgray white">막차</th>
-                <tr>
-                    <td class = "box-dimgray white">평일</td>
-                    <td id = "weekday_f">#XXXX -발 -행 -시 -분</td>
-                    <td id = "weekday_l">#XXXX -발 -행 -시 -분</td>
-                </tr>
-                <tr>
-                    <td class = "box-dimgray white">토요일</td>
-                    <td id = "saturday_f">#XXXX -발 -행 -시 -분</td>
-                    <td id = "saturday_l">#XXXX -발 -행 -시 -분</td>
-                </tr>
-                <tr>
-                    <td class = "box-dimgray white">공휴일</td>
-                    <td id = "sunday_f">#XXXX -발 -행 -시 -분</td>
-                    <td id = "sunday_l">#XXXX -발 -행 -시 -분</td>
-                </tr>
-            </table>
-            <br><br>
-
-            <h3 class = "center"><i class="fas fa-info-circle"></i> 기타 정보</h3>
-            <table border = "1" width = "100%">
-                <th class = "center box-dimgray white">역 번호</th>
-                <th id = "stationno">K322</th>
-                <tr>
-                    <td class = "center box-dimgray white">주소</td>
-                    <td id = "address">경기도 고양시 덕양구 대주로107번길 71-81 (대장동)</td>
-                </tr>
-                <tr>
-                    <td class = "center box-dimgray white">문의</td>
-                    <td id = "callno">1544-7788</td>
-                </tr>
-                <tr>
-                    <td class = "center box-dimgray white">개업일</td>
-                    <td id = "opendate">1996/01/30</td>
-                </tr>
-                <tr>
-                    <td class = "center box-dimgray white">역명 유래</td>
-                    <td id = "nameorigin">1996년 개통 당시 인근의 동명이었던 대장동과 내곡동의 이름을 따서 명명</td>
-                </tr>
-            </table>
-            <br><hr><br>
+            <hr>
+            <div style = "padding: 0.25em">
+                <h4 class = "center"><i class="fas fa-arrow-right"></i> 내리는 문: <p id = "doors"></p></h4><hr>
+                <h4 class = "center"><i class="fas fa-restroom"></i> 게이트 내 화장실: <p id = "restroom"></p></h4><hr>
+                <a href="https://map.kakao.com/?urlX=460605&urlY=1144238&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank"><img width="100%" src="https://map2.daum.net/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=460605&MY=1144238&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" style="border:1px solid #ccc"></a><div class="hide" style="overflow:hidden;padding:7px 11px;border:1px solid #dfdfdf;border-color:rgba(0,0,0,.1);border-radius:0 0 2px 2px;background-color:#f9f9f9;width:482px;"><strong style="float: left;"><img src="//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" width="72" height="16" alt="카카오맵"></strong><div style="float: right;position:relative"><a style="font-size:12px;text-decoration:none;float:left;height:15px;padding-top:1px;line-height:15px;color:#000" target="_blank" href="https://map.kakao.com/?urlX=460605&urlY=1144238&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false">지도 크게 보기</a></div></div><hr>
+                <h4 class = "center"><i class="fas fa-sign-out-alt"></i> 출구 정보</h4>
+                <p></p>
+                <hr>
+            </div>
+            <h6>주소: 경기도 고양시 덕양구 토당로 35</h6>
+            <h6>문의: 1544-7788</h6>
+            <h6>역명 유래: 왕릉으로 쓰이려던 곳이었으나, 능 자리에 골이 1개 모자란 99개여서 쓰지 못한 까닭에서 유래</h6>
+            <hr>
             <br><br><br><br><br><br>
         </main>
         <script src = "../public/js/jquery.cookie.js"></script>
