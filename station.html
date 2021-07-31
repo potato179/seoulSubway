@@ -62,7 +62,7 @@
                     <div class = "right">행신</div>
                 </div>
                 <div class = "center" style = "width: 50%; background-color: white; border: 0.25em solid #77C4A3; border-radius: 2em; padding: 0.25em; position: absolute; display: table-cell; vertical-align: middle;">
-                    <h1>동대문역사문화공원</h1>
+                    <h1>능곡</h1>
                 </div>
             </div>
             <br><br>
@@ -91,7 +91,7 @@
             <div style = "padding: 0.25em">
                 <h4 class = "center"><i class="fas fa-arrow-right"></i> 내리는 문: <p id = "doors"></p></h4><hr>
                 <h4 class = "center"><i class="fas fa-restroom"></i> 게이트 내 화장실: <p id = "restroom"></p></h4><hr>
-                <a href="https://map.kakao.com/?urlX=460605&urlY=1144238&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false" target="_blank"><img width="100%" src="https://map2.daum.net/map/mapservice?FORMAT=PNG&SCALE=2.5&MX=460605&MY=1144238&S=0&IW=504&IH=310&LANG=0&COORDSTM=WCONGNAMUL&logo=kakao_logo" style="border:1px solid #ccc"></a><div class="hide" style="overflow:hidden;padding:7px 11px;border:1px solid #dfdfdf;border-color:rgba(0,0,0,.1);border-radius:0 0 2px 2px;background-color:#f9f9f9;width:482px;"><strong style="float: left;"><img src="//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" width="72" height="16" alt="카카오맵"></strong><div style="float: right;position:relative"><a style="font-size:12px;text-decoration:none;float:left;height:15px;padding-top:1px;line-height:15px;color:#000" target="_blank" href="https://map.kakao.com/?urlX=460605&urlY=1144238&urlLevel=3&map_type=TYPE_MAP&map_hybrid=false">지도 크게 보기</a></div></div><hr>
+                <div id="map" style="width:100%;height:350px;"></div>
                 <h4 class = "center"><i class="fas fa-sign-out-alt"></i> 출구 정보</h4>
                 <p></p>
                 <hr>
@@ -104,7 +104,15 @@
         </main>
         <script src = "../public/js/jquery.cookie.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7f26ddb0373cd3b598ff54652cbbdc24"></script>
+        <script>    
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = { 
+                center: new kakao.maps.LatLng(37.619184431, 126.821013810), // 지도의 중심좌표
+                level: 4 // 지도의 확대 레벨
+            };
+            var map = new kakao.maps.Map(mapContainer, mapOption); 
+
             function logincookie(){
                 var userEmail = $.cookie("userEmail");
                 if(userEmail != '' && userEmail != null){
