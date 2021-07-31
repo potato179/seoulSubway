@@ -17,6 +17,30 @@
             body{
                 font-family: 'Nanum Gothic', sans-serif;        
             }
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+                }
+            }
+            .b-example-divider {
+                height: 3rem;
+                background-color: rgba(0, 0, 0, .1);
+                border: solid rgba(0, 0, 0, .15);
+                border-width: 1px 0;
+                box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+            }
+
+            @media (min-width: 992px) {
+                .rounded-lg-3 { border-radius: .3rem; }
+            }
         </style>
     </head>
     <body class = "" onload = "logincookie()">
@@ -49,66 +73,107 @@
                 </div>
             </div>
         </nav>
-        <main role="main" class="container">
-            <br><br><br><br><br>
-            <div class="input-group mb-3">
-                <input id = "searchtext" type = "text" class = "form-control" placeholder = "역명">
-                <button onclick = "searchstation()" class = "btn btn-outline-secondary" type = "button">검색</button>
-            </div>
-            <br><hr><br>
-            <div style = "display: flex; justify-content: center; align-items: center;">
-                <div style = "width: 100%; background-color: #77C4A3; border-radius: 2em; padding: 0.25em; padding-left: 1em; padding-right: 1em; position: relative;">
-                    <div class = "left" style = "float: left">대곡</div>
-                    <div class = "right">행신</div>
+        <main role="main" class="">       
+            <div class = "container px-4 py-4 my-5 text-center">
+                <br><br><br>
+                <div style = "display: flex; justify-content: center; align-items: center;">
+                    <div style = "width: 100%; background-color: #00498B; border-radius: 2em; padding: 0.25em; padding-left: 1em; padding-right: 1em; position: relative;">
+                        <div class = "white left" style = "float: left">종로5가</div>
+                        <div class = "white right">종각</div>
+                    </div>
+                    <div class = "center" style = "width: 50%; background-color: white; border: 0.25em solid #00498B; border-radius: 2em; padding: 0.25em; position: absolute; display: table-cell; vertical-align: middle;">
+                        <h1>종로3가</h1>
+                    </div>
+                </div><br>
+                <table width = "100%" class = "center">
+                    <th></th>
+                    <th></th>
+                    <tr>
+                        <td style = "padding: 0.25em;">의정부행</td>
+                        <td class = "red" style = "padding: 0.25em; border-right: 1px solid black;">1분</td>
+                        <td style = "padding: 0.25em;">구로행</td>
+                        <td class = "red" style = "padding: 0.25em;">2분</td>
+                    </tr>
+                    <tr>
+                        <td style = "padding: 0.25em;">광운대행</td>
+                        <td class = "red" style = "padding: 0.25em; border-right: 1px solid black;">6분</td>
+                        <td style = "padding: 0.25em;">인천행</td>
+                        <td class = "red" style = "padding: 0.25em;">7분</td>
+                    </tr>
+                    <tr style = "border-bottom: 1px solid;">
+                        <td style = "padding: 0.25em;">양주행</td>
+                        <td class = "red" style = "padding: 0.25em; border-right: 1px solid black;">12분</td>
+                        <td style = "padding: 0.25em;">신창행</td>
+                        <td class = "red" style = "padding: 0.25em;">15분</td>
+                    </tr>
+                </table>
+                <div style = "padding: 0.25em;">
+                    <button class = "white" style = "background: #00498B; border: 0;">1호선</button>                        
+                    <button class = "white" style = "background: #F36630; border: 0;">3호선</button>
+                    <button class = "white" style = "background: #A064A3; border: 0;">5호선</button>
                 </div>
-                <div class = "center" style = "width: 50%; background-color: white; border: 0.25em solid #77C4A3; border-radius: 2em; padding: 0.25em; position: absolute; display: table-cell; vertical-align: middle;">
-                    <h1>능곡</h1>
+                <div style = "padding: 0.25em;">
+                    <div class = "left" style = "float: left">130 | 서울교통공사</div>
+                    <button style = "float: right;">첫막차정보</button>
+                    <button style = "float: right;">시간표</button>
                 </div>
             </div>
-            <br><br>
-            <div>
-                <div class = "left" style = "float: left">K322 | 경의중앙선</div>
-                <button style = "float: right;">첫막차정보</button>
-                <button style = "float: right;">시간표</button>
-            </div>
-            <table border = "1" width = "100%" class = "center">
-                <th></th>
-                <th></th>
-                <tr>
-                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">문산행</span><span class = "right red">6분</span></td>
-                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">서울행</span><span class = "right red">3분</span></td>
-                </tr>
-                <tr>
-                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">문산행</span><span class = "right red">25분</span></td>
-                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">용문행</span><span class = "right red">21분</span></td>
-                </tr>
-                <tr>
-                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">문산행</span><span class = "right red">42분</span></td>
-                    <td style = "padding: 0.25em;"><span class = "left" style = "float: left">덕소행</span><span class = "right red">46분</span></td>
-                </tr>
-            </table>
-            <hr>
-            <div style = "padding: 0.25em">
-                <h4 class = "center"><i class="fas fa-arrow-right"></i> 내리는 문: <p id = "doors"></p></h4><hr>
-                <h4 class = "center"><i class="fas fa-restroom"></i> 게이트 내 화장실: <p id = "restroom"></p></h4><hr>
+
+            <div class="b-example-divider"></div>
+
+            <div class = "container px-4 py-4 my-5 text-center">
+                <h2>주변 정보</h2>
                 <div id="map" style="width:100%;height:350px;"></div>
-                <h4 class = "center"><i class="fas fa-sign-out-alt"></i> 출구 정보</h4>
-                <p></p>
-                <hr>
+                <p style = "width: 100%; text-align: left; margin: 0.25em;">1번 출구: asdf</p>
+
             </div>
-            <h6>주소: 경기도 고양시 덕양구 토당로 35</h6>
-            <h6>문의: 1544-7788</h6>
-            <h6>역명 유래: 왕릉으로 쓰이려던 곳이었으나, 능 자리에 골이 1개 모자란 99개여서 쓰지 못한 까닭에서 유래</h6>
-            <hr>
-            <br><br><br><br><br><br>
-        </main>
+
+            <div class="b-example-divider"></div>
+
+            <div class = "container px-4 py-4 my-5 text-center">
+                <h2>역 시설 정보</h2>
+                <div style = "padding: 0.5em;">
+                    <table width = "100%" class = "center">
+                        <th></th>
+                        <th></th>
+                        <tr style = "border-bottom: 1px solid;">
+                            <td style = "padding: 0.25em;"><i class="fas fa-restroom"></i> 게이트 내 화장실: X</td>
+                            <td style = "padding: 0.25em;"><i class="fas fa-arrows-alt-h"></i> 반대편 횡단: O</td>
+                        </tr>
+                    </table>
+                    <p style = "width: 100%; text-align: left; margin: 0.25em;">엘리베이터, 수유실</p><br>
+                    <!--문화공간, 휠체어리프트, 만남의장소, 환승주차장, 자전거보관소, 엘리베이터, 기차표예매, 무인민원발급기, 환전키오스크, 수유실-->
+                    <div class = "container-fluid"">
+                        <div style="margin:10px;">
+                            <button data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">역 이용 안내도 펼치기/접기</button>
+                        </div>
+                        <div class = "collapse" id = "collapseExample">
+                            <div class="well">
+                                <img src = "./public/img/stationmap/1호선/04종로3가.gif" style = "width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="b-example-divider"></div>
+            
+            <div class = "container px-4 py-4 my-5 text-center">
+                <h2>기타 정보</h2>
+                <p style = "width: 100%; text-align: left; margin: 0.25em;">주소: 서울특별시 종로구 종로 지하 129 (종로3가) (1호선 종로3가역)</p>
+                <p style = "width: 100%; text-align: left; margin: 0.25em;">전화번호: 02-6110-1301</p>
+                <p style = "width: 100%; text-align: left; margin: 0.25em;">역명 유래: 종로는 조선왕조 500년 동안 밤에는 인정. 새벽에는 파루를 쳐서 도성 8문을 여닫게 하는 종루가 있어 유래된 것이다. 이 거리에는 조선 초부터 시전이 있었던 번화가였으므로 일명 운종가로 칭한 서울의 중심가였다.</p>
+                </div>
+            </div>
+            
+            <div class="b-example-divider"></div>
         <script src = "../public/js/jquery.cookie.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7f26ddb0373cd3b598ff54652cbbdc24"></script>
         <script>    
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
             mapOption = { 
-                center: new kakao.maps.LatLng(37.619184431, 126.821013810), // 지도의 중심좌표
+                center: new kakao.maps.LatLng(37.571607, 126.991806), // 지도의 중심좌표
                 level: 4 // 지도의 확대 레벨
             };
             var map = new kakao.maps.Map(mapContainer, mapOption); 
