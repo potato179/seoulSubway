@@ -77,17 +77,17 @@
             <div class = "container px-4 py-3 my-5 text-center">
                 <br><br>
                 <div class="input-group mb-3">
-                    <input type = "text" class = "form-control" placeholder = "역명">
-                    <button class = "btn btn-outline-secondary" type = "button">검색</button>
+                    <input id = "searchtext" type = "text" class = "form-control" placeholder = "역명">
+                    <button class = "btn btn-outline-secondary" type = "button" onclick = "searchstation()">검색</button>
                 </div>
                 <br><br>
                 <div style = "display: flex; justify-content: center; align-items: center;">
-                    <div style = "width: 100%; background-color: #00498B; border-radius: 2em; padding: 0.25em; padding-left: 1em; padding-right: 1em; position: relative;">
-                        <div class = "white left" style = "float: left">종로5가</div>
-                        <div class = "white right">종각</div>
+                    <div id = "linecolor" style = "width: 100%; background-color: #00498B; border-radius: 2em; padding: 0.25em; padding-left: 1em; padding-right: 1em; position: relative;">
+                        <div id = "prev_stationname" onclick = "searchstation(-1)" class = "white left" style = "float: left">종로5가</div>
+                        <div id = "next_stationname" onclick = "searchstation(1)" class = "white right">종각</div>
                     </div>
-                    <div class = "center" style = "width: 50%; background-color: white; border: 0.25em solid #00498B; border-radius: 2em; padding: 0.25em; position: absolute; display: table-cell; vertical-align: middle;">
-                        <h1>종로3가</h1>
+                    <div id = "linecolor-border" class = "center" style = "width: 50%; background-color: white; border: 0.25em solid #00498B; border-radius: 2em; padding: 0.25em; position: absolute; display: table-cell; vertical-align: middle;">
+                        <h1 id = "stationname">종로3가</h1>
                     </div>
                 </div><br>
                 <table width = "100%" class = "center">
@@ -118,7 +118,7 @@
                     <button class = "white" style = "background: #A064A3; border: 0;">5호선</button>
                 </div>
                 <div style = "padding: 0.25em;">
-                    <div class = "left" style = "float: left">130 | 서울교통공사</div>
+                    <div id = "station_num" class = "left" style = "float: left">130 | 서울교통공사</div>
                     <button style = "float: right;">첫막차정보</button>
                     <button style = "float: right;">시간표</button>
                 </div>
@@ -127,7 +127,7 @@
             <div class = "container px-4 py-3 my-5 text-center">
                 <h2>주변 정보</h2>
                 <div id="map" style="width:100%;height:350px;"></div>
-                <p style = "width: 100%; text-align: left; margin: 0.25em;">1번 출구: asdf</p>
+                <p id = "exitinfo" style = "width: 100%; text-align: left; margin: 0.25em;">1번 출구: asdf</p>
 
             </div>
             <div class="b-example-divider" style = "height: 2em;"></div>
@@ -138,8 +138,8 @@
                         <th></th>
                         <th></th>
                         <tr style = "border-bottom: 1px solid;">
-                            <td style = "padding: 0.25em;"><i class="fas fa-restroom"></i> 게이트 내 화장실: X</td>
-                            <td style = "padding: 0.25em;"><i class="fas fa-arrows-alt-h"></i> 반대편 횡단: O</td>
+                            <td id = "restroom" style = "padding: 0.25em;"><i class="fas fa-restroom"></i> 게이트 내 화장실: X</td>
+                            <td id = "crossable" style = "padding: 0.25em;"><i class="fas fa-arrows-alt-h"></i> 반대편 횡단: O</td>
                         </tr>
                     </table>
                     <p style = "width: 100%; text-align: left; margin: 0.25em;">엘리베이터, 수유실</p><br>
@@ -159,23 +159,18 @@
             <div class="b-example-divider" style = "height: 2em;"></div>
             <div class = "container px-4 py-3 my-5 text-center">
                 <h2>기타 정보</h2>
-                <p style = "width: 100%; text-align: left; margin: 0.25em;">주소: 서울특별시 종로구 종로 지하 129 (종로3가) (1호선 종로3가역)</p>
-                <p style = "width: 100%; text-align: left; margin: 0.25em;">전화번호: 02-6110-1301</p>
-                <p style = "width: 100%; text-align: left; margin: 0.25em;">역명 유래: 종로는 조선왕조 500년 동안 밤에는 인정. 새벽에는 파루를 쳐서 도성 8문을 여닫게 하는 종루가 있어 유래된 것이다. 이 거리에는 조선 초부터 시전이 있었던 번화가였으므로 일명 운종가로 칭한 서울의 중심가였다.</p>
+                <p id = "address" style = "width: 100%; text-align: left; margin: 0.25em;">주소: 서울특별시 종로구 종로 지하 129 (종로3가) (1호선 종로3가역)</p>
+                <p id = "telno" style = "width: 100%; text-align: left; margin: 0.25em;">전화번호: 02-6110-1301</p>
+                <p id = "origin" style = "width: 100%; text-align: left; margin: 0.25em;">역명 유래: 종로는 조선왕조 500년 동안 밤에는 인정. 새벽에는 파루를 쳐서 도성 8문을 여닫게 하는 종루가 있어 유래된 것이다. 이 거리에는 조선 초부터 시전이 있었던 번화가였으므로 일명 운종가로 칭한 서울의 중심가였다.</p>
                 </div>
             </div>
             <div class="b-example-divider" style = "height: 2em;"></div>
         <script src = "../public/js/jquery.cookie.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7f26ddb0373cd3b598ff54652cbbdc24"></script>
-        <script>    
-            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = { 
-                center: new kakao.maps.LatLng(37.571607, 126.991806), // 지도의 중심좌표
-                level: 4 // 지도의 확대 레벨
-            };
-            var map = new kakao.maps.Map(mapContainer, mapOption); 
-
+        <script type = "text/javascript" src = "https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script type = "text/javascript" src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=7f26ddb0373cd3b598ff54652cbbdc24"></script>
+        <script>  
+            let prev_code;
+            let next_code;  
             function logincookie(){
                 var userEmail = $.cookie("userEmail");
                 if(userEmail != '' && userEmail != null){
@@ -196,10 +191,18 @@
                 }
             }
 
-            function searchstation() {
-                var searchtext = $('#searchtext').val();
+            function searchstation(search_stationcd) {
+                if (search_stationcd == -1){
+                    var searchtext = prev_code;
+                }
+                else if (search_stationcd == 1){
+                    var searchtext = next_code;
+                }
+                else{
+                    var searchtext = $('#searchtext').val();
+                }
                 var sendData =  {searchtext: searchtext};
-
+                    console.log(sendData)
                 var ajaxData = { 
                     type: "GET", 
                     url : "getstationinfo",
@@ -214,16 +217,128 @@
 
             function onSuccess (data, status, xhr) { 
                 console.log(data);
+                if(data.line_num === "1호선"){
+                    $("#linecolor").css("background-color", "#0052a4");
+                    $("#linecolor-border").css("border", "0.25em solid #0052a4");
+                }
+                else if(data.line_num === "2호선"){
+                    $("#linecolor").css("background-color", "#00a84d");
+                    $("#linecolor-border").css("border", "0.25em solid #00a84d");
+                }
+                else if(data.line_num === "3호선"){
+                    $("#linecolor").css("background-color", "#ef7c1c");
+                    $("#linecolor-border").css("border", "0.25em solid #ef7c1c");
+                }
+                else if(data.line_num === "4호선"){
+                    $("#linecolor").css("background-color", "#00a4e3");
+                    $("#linecolor-border").css("border", "0.25em solid #00a4e3");
+                }
+                else if(data.line_num === "5호선"){
+                    $("#linecolor").css("background-color", "#996cac");
+                    $("#linecolor-border").css("border", "0.25em solid #996cac");
+                }
+                else if(data.line_num === "6호선"){
+                    $("#linecolor").css("background-color", "#cd7c2f");
+                    $("#linecolor-border").css("border", "0.25em solid #cd7c2f");
+                }
+                else if(data.line_num === "7호선"){
+                    $("#linecolor").css("background-color", "#747f00");
+                    $("#linecolor-border").css("border", "0.25em solid #747f00");
+                }
+                else if(data.line_num === "8호선"){
+                    $("#linecolor").css("background-color", "#e6186c");
+                    $("#linecolor-border").css("border", "0.25em solid #e6186c");
+                }
+                else if(data.line_num === "9호선"){
+                    $("#linecolor").css("background-color", "#bdb092");
+                    $("#linecolor-border").css("border", "0.25em solid #bdb092");
+                }
+                else if(data.line_num === "경의중앙선"){
+                    $("#linecolor").css("background-color", "#77c4a3");
+                    $("#linecolor-border").css("border", "0.25em solid #77c4a3");
+                }
+                else if(data.line_num === "경강선"){
+                    $("#linecolor").css("background-color", "#005bac");
+                    $("#linecolor-border").css("border", "0.25em solid #005bac");
+                }
+                else if(data.line_num === "경춘선"){
+                    $("#linecolor").css("background-color", "#178c72");
+                    $("#linecolor-border").css("border", "0.25em solid #178c72");
+                }
+                else if(data.line_num === "공항철도"){
+                    $("#linecolor").css("background-color", "#0090d2");
+                    $("#linecolor-border").css("border", "0.25em solid #0090d2");
+                }
+                else if(data.line_num === "서해선"){
+                    $("#linecolor").css("background-color", "#8fc31f");
+                    $("#linecolor-border").css("border", "0.25em solid #8fc31f");
+                }
+                else if(data.line_num === "수인분당선"){
+                    $("#linecolor").css("background-color", "#fabe00");
+                    $("#linecolor-border").css("border", "0.25em solid #fabe00");
+                }
+                else if(data.line_num === "신분당선"){
+                    $("#linecolor").css("background-color", "#d4003b");
+                    $("#linecolor-border").css("border", "0.25em solid #d4003b");
+                }
+                else if(data.line_num === "김포도시철도"){
+                    $("#linecolor").css("background-color", "#ad8605");
+                    $("#linecolor-border").css("border", "0.25em solid #ad8605");
+                }
+                else if(data.line_num === "용인경전철"){
+                    $("#linecolor").css("background-color", "#56ab2d");
+                    $("#linecolor-border").css("border", "0.25em solid #56ab2d");
+                }
+                else if(data.line_num === "우이신설경전철"){
+                    $("#linecolor").css("background-color", "#B7C450");
+                    $("#linecolor-border").css("border", "0.25em solid #B7C450");
+                }
+                else if(data.line_num === "의정부경전철"){
+                    $("#linecolor").css("background-color", "#fb8100");
+                    $("#linecolor-border").css("border", "0.25em solid #fb8100");
+                }
+                else if(data.line_num === "인천1호선"){
+                    $("#linecolor").css("background-color", "#759cce");
+                    $("#linecolor-border").css("border", "0.25em solid #759cce");
+                }
+                else if(data.line_num === "인천2호선"){
+                    $("#linecolor").css("background-color", "#f5a251");
+                    $("#linecolor-border").css("border", "0.25em solid #f5a251");
+                }
+                prev_code = data.prev_code;
+                next_code = data.next_code;
+                $("#stationname").html(data.station_nm);
+                $("#prev_stationname").html(data.prev_name);
+                $("#next_stationname").html(data.next_name);
+                $("#station_num").html(`${data.fr_code} | ${data.operator}`);
 
-                if(data.condition == "success"){
-                    // 로그인 성공 메인화면 가게 해준다.
-                    alert(data.message);        
-                    window.location.href = "index.html"
+                var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                mapOption = { 
+                    center: new kakao.maps.LatLng(data.cx, data.cy), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
+                var map = new kakao.maps.Map(mapContainer, mapOption);
+
+                $("#exitinfo").html(data.exitinfo);
+                
+                if(data.restroom === "Y"){
+                    $("#restroom").html(`<i class="fas fa-restroom"></i> 게이트 내 화장실: O`)
                 }
-                else if(data.condition == "fail"){
-                    //존재하지 않은 유저 || 비밀번호 불일치
-                    alert(data.message);
+                else{
+                    $("#restroom").html(`<i class="fas fa-restroom"></i> 게이트 내 화장실: X`)
                 }
+
+                if(data.crossable === "Y"){
+                    $("#crossable").html(`<i class="fas fa-arrows-alt-h"></i> 반대편 횡단: O`)
+                }
+                else{
+                    $("#crossable").html(`<i class="fas fa-arrows-alt-h"></i> 반대편 횡단: X`)
+                }
+                
+                $("#address").html(`주소: ${data.address}`);
+                $("#telno").html(`전화번호: ${data.telno}`);
+                $("#origin").html(`역명 유래: ${data.origin}`);
+
             }
 
             function onError (jqXHR, textStatus, errorThrown) { 
