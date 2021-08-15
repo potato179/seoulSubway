@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울 지하철 노선도</title>
+</head>
+<body>
+    <h1>국철 노선도</h1>
+    <svg height = "2800" width="2800">
+        <!--경원선-->
+        <line fill = "none" stroke = "blue" stroke-width = "3" stroke-miterlimit = "10" x1 = "800" y1 = "50" x2 = "800" y2 = "550"></line>
+        <!--2호션-->
+        <line fill = "none" stroke = "#009246" stroke-width = "3" stroke-miterlimit = "10" x1 = "760" y1 = "490" x2 = "1375" y2 = "490"></line>
+        <!--3호선-->
+        <line fill = "none" stroke = "#F36630" stroke-width = "3" stroke-miterlimit = "10" x1 = "430" y1 = "240" x2 = "845" y2 = "240"></line>
+        <!--4호선-->
+        <line fill = "none" stroke = "#00A2D1" stroke-width = "3" stroke-miterlimit = "10" x1 = "1570" y1 = "215" x2 = "1315" y2 = "215"></line>
+        <!--5호선-->
+        <line fill = "none" stroke = "#A064A3" stroke-width = "3" stroke-miterlimit = "10" x1 = "430" y1 = "350" x2 = "470" y2 = "350"></line>
+        <!--6호선-->
+        <line fill = "none" stroke = "#9E4510" stroke-width = "3" stroke-miterlimit = "10" x1 = "845" y1 = "240" x2 = "680" y2 = "400"></line>
+        <!--7호선-->
+        <line fill = "none" stroke = "#5D6519" stroke-width = "3" stroke-miterlimit = "10" x1 = "1380" y1 = "50" x2 = "1380" y2 = "130"></line>
+        <!--8호선-->
+        <line fill = "none" stroke = "#D6406A" stroke-width = "3" stroke-miterlimit = "10" x1 = "1610" y1 = "550" x2 = "1610" y2 = "660"></line>
+        <!--9호선-->
+        <line fill = "none" stroke = "#BDB092" stroke-width = "3" stroke-miterlimit = "10" x1 = "400" y1 = "400" x2 = "520" y2 = "400"></line>
+        <!--수인분당선-->
+        <line fill = "none" stroke = "#FFB100" stroke-width = "3" stroke-miterlimit = "10" x1 = "1472.5" y1 = "385" x2 = "1387.5" y2 = "480"></line>
+        <!--신분당선-->
+        <line fill = "none" stroke = "#BB1833" stroke-width = "3" stroke-miterlimit = "10" x1 = "1250" y1 = "845" x2 = "1250" y2 = "1185"></line>
+        <!--경의중앙선-->
+        <line fill = "none" stroke = "#71C5A6" stroke-width = "3" stroke-miterlimit = "10" x1 = "270" y1 = "80" x2 = "270" y2 = "120"></line>
+        <!--경춘선-->
+        <line fill = "none" stroke = "#178c72" stroke-width = "3" stroke-miterlimit = "10" x1 = "1450" y1 = "285" x2 = "1475" y2 = "285"></line>
+        <!--공항철도-->
+        <line fill = "none" stroke = "#006D9D" stroke-width = "3" stroke-miterlimit = "10" x1 = "980" y1 = "555" x2 = "900" y2 = "555"></line>
+        <!--경강선-->
+        <line fill = "none" stroke = "#0054A6" stroke-width = "3" stroke-miterlimit = "10" x1 = "1410" y1 = "1345" x2 = "1950" y2 = "1345"></line>
+        <!--서해선-->
+        <line fill = "none" stroke = "#81A914" stroke-width = "3" stroke-miterlimit = "10" x1 = "465" y1 = "880" x2 = "560" y2 = "975"></line>
+        <!--인천1호선-->
+        <line fill = "none" stroke = "#6E98BB" stroke-width = "3" stroke-miterlimit = "10" x1 = "355" y1 = "565" x2 = "355" y2 = "1010"></line>
+        <!--김포골드라인-->
+        <!--용인경전철-->
+        <line fill = "none" stroke = "#56ab2d" stroke-width = "3" stroke-miterlimit = "10" x1 = "1530" y1 = "1745" x2 = "2250" y2 = "1745"></line>
+        
+        <!--경원선-->
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "800" cy = "50" r = "6" stroke = "blue" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">백마고지</text>
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "800" cy = "100" r = "6" stroke = "blue" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">신탄리</text>
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "800" cy = "150" r = "6" stroke = "blue" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">대광리</text>
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "800" cy = "200" r = "6" stroke = "blue" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">신망리</text>
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "800" cy = "250" r = "6" stroke = "blue" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">연천</text>
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "800" cy = "300" r = "6" stroke = "blue" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">전곡</text>
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "800" cy = "350" r = "6" stroke = "blue" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">한탄강</text>
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "800" cy = "400" r = "6" stroke = "blue" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">초성리</text>
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "800" cy = "450" r = "6" stroke = "blue" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">소요산</text>
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "800" cy = "500" r = "6" stroke = "blue" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">동두천</text>
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "800" cy = "550" r = "7" stroke = "black" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">의정부</text>
+        <!--교외선-->
+        <circle onclick = "callStation(this.id)" id = "1916" cx = "750" cy = "550" r = "6" stroke = "blue" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">동두천</text>
+        <!--3호선-->
+        <circle onclick = "callStation(this.id)" id = "1958" cx = "430" cy = "240" r = "6" stroke = "#F36630" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">대화</text>
+        <!--4호선-->
+        <circle onclick = "callStation(this.id)" id = "1762X1800" cx = "595" cy = "1905" r = "7" stroke = "black" stroke-width = "1" fill = "white"/>
+        <text x = "" y = "" font-size = "10">오이도</text>
+        <!--5호선-->
+        <circle onclick = "callStation(this.id)" id = "2511" cx = "430" cy = "350" r = "6" stroke = "#A064A3" stroke-width = "1" fill = "white"/>
+        <text x = "" y = "" font-size = "10">방화</text>
+        <!--6호선-->
+        <circle onclick = "callStation(this.id)" id = "2611" cx = "779" cy = "304" r = "6" stroke = "#9E4510" stroke-width = "1" fill = "white"/>
+        <text x = "" y = "" font-size = "10">응암</text>
+        <!--7호선-->
+        <circle onclick = "callStation(this.id)" id = "2711" cx = "1380" cy = "50" r = "6" stroke = "#5D6519" stroke-width = "1" fill = "white"/>
+        <text x = "" y = "" font-size = "10">장암</text>
+        <!--8호선-->
+        <circle onclick = "callStation(this.id)" id = "2811" cx = "1610" cy = "550" r = "6" stroke = "#D6406A" stroke-width = "1" fill = "white"/>
+        <text x = "" y = "" font-size = "10">암사</text>
+        <!--9호선-->
+        <circle onclick = "callStation(this.id)" id = "4101" cx = "400" cy = "400" r = "6" stroke = "#BDB092" stroke-width = "1" fill = "white"/>
+        <text x = "" y = "" font-size = "10">개화</text>
+        <!--수인분당선-->
+        <circle onclick = "callStation(this.id)" id = "1847" cx = "1387.5" cy = "600" r = "6" stroke = "#FFB100" stroke-width = "1" fill = "white"/>
+        <text x = "" y = "" font-size = "10">서울숲</text>
+        <!--신분당선-->
+        <circle onclick = "callStation(this.id)" id = "4309" cx = "1250" cy = "1040" r = "6" stroke = "#BB1833" stroke-width = "1" fill = "white"/>
+        <text x = "" y = "" font-size = "10">양재시민의숲</text>
+        <!--경의중앙선-->
+        <circle onclick = "callStation(this.id)" id = "1285" cx = "270" cy = "80" r = "6" stroke = "#71C5A6" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">임진강</text>
+        <circle onclick = "callStation(this.id)" id = "1284" cx = "270" cy = "120" r = "7" stroke = "black" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">문산</text>
+        <!--경춘선-->
+        <circle onclick = "callStation(this.id)" id = "1312" cx = "1710" cy = "280" r = "6" stroke = "#178c72" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">갈매</text>
+        <!--공항철도-->
+        <circle onclick = "callStation(this.id)" id = "4105X4205" cx = "600" cy = "400" r = "7" stroke = "black" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">마곡나루</text>
+        <!--경강선-->
+        <circle onclick = "callStation(this.id)" id = "1503" cx = "1530" cy = "1345" r = "7" stroke = "black" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">삼동</text>
+        <!--서해선-->
+        <circle onclick = "callStation(this.id)" id = "4805" cx = "560" cy = "987.5" r = "6" stroke = "#81A914" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">소새울</text>
+        <!--인천1호선-->
+        <circle onclick = "callStation(this.id)" id = "3111" cx = "355" cy = "610" r = "6" stroke = "#6E98BB" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">귤현</text>
+        <!--김포골드라인-->
+
+        <!--용인경전철-->
+        <circle onclick = "callStation(this.id)" id = "3112" cx = "1600" cy = "1745" r = "6" stroke = "#56ab2d" stroke-width = "1" fill = "white"/>
+        <text x = "50" y = "50" font-size = "10">갈산</text>
+    </svg>
+    <script>
+        function callStation(id){
+            console.log(id)
+        }
+    </script>
+</body>
+</html>
