@@ -14,11 +14,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://potato179.github.io/style/potato-min.css">
         <style>
+            @font-face {
+                font-family: 'ChosunGs';
+                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+            }
             body{
                 font-family: 'Nanum Gothic', sans-serif;        
             }
-            .jjajangtitle {
-
+            h1{
+                font-family: 'ChosunGs';
             }
         </style>
     </head>
@@ -50,15 +56,54 @@
                 </div>
             </div>
         </nav>
-        <main role="main" class="container">
+        <main role = "main" class = "container center">
             <br><br><br>
             <br><hr><br>
-            <h1 class = "center" style = "font-family: 'ChosunGs';
-                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');
-                font-weight: normal;
-                font-style: normal;">짜장메트로</h1>
+            <img src = "./public/img/icon.png" width = "375em"><br><br>
+            <h1 class = "center bold" style = "font-size: 4em;">짜 장 메 트 로</h1>
             <br><hr><br>
-            </div>
+            <h1 class = "bold">Project SEOUL SUBWAY</h1><br><br>
+            <h3>★ Operated&Developed by</h3>
+            <h5>홍은표<br>
+                <a href = "https://facebook.com/makerpotato179"><i class="fab fa-facebook"></i></a>
+                <a href = "https://instagram.com/seoulfixking"><i class="fab fa-instagram"></i></a>
+                <a href = "https://github.com/potato179"><i class="fab fa-github"></i></a>
+            </h5><br>
+            <h3>★ Special Thanks to</h3>
+            <h5>강유찬(스마트랜스)<br>
+                <a href = "https://facebook.com/smrt5678"><i class="fab fa-facebook"></i></a>
+                <a href = "https://instagram.com/5678__smrt"><i class="fab fa-instagram"></i></a>
+            </h5><br>
+            <h3>★ Contact us</h3>
+            <h5>저희 누리집에 대해서 궁금하신 점 또는 문제사항이 발생했을 경우에는 하단 아이콘을 클릭하여 연락해주시면 빠르게 답변하겠습니다.<br>
+                <a href = "mailto:hackg179@gmail.com"><i class="far fa-envelope"></i></a>
+                <a href = "https://m.me/makerpotato179"><i class="fab fa-facebook"></i></a>
+                <a href = "https://instagram.com/seoulfixking"><i class="fab fa-instagram"></i></a>
+            </h5><br>
+            <h3>★ Update Log</h3>
+            <h5>
+                <div style="margin:10px;">
+                    <button data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">펼치기/접기</button>
+                </div>
+                <div class = "collapse" id = "collapseExample">
+                    <div class="well">
+                        <p>2021.05.09 Preparation 1 <p class = "gray">프로젝트 개설<p></p><br>
+                        <p>2021.05.10 Preparation 2 <p class = "gray">가이드 제작<p></p><br>
+                        <p>2021.05.14 Developer Beta 0 <p class = "gray">주 기능 공개, 열차 사진 제작<p></p><br>
+                        <p>2021.05.15 Developer Beta 1 <p class = "gray">메인 페이지, 열차 정보 페이지 개설<p></p><br>
+                        <p>2021.05.16 Developer Beta 1.1 <p class = "gray">질문게시판 페이지 개설<p></p><br>
+                        <p>2021.05.17 Developer Beta 1.2 <p class = "gray">회원, 게시글 데이터베이스 개설<p></p><br>
+                        <p>2021.05.21 Developer Beta 1.2.1 <p class = "gray">메인페이지에서 엉뚱한 곳으로 연결되는 버그 수정<p></p><br>
+                        <p>2021.05.22 Developer Beta 1.3 <p class = "gray">회원가입, 로그인 페이지 개설<p></p><br>
+                        <p>2021.05.23 Developer Beta 1.3.1 <p class = "gray">로그인 쿠키 오류 수정<p></p><br>
+                        <p>2021.05.26 Developer Beta 1.3.2 <p class = "gray">비밀번호 암호화 구현<p></p><br>
+                        <p>2021.05.23 Developer Beta 1.4 <p class = "gray">공지사항 페이지 개설<p></p><br>
+                        <p>2021.05.23 Developer Beta 1.5 <p class = "gray">역 정보 데이터배이스 개설<p></p><br>
+                        <p>2021.05.29 Developer Beta 1.5.1 <p class = "gray">데이터배이스 오류 수정<p></p><br>
+                    </div>
+                </div>
+            </h5><br>
+            <br><br><br>
         </main>
         <script src = "../public/js/jquery.cookie.js"></script>
         <script>
@@ -82,5 +127,5 @@
                 }
             }
         </script>
-    </body>
+</body>
 </html>
