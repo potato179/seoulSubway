@@ -50,28 +50,27 @@
         <main role="main" class="container">
             <br><br><br>
             <br><hr><br>
-            <h1 class = "center bold white">공지사항</h1><br>
-            <br><hr><br>
-            <button id = "writenotice" onclick = "window.location.href = 'writenotice.html'">글쓰기</button>
-            <div id="view_q">
-
+            <div class = "center outline-solid">
+                
             </div>
-            <table id="q_table" class="table">
-                <thead>
-                    <tr class = "gray">
-                        <th scope = "col">#</th>
-                        <th scope = "col">제목</th>
-                        <th scope = "col">글쓴이</th>
-                    </tr>
-                </thead>
-                <tbody id="q_list">
-                </tbody>
-            </table>
-            </div>            
             <br><hr><br>
-            <br><br><br><br><br><br>
+            <h1 class = "intro center bold white">역명으로 검색</h1><br>
+            <div class="input-group mb-3">
+                <input type= " text" class = "form-control" placeholder = "역명">
+                <button class = "btn btn-outline-secondary" type = "button">검색</button>
+            </div>
+            <br><hr><br>
+            <h1 class = "intro center bold white">열차번호로 검색</h1><br>
+            <div class="input-group mb-3">
+                <select class = "form-select">
+                    <option selected>머리글자</option>
+                    <option value = "S">S</option>
+                    <option value = "K">K</option>
+                </select>
+                <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                <button class = "btn btn-outline-secondary" type = "button">검색</button>
+            </div>
         </main>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script src = "../public/js/jquery.cookie.js"></script>
         <script>
             function logincookie(){
@@ -88,62 +87,10 @@
                 }
                 else{
                     console.log("쿠키가 존재하지 않습니다");
+
                     $("#log_in_out").html("로그인");
                     $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
                 }
-
-                var ajaxData = { 
-                    type: "GET", 
-                    url : "get_notice",
-                    data: {}, 
-                    dataType: "json",
-                    success: function(data, status, xhr){
-                        console.log(data);
-                        //$("#notices").html("daflasdhfkadhfakds");
-                        var tempStr = "";
-                        data.forEach(function(item, index){
-                            tempStr += `<tr class = "white" onclick = 'ViewNotice(${item.id})'>
-                                    <th scope="row">${item.id}</th>
-                                    <td>${item.title}</td>
-                                    <td>${item.writer}</td>
-                                </tr>
-                            `
-                        });
-                        $("#q_list").html(tempStr);
-                    },
-                    error: function(jqXHR, textStatus, errorThrown){
-                    }
-                };
-                $.ajax(ajaxData);
-
-            }
-
-            function ViewNotice(id){
-                console.log(`질문: ` + id);
-
-                var ajaxData = { 
-                    type: "GET", 
-                    url : "view_notice",
-                    data: {id: id}, 
-                    dataType: "json", 
-                    success :  function(data, status, xhr){
-                        console.log(data);
-                        $('#q_table').html('');
-
-                        let notice_info;
-                        notice_info = `<br><h1>${data.title}</h1>
-                        <p>작성자: ${data.writer}</p><br><br>
-                        ${data.content}
-                        <br><br><br><br><br>
-                        <button onclick = window.location.href='/community.html'>목록으로</button>
-                        `
-                        $('#view_q').html(notice_info);
-                    },
-                    error:  function(jqXHR, textStatus, errorThrown){
-                    }
-                };
-
-                $.ajax(ajaxData);
             }
         </script>
     </body>
