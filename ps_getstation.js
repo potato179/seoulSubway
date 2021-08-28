@@ -1,5 +1,4 @@
 const stationlist = require("./public/js/stations.json")
-const seoulmetro_endtrain = require("./public/js/seoulmetro_endtrain.json")
 const seoulmetro_exit = require("./public/js/seoulmetro_exit.json")
 
 function station_html(req, res, next){
@@ -8,8 +7,9 @@ function station_html(req, res, next){
 
 function getstationinfo(req, res, next){
     var stationcd = req.query.searchtext;
-    stationcd *= 1;
-    //var stationcd = 240;
+    if(stationcd !== "100C" && stationcd !== "101C" && stationcd !== "102C"){
+        stationcd *= 1;
+    }
     for(var i = 0; i < stationlist.length; i++){
         if(stationlist[i].station_cd === stationcd){
             var line_num = stationlist[i].line_num;

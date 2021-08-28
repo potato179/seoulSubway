@@ -19,18 +19,21 @@
                 myFunction(this);
                 }
             };
-            xhttp.open("GET", "http://openapi.kric.go.kr/openapi/trainUseInfo/subwayTimetable?serviceKey=$2a$10$c7RRD1KpGe4Z6e1qtKqO6OKfFRkS7NOBKTCERY2m/1Gpx1mv8p8ui&format=xml&railOprIsttCd=KR&dayCd=8&lnCd=K4&stinCd=K320", true);
+            xhttp.open("GET", "http://openapi.kric.go.kr/openapi/convenientInfo/stationTimetable?serviceKey=$2a$10$c7RRD1KpGe4Z6e1qtKqO6OKfFRkS7NOBKTCERY2m/1Gpx1mv8p8ui&format=xml&railOprIsttCd=KR&lnCd=K4&stinCd=K320&dayCd=8", true);
             xhttp.send();
         }
         function myFunction(xml) {
             var i;
             var xmlDoc = xml.responseXML;
-            var table="<tr><th>열번</th><th>도착시간</th></tr>";
+            var table="<tr><th>열번</th><th>도착시간</th><th>출발시간</th></tr><th>출발역</th><th>도착역</th></tr>";
             var x = xmlDoc.getElementsByTagName("item");
-            for (i = 0; i <x.length; i++) { 
+            for (i = 0; i < x.length; i++) { 
                 table += `<tr>
-                    <td><a href = "https://rail.blue/railroad/logis/Default.aspx?date=20210823&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}">${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}</a></td>
+                    <td><a href = "https://rail.blue/railroad/logis/Default.aspx?date=20210825&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}">${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}</a></td>
                     <td>${x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue}</td>
+                    <td>${x[i].getElementsByTagName("dptTm")[0].childNodes[0].nodeValue}</td>
+                    <td>${x[i].getElementsByTagName("orgStinCd")[0].childNodes[0].nodeValue}</td>
+                    <td>${x[i].getElementsByTagName("tmnStinCd")[0].childNodes[0].nodeValue}</td>
                 </tr>`;
             }
             document.getElementById("demo").innerHTML = table;
