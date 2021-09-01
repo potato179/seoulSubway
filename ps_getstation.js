@@ -19,8 +19,22 @@ function getstationinfo(req, res, next){
             var operator = stationlist[i].operator; // 운영기관
             var transfer = stationlist[i].transfer; // 환승정보
             var doors = stationlist[i].doors; // 내리는 문
+            var english = stationlist[i].english; // 영어 표기
+            var japanese = stationlist[i].japanese; // 일본어 표기
+            var chinese = stationlist[i].chinese; // 중국어 표기
             var restroom = stationlist[i].restroom; // 개찰구 내 화장실 여부
             var crossable = stationlist[i].crossable; // 승강장 반대편 횡단 가능 여부
+            var wheelchair_charge = stationlist[i].wheelchair_charge; // 전동 휠케어 충전기 여부
+            var lost_found = stationlist[i].lost_found; // 유실물센터 여부
+            var parking = stationlist[i].parking; // 주차장 여부
+            var bicycle = stationlist[i].bicycle; // 자전거 보관소 여부
+            var atm = stationlist[i].atm; //  ATM 여부
+            var train_ticket = stationlist[i].train_ticket; // 기차표 예매 여부
+            var lounge = stationlist[i].lounge; // 문화공간 여부
+            var nursing_room = stationlist[i].nursing_room; // 수유실 여부
+            var camera = stationlist[i].camera; // 즉석사진기 여부
+            var phone_charge = stationlist[i].phone_charge; // 휴대폰 충전기 여부
+            var locker = stationlist[i].locker; // 물품보관함 여부
             var address = stationlist[i].address; // 역 주소
             var cx = stationlist[i].cx; // 역 위치 위도
             var cy = stationlist[i].cy; // 역 위치 경도
@@ -99,6 +113,7 @@ function getstationinfo(req, res, next){
     console.log(exitinfo);
 
     res.send({
+        station_cd: stationcd,
         line_num: line_num,
         station_nm: station_nm,
         fr_code: fr_code,
@@ -109,8 +124,22 @@ function getstationinfo(req, res, next){
         next_name: next_name,
         transfer: transfer,
         doors: doors,
+        english: english,
+        japanese: japanese,
+        chinese: chinese,
         restroom: restroom,
         crossable: crossable,
+        wheelchair_charge: wheelchair_charge,
+        lost_found: lost_found,
+        parking: parking,
+        bicycle: bicycle,
+        atm: atm,
+        train_ticket: train_ticket,
+        lounge: lounge,
+        nursing_room: nursing_room,
+        camera: camera,
+        phone_charge: phone_charge,
+        locker: locker,
         address: address,
         cx: cx,
         cy: cy,
@@ -118,6 +147,10 @@ function getstationinfo(req, res, next){
         origin: origin,
         exitinfo: exitinfo
     });
+}
+
+function getStations(req, res, next){
+    
 }
 
 exports.station_html = station_html;
