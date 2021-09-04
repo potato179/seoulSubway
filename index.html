@@ -54,7 +54,7 @@
                 
             </div>
             <br><hr><br>
-            <div style = "width: 100%; height: 50em; overflow: hidden; cursor: pointer;">
+            <div id = "box" style = "width: 100%; height: 50em; overflow: hidden; cursor: default;">
                 <svg height = "2500" width="2500">
                     <!--1호선-->
                     <line fill = "none" stroke = "#00498B" stroke-width = "3" stroke-miterlimit = "10" x1 = "860" y1 = "90" x2 = "1340" y2 = "90"></line>
@@ -1648,6 +1648,54 @@
                     $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
                 }
             }
+
+            var dragFlag = false;
+            var x, y, pre_x, pre_y;
+            $(function() {
+                $('#box').mousedown(
+                    function (e) {
+                        dragFlag = true;
+                        var obj = $(this);
+                        x = obj.scrollLeft();
+                        y = obj.scrollTop();
+                        pre_x = e.screenX;
+                        pre_y = e.screenY;					
+
+                        $(this).css("cursor", "pointer");
+                        $('#result').text(dragFlag);
+
+                    }
+                );
+
+                $('#box').mousemove(
+                    function (e) {
+                        if (dragFlag) {
+                            var obj = $(this);
+                            obj.scrollLeft(x - e.screenX + pre_x);
+                            obj.scrollTop(y - e.screenY + pre_y);
+
+                            return false;
+                        }
+                    }
+                );
+
+                $('#box').mouseup(
+                    function () {
+                        dragFlag = false;
+                        //$('#result').text("x:" + x + "," + "y:" + y + "," + "pre_x:" + pre_x + "," + "pre_y:" + pre_y);
+                        $('#result').text(dragFlag);
+                        $(this).css("cursor", "default");
+                    }
+                );
+
+                $('body').mouseup(
+                    function () {
+                        dragFlag = false;					
+                        $('#result').text(dragFlag);
+                        $(this).css("cursor", "default");
+                    }
+                );
+            });
         </script>
     </body>
 </html>
