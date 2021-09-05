@@ -28,8 +28,9 @@ var urls = [
     {url: "/view_notice", ps: ps_notice.view_notice},
     {url: "/write_notice", ps: ps_notice.write_notice},
     {url: "/writenotice.html", ps: ps_notice.write_notice_page},
+    {url: "/station.html", ps: ps_getstation.station_html},
     {url: "/getstationinfo", ps: ps_getstation.getstationinfo},
-    {url: "/station.html", ps: ps_getstation.station_html}
+    {url: "/getStations", ps: ps_getstation.getStations}
 ];
 
 process.argv.forEach(function(item, index) {

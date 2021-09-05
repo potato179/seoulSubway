@@ -95,23 +95,18 @@ function getstationinfo(req, res, next){
                 next_code = ""; 
                 next_name = "";
             }
-
-            // 지선 분리
-            var branchName = "";
-            var branch_next_code = "";
-            var branch_next_name = "";
         }
     }
     console.log(line_num, station_nm, fr_code, prev_code, next_code, transfer, doors, restroom, crossable, address, cx, cy, telno, origin);
-
+    // 출구 정보
     var exitinfo = "";
     for(var i = 0; i < seoulmetro_exit.length; i++){
         if(seoulmetro_exit[i].station_cd === stationcd){
             exitinfo += `${seoulmetro_exit[i].exit_no}번 출구: ${seoulmetro_exit[i].area_name}<br>`;
         }
     }
-    console.log(exitinfo);
 
+    // 데이터 전송
     res.send({
         station_cd: stationcd,
         line_num: line_num,
@@ -150,8 +145,19 @@ function getstationinfo(req, res, next){
 }
 
 function getStations(req, res, next){
-    
+    // 역 목록 불러오기
+    var lineno = req.query.lineno;
+    var stations = [];
+    for(var i = 0; i < stationlist.length; i++){
+        if(stationlist[i].line_num === lineno){
+            stations.push({"stationname": stationlist[i].station_nm, "stationcd": stationlist[i].station_cd});
+        }
+    }
+    console.log(stations)
+    // 데이터 전송
+    res.send({stations});
 }
 
 exports.station_html = station_html;
 exports.getstationinfo = getstationinfo;
+exports.getStations = getStations;
