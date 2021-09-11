@@ -20,7 +20,7 @@
             body{
                 font-family: 'Nanum Gothic', sans-serif;
             }
-            #mydiv {
+            #infoWindow {
                 position: absolute;
                 z-index: 9999;
                 background-color: #f1f1f1;
@@ -46,6 +46,7 @@
                 height: 1em;
                 width: 1em;
                 background-color: red;
+                border: 0;
                 border-radius: 50%;
                 display: inline-block;
             }
@@ -90,14 +91,9 @@
                 </div>
             </div>
         </nav>
-        <div id = "mydiv">
-            <div id = "stationInfoHeader">
-                <div class = "dot"></div>
-                <span style = "width: 100%;">
-                    <input type = "text" style = "background-color: #EAEEF1; border: 0; border-radius: 0.25em; width: 50%; align: center;">
-                </span>
+        <div id = "infoWindowParent">
+            <div id = "infoWindow">
             </div>
-            <iframe style = "width: 100%; height: 100%;" src = "./station.html"></iframe>
         </div>
         <div id = "box" style = "width: 100%; height: inherit; overflow: hidden; cursor: default;">
             <br><br>
@@ -390,6 +386,7 @@
                 <line fill = "none" stroke = "#f5a251" stroke-width = "3" stroke-miterlimit = "10" x1 = "565" y1 = "1245" x2 = "665" y2 = "1345"></line>
                 <line fill = "none" stroke = "#f5a251" stroke-width = "3" stroke-miterlimit = "10" x1 = "665" y1 = "1345" x2 = "665" y2 = "1545"></line>
                 <!--김포골드라인-->
+                <line fill = "none" stroke = "#ad8605" stroke-width = "3" stroke-miterlimit = "10" x1 = "70" y1 = "300" x2 = "95" y2 = "325"></line>
                 <line fill = "none" stroke = "#ad8605" stroke-width = "3" stroke-miterlimit = "10" x1 = "95" y1 = "325" x2 = "445" y2 = "325"></line>
                 <line fill = "none" stroke = "#ad8605" stroke-width = "3" stroke-miterlimit = "10" x1 = "445" y1 = "325" x2 = "520" y2 = "400"></line>
                 <!--우이신설경전철-->
@@ -1599,14 +1596,16 @@
                 <circle onclick = "callStation(this.id)" id = "3227" cx = "665" cy = "1545" r = "5" stroke = "#f5a251" stroke-width = "1" fill = "white"/>
                 <text x = "675" y = "1548" font-size = "10">운연</text>
                 <!--김포골드라인-->
+                <circle onclick = "callStation(this.id)" id = "4919" cx = "70" cy = "300" r = "5" stroke = "#ad8605" stroke-width = "1" fill = "white"/>
+                <text x = "40" y = "303" font-size = "10">양촌</text>
                 <circle onclick = "callStation(this.id)" id = "4920" cx = "95" cy = "325" r = "5" stroke = "#ad8605" stroke-width = "1" fill = "white"/>
-                <text x = "85" y = "342.5" font-size = "10">양촌</text>
+                <text x = "85" y = "342.5" font-size = "10">구래</text>
                 <circle onclick = "callStation(this.id)" id = "4921" cx = "145" cy = "325" r = "5" stroke = "#ad8605" stroke-width = "1" fill = "white"/>
-                <text x = "135" y = "342.5" font-size = "10">구래</text>
+                <text x = "135" y = "342.5" font-size = "10">마산</text>
                 <circle onclick = "callStation(this.id)" id = "4922" cx = "195" cy = "325" r = "5" stroke = "#ad8605" stroke-width = "1" fill = "white"/>
-                <text x = "185" y = "342.5" font-size = "10">마산</text>
+                <text x = "185" y = "342.5" font-size = "10">장기</text>
                 <circle onclick = "callStation(this.id)" id = "4923" cx = "245" cy = "325" r = "5" stroke = "#ad8605" stroke-width = "1" fill = "white"/>
-                <text x = "235" y = "342.5" font-size = "10">장기</text>
+                <text x = "235" y = "342.5" font-size = "10">운양</text>
                 <circle onclick = "callStation(this.id)" id = "4924" cx = "295" cy = "325" r = "5" stroke = "#ad8605" stroke-width = "1" fill = "white"/>
                 <text x = "275" y = "342.5" font-size = "10">걸포북변</text>
                 <circle onclick = "callStation(this.id)" id = "4925" cx = "345" cy = "325" r = "5" stroke = "#ad8605" stroke-width = "1" fill = "white"/>
@@ -1715,10 +1714,18 @@
         <script src = "../public/js/jquery.cookie.js"></script>
         <script>
             function callStation(id){
-                console.log(id)
+                $("#infoWindow").html(`<div id = "infoWindow">
+                <div id = "stationInfoHeader">
+                <button class = "dot" onclick = "closeWindow()"></button>
+                <span style = "width: 100%;">
+                    <input type = "text" style = "background-color: #EAEEF1; border: 0; border-radius: 0.25em; width: 50%; align: center;">
+                </span>
+            </div>
+            <iframe style = "width: 100%; height: 100%;" src = "./station.html"></iframe>`)
+                $('iframe').get(0).contentWindow.searchstation(id);
             }
 
-            dragElement(document.getElementById("mydiv"));
+            dragElement(document.getElementById("infoWindow"));
 
             function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -1779,6 +1786,10 @@
                     $("#log_in_out").html("로그인");
                     $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
                 }
+            }
+            
+            function closeWindow() {
+                $("#infoWindow").remove();
             }
 
             var dragFlag = false;

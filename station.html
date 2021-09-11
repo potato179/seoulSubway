@@ -226,7 +226,7 @@
         </div>
         <div id="arrivalInfo" class="container px-4 py-3 my-5 text-center" style="display: none;">
             <h2>도착 정보</h2>
-            <p id="exitinfo" style="width: 100%; text-align: left; margin: 0.25em;">도착정보</p>
+            <p id="arrivalinfo" style="width: 100%; text-align: left; margin: 0.25em;">도착정보</p>
         </div>
         <div id="exitInfo" class="container px-4 py-3 my-5 text-center" style="display: none;">
             <h2>주변 정보</h2>
@@ -426,18 +426,18 @@
                 $("#telno").html(data.telno);
                 $("#origin").html(data.origin);
 
-                    var transfer = data.transfer;
-                        $("#transfers").html("")
-                    try{
-                        var jbSplit = transfer.split('X');
-                    }
-                    catch(error){
-                        var jbSplit = [transfer.toString()];
-                    }
-                    for ( var i in jbSplit ) {
-                        $("#transfers").append(`<button onclick = "searchstation('${jbSplit[i]}')">${jbSplit[i]}</button>`)
-                        console.log(jbSplit[i]);
-                    }
+                $("#transfers").html("");
+                var transfer = data.transfer;
+                try{
+                    var jbSplit = transfer.split('X');
+                }
+                catch(error){
+                    var jbSplit = [transfer.toString()];
+                }
+                for ( var i in jbSplit ) {
+                    $("#transfers").append(`<button onclick = "searchstation('${jbSplit[i]}')">${jbSplit[i]}</button>`)
+                    console.log(jbSplit[i]);
+                }
 
                 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                     mapOption = {
