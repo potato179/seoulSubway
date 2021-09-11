@@ -97,7 +97,7 @@
                         <option value = "">역을 선택하세요.</option>
                     </select>
                     <!--검색 버튼-->
-                    <button onclick = "searchstation()">이동</button>
+                    <button type = "button" onclick = "searchstation('')">이동</button>
                 </form><br><br>
                 <div style="display: flex; justify-content: center; align-items: center;">
                     <div id="linecolor" style="width: 100%; background-color: #00498B; border-radius: 2em; padding: 0.25em; padding-left: 1em; padding-right: 1em; position: relative;">
@@ -108,9 +108,9 @@
                     </div>
                     <div id="linecolor-border" class="center" style="width: 50%; background-color: white; border: 0.25em solid #00498B; border-radius: 2.5em; padding: 0.25em; position: absolute; display: table-cell; vertical-align: middle; line-height: 0.1em;">
                         <!--역 이름-->
-                        <h2 id="stationname">동대문역사문화공원</h2>
+                        <h2 id = "title">동대문역사문화공원</h2>
                         <!--영어 역명-->
-                        <p>Dongdaemun History & Culture Park</p>
+                        <p id = "english">Dongdaemun History & Culture Park</p>
                     </div>
                 </div><br><br>
 
@@ -118,10 +118,7 @@
                     <!--역번호 | 운영기관-->
                     <div id="station_num" class="white" style="float: left">130 | 서울교통공사</div>
                     <!--환승노선-->
-                    <div style="float: right;">
-                        <button>2호선</button>
-                        <button>4호선</button>
-                        <button>5호선</button>
+                    <div id = "transfers" style = "float: right;">
                     </div>
                 </div><br><br>
             </div>
@@ -162,9 +159,9 @@
                     <div class="center col-md-4">
                         <div class="h-100 p-5 bg-light border rounded-3">
                             <h2>역사 이용 정보</h2><br>
-                            <h5><i class="fas fa-door-open"></i> 내리는 문: 오른쪽</h5>
-                            <h5><i class="fas fa-walking"></i> 반대편 횡단 가능</h5>
-                            <h5><i class="fas fa-restroom"></i> 화장실 개찰구 안</h5>
+                            <h5><i class="fas fa-door-open"></i> <span id = "doors"></span></h5>
+                            <h5><i class="fas fa-walking"></i> <span id = "crossable"></span></h5>
+                            <h5><i class="fas fa-restroom"></i> <span id = "restroom"></span></h5>
                         </div>
                     </div>
                     <div class="center col-md-4">
@@ -185,7 +182,7 @@
             <table class="table" style="text-align: left;">
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">역명</th>
-                    <td id="stationname">Lorem ipsum dolor sit amet</td>
+                    <td id = "stationname">Lorem ipsum dolor sit amet</td>
                 </tr>
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">외국어 표기</th>
@@ -299,8 +296,11 @@
                 else if (search_stationcd == 1) {
                     var searchtext = next_code;
                 }
-                else {
+                else if(search_stationcd == "") {
                     var searchtext = $('#selectStations option:selected').val();
+                }
+                else{
+                    var searchtext = search_stationcd
                 }
 
                 var sendData = { searchtext: searchtext };
@@ -407,13 +407,18 @@
                 }
                 prev_code = data.prev_code;
                 next_code = data.next_code;
+                $("#title").html(data.station_nm);
                 $("#stationname").html(data.station_nm);
                 $("#prev_stationname").html(data.prev_name);
                 $("#next_stationname").html(data.next_name);
                 $("#station_num").html(`${data.fr_code} | ${data.operator}`);
                 $("#fr_code").html(data.fr_code);
+                $("#english").html(data.english);
                 $("#foriegn").html(`${data.english} | ${data.japanese} | ${data.chinese}`);
                 $("#station_cd").html(data.station_cd);
+                $("#doors").html(`내리는문: ${(data.doors == "R") ? "오른쪽" : "왼쪽"}`);
+                $("#crossable").html(`반대편 횡단 ${(data.crossable == "Y") ? "가능" : "불가"}`);
+                $("#restroom").html(`화장실 개찰구 ${(data.restroom == "Y") ? "안" : "밖"}`);
                 $("#stationInfo").html(`내리는문: ${(data.doors == "R") ? "오른쪽" : "왼쪽"} | 반대편 횡단 ${(data.crossable == "Y") ? "가능" : "불가"} | 화장실 개찰구 ${(data.restroom == "Y") ? "안" : "밖"}`);
                 $("#facilities").html(`${(data.wheelchair_charge == "Y") ? "전동휠체어 충전기" : ""} ${(data.lost_found == "Y") ? "유실물센터" : ""} ${(data.parking == "Y") ? "주차장" : ""} ${(data.bicycle == "Y") ? "자전거 보관소" : ""} ${(data.document == "Y") ? "무인 민원 발급기" : ""} ${(data.atm == "Y") ? "ATM" : ""} ${(data.train_ticket == "Y") ? "기차표 발권" : ""} ${(data.lounge == "Y") ? "문화공간&만남의장소" : ""} ${(data.nursing_room == "Y") ? "수유실" : ""} ${(data.camera == "Y") ? "즉석사진기" : ""} ${(data.phone_charge == "Y") ? "휴대폰 충전기" : ""} ${(data.locker == "Y") ? "물품보관함" : ""}`);
                 $("#address").html(data.address);
@@ -421,33 +426,28 @@
                 $("#telno").html(data.telno);
                 $("#origin").html(data.origin);
 
+                    var transfer = data.transfer;
+                        $("#transfers").html("")
+                    try{
+                        var jbSplit = transfer.split('X');
+                    }
+                    catch(error){
+                        var jbSplit = [transfer.toString()];
+                    }
+                    for ( var i in jbSplit ) {
+                        $("#transfers").append(`<button onclick = "searchstation('${jbSplit[i]}')">${jbSplit[i]}</button>`)
+                        console.log(jbSplit[i]);
+                    }
+
                 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                     mapOption = {
                         center: new kakao.maps.LatLng(data.cx, data.cy), // 지도의 중심좌표
                         level: 3 // 지도의 확대 레벨
                     };
                 var map = new kakao.maps.Map(mapContainer, mapOption);
-
                 $("#exitinfo").html(data.exitinfo);
 
-                if (data.restroom === "Y") {
-                    $("#restroom").html(`<i class="fas fa-restroom"></i> 게이트 내 화장실: O`)
-                }
-                else {
-                    $("#restroom").html(`<i class="fas fa-restroom"></i> 게이트 내 화장실: X`)
-                }
-
-                if (data.crossable === "Y") {
-                    $("#crossable").html(`<i class="fas fa-arrows-alt-h"></i> 반대편 횡단: O`)
-                }
-                else {
-                    $("#crossable").html(`<i class="fas fa-arrows-alt-h"></i> 반대편 횡단: X`)
-                }
-
                 $("#stationmap").html(`<img src = "./public/img/stationmap/${data.station_cd}.png" style = "width: 100%;">`);
-                $("#address").html(`주소: ${data.address}`);
-                $("#telno").html(`전화번호: ${data.telno}`);
-                $("#origin").html(`역명 유래: ${data.origin}`);
             }
 
             function search_onError(jqXHR, textStatus, errorThrown) {

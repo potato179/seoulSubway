@@ -26,15 +26,21 @@
                 background-color: #f1f1f1;
                 border: 1px solid #d3d3d3;
                 text-align: center;
+                border-radius: 0.5em;
+                width: 75%;
+                height: 75%;
             }
-
             #stationInfoHeader {
                 padding: 10px;
                 cursor: move;
                 z-index: 9999;
-                background-color: #323232;
+                background-color: #FEF8FA;
                 color: #fff;
                 float: left;
+                display: flex;
+                align-items: center;
+                border-radius: 0.5em;
+                width: 100%;
             }
             .dot {
                 height: 1em;
@@ -84,15 +90,14 @@
                 </div>
             </div>
         </nav>
-        <div id="mydiv">
-            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+        <div id = "mydiv">
             <div id = "stationInfoHeader">
                 <div class = "dot"></div>
-                <input type="text">
+                <span style = "width: 100%;">
+                    <input type = "text" style = "background-color: #EAEEF1; border: 0; border-radius: 0.25em; width: 50%; align: center;">
+                </span>
             </div>
-            <p>Move</p>
-            <p>this</p>
-            <p>DIV</p>
+            <iframe style = "width: 100%; height: 100%;" src = "./station.html"></iframe>
         </div>
         <div id = "box" style = "width: 100%; height: inherit; overflow: hidden; cursor: default;">
             <br><br>
@@ -758,7 +763,7 @@
                 <text x = "1210" y = "743" font-size = "10">신사</text>
                 <circle onclick = "callStation(this.id)" id = "328" cx = "1200" cy = "775" r = "5" stroke = "#F36630" stroke-width = "1" fill = "white"/>
                 <text x = "1210" y = "778" font-size = "10">잠원</text>
-                <circle onclick = "callStation(this.id)" id = "329" cx = "1200" cy = "810" r = "7" stroke = "black" stroke-width = "1" fill = "white"/>
+                <circle onclick = "callStation(this.id)" id = "329X2736" cx = "1200" cy = "810" r = "7" stroke = "black" stroke-width = "1" fill = "white"/>
                 <text x = "1145" y = "827.5" font-size = "10">고속터미널</text>
                 <circle onclick = "callStation(this.id)" id = "331" cx = "1225" cy = "870" r = "5" stroke = "#F36630" stroke-width = "1" fill = "white"/>
                 <text x = "1170" y = "883" font-size = "10">남부터미널</text>
@@ -1709,6 +1714,10 @@
         </div>
         <script src = "../public/js/jquery.cookie.js"></script>
         <script>
+            function callStation(id){
+                console.log(id)
+            }
+
             dragElement(document.getElementById("mydiv"));
 
             function dragElement(elmnt) {
