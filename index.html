@@ -22,23 +22,42 @@
             }
             #mydiv {
                 position: absolute;
-                z-index: 9;
+                z-index: 9999;
                 background-color: #f1f1f1;
-                text-align: center;
                 border: 1px solid #d3d3d3;
+                text-align: center;
             }
 
-            #mydivheader {
+            #stationInfoHeader {
                 padding: 10px;
                 cursor: move;
-                z-index: 10;
-                background-color: #2196F3;
+                z-index: 9999;
+                background-color: #323232;
                 color: #fff;
+                float: left;
+            }
+            .dot {
+                height: 1em;
+                width: 1em;
+                background-color: red;
+                border-radius: 50%;
+                display: inline-block;
+            }
+            #addressInput {
+                border: none;
+                background-color: #fff;
+                color: #000;
+                margin-top: 5px;
+                float: left;
+                left: 0;
+                width: 75%;
+                height: 90%;
+                border-radius: 5px;
             }
         </style>
     </head>
     <body class = "" onload = "logincookie()">
-        <nav class = "navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #e3f2fd;">
+        <nav class = "navbar navbar-expand-lg navbar-light fixed-top" style = "background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(5px);">
             <div class = "container">
                 <img src = "./public/img/icon.png" width = "50px;">&nbsp;&nbsp;
                 <a class="navbar-brand" href="#" style = "font-weight: bold;">짜장메트로</a>
@@ -66,7 +85,11 @@
             </div>
         </nav>
         <div id="mydiv">
-            <div id="mydivheader">Click here to move</div>
+            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+            <div id = "stationInfoHeader">
+                <div class = "dot"></div>
+                <input id = "addressInput" class = "center" data-placement = "bottom" type = "text" value = "역">
+            </div>
             <p>Move</p>
             <p>this</p>
             <p>DIV</p>
@@ -1686,48 +1709,49 @@
         </div>
         <script src = "../public/js/jquery.cookie.js"></script>
         <script>
-            dragElement($("#mydiv"));
+            dragElement(document.getElementById("mydiv"));
 
             function dragElement(elmnt) {
-                var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-                if (document.getElementById(elmnt.id + "header")) {
-                    /* if present, the header is where you move the DIV from:*/
-                    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-                } else {
-                    /* otherwise, move the DIV from anywhere inside the DIV:*/
-                    elmnt.onmousedown = dragMouseDown;
-                }
-
-                function dragMouseDown(e) {
-                    e = e || window.event;
-                    e.preventDefault();
-                    // get the mouse cursor position at startup:
-                    pos3 = e.clientX;
-                    pos4 = e.clientY;
-                    document.onmouseup = closeDragElement;
-                    // call a function whenever the cursor moves:
-                    document.onmousemove = elementDrag;
-                }
-
-                function elementDrag(e) {
-                    e = e || window.event;
-                    e.preventDefault();
-                    // calculate the new cursor position:
-                    pos1 = pos3 - e.clientX;
-                    pos2 = pos4 - e.clientY;
-                    pos3 = e.clientX;
-                    pos4 = e.clientY;
-                    // set the element's new position:
-                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-                }
-
-                function closeDragElement() {
-                    /* stop moving when mouse button is released:*/
-                    document.onmouseup = null;
-                    document.onmousemove = null;
-                }
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+                // if present, the header is where you move the DIV from:
+                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+                // otherwise, move the DIV from anywhere inside the DIV:
+                elmnt.onmousedown = dragMouseDown;
             }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // get the mouse cursor position at startup:
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // calculate the new cursor position:
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // set the element's new position:
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                // stop moving when mouse button is released:
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+            }
+
             function logincookie(){
                 var userEmail = $.cookie("userEmail");
                 if(userEmail != '' && userEmail != null){
