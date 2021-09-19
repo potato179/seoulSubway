@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시간표 놀이터</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/06fb83cb17.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://potato179.github.io/style/potato-min.css">
+    <style>
+        table, td, tr{
+            padding: 0.5em;
+        }
+    </style>
+</head>
+<body onload = "loadDoc()">
+    <br><br><br>
+    <div class = "container center">
+        <div style = "float: left;">
+            <h2>상행</h2>
+            <table id = "upper"></table><br>
+        </div>
+        <div style = "float: right;">
+            <h2>하행</h2>
+            <table id = "lower"></table><br>
+        </div>
+    </div>
+    <script>
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+            };
+            xhttp.open("GET", "http://openapi.kric.go.kr/openapi/convenientInfo/stationTimetable?serviceKey=$2a$10$c7RRD1KpGe4Z6e1qtKqO6OKfFRkS7NOBKTCERY2m/1Gpx1mv8p8ui&format=xml&railOprIsttCd=KR&lnCd=K4&stinCd=K320&dayCd=8", true);
+            xhttp.send();
+        }
+        function myFunction(xml) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var upperTable = "<tr><th>열번</th><th>정차시간</th><th>출발시간</th><th>출발역</th><th>도착역</th></tr>";
+            var lowerTable = "<tr><th>열번</th><th>정차시간</th><th>출발시간</th><th>출발역</th><th>도착역</th></tr>";
+            var x = xmlDoc.getElementsByTagName("item");
+            for (i = 0; i < x.length; i++) { 
+                if(x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue.charAt(x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue.length-1)*1 % 2 == 0){
+                    upperTable += `<tr>
+                        <td><a href = "https://rail.blue/railroad/logis/Default.aspx?date=20210825&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}" target = "popup" onclick = "javascript:void(0);" onclick = "window.open("https://rail.blue/railroad/logis/Default.aspx?date=20210825&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}", "전철 상세 정보", 'width=300,height=250');">${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}</a></td>
+                        <td>${x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
+                        <td>${x[i].getElementsByTagName("dptTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
+                        <td>${x[i].getElementsByTagName("orgStinCd")[0].childNodes[0].nodeValue}</td>
+                        <td>${x[i].getElementsByTagName("tmnStinCd")[0].childNodes[0].nodeValue}</td>
+                    </tr>`;
+                }
+                else{
+                    lowerTable += `<tr>
+                        <td><a href = "https://rail.blue/railroad/logis/Default.aspx?date=20210825&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}" target = "popup" onclick = "javascript:void(0);" onclick = "window.open("https://rail.blue/railroad/logis/Default.aspx?date=20210825&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}", "전철 상세 정보", 'width=300,height=250');">${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}</a></td>
+                        <td>${x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
+                        <td>${x[i].getElementsByTagName("dptTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
+                        <td>${x[i].getElementsByTagName("orgStinCd")[0].childNodes[0].nodeValue}</td>
+                        <td>${x[i].getElementsByTagName("tmnStinCd")[0].childNodes[0].nodeValue}</td>
+                    </tr>`;
+                }
+
+            }
+            
+            document.getElementById("upper").innerHTML = upperTable;
+            document.getElementById("lower").innerHTML = lowerTable;
+        }
+    </script>
+</body>
+</html>

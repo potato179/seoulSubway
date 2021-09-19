@@ -152,7 +152,7 @@
                                     </td>
                                 </tr>
                             </table><br>
-                            <button>전체 시간표</button>
+                            <button onclick = "showPopup()">전체 시간표</button>
                             <button>첫막차 정보</button>
                         </div>
                     </div>
@@ -260,6 +260,10 @@
                     $("#log_in_out").html("로그인");
                     $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
                 }
+            }
+
+            function showPopup() { 
+                window.open("timetable.html", "전철 시간표", "width = 800, height = 600"); 
             }
 
             function getstations(lineno) {
