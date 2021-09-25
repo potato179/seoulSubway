@@ -55,7 +55,7 @@ CREATE TABLE users (
 
 명령어
 ```sql
-CREATE TABLE users (
+CREATE TABLE train (
     lineno varchar(16) NOT NULL,
     id varchar(16) NOT NULL,
     delay INT(16) NOT NULL,
