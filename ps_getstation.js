@@ -158,6 +158,11 @@ function getStations(req, res, next){
     res.send({stations});
 }
 
+function arrivals_html(req, res, next){
+    res.sendFile("arrivals.html", {root: __dirname});
+}
+
 exports.station_html = station_html;
 exports.getstationinfo = getstationinfo;
 exports.getStations = getStations;
+exports.arrivals_html = arrivals_html;

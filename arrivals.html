@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>수도권 전동차 정보</title>
+        <script src = "https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity = "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin = "anonymous"></script>
+        <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity = "sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin = "anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity = "sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin = "anonymous"></script>
+        <script src = "https://kit.fontawesome.com/06fb83cb17.js" crossorigin = "anonymous"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://potato179.github.io/style/potato-min.css">
+        <style>
+            html, body{
+                height: 100%;
+            }
+            body{
+                font-family: 'Nanum Gothic', sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class = "navbar navbar-expand-lg navbar-light fixed-top" style = "background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(5px);">
+            <div class = "container">
+                <img src = "./public/img/icon.png" width = "50px;">&nbsp;&nbsp;
+                <a class="navbar-brand" href="#" style = "font-weight: bold;">짜장메트로</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class = "collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./index.html">홈<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./arrivals.html">실시간 도착정보<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./notice.html">공지사항<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./community.html">질문게시판<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./community.html">정보<span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                    <a style = "margin: 5px " class="btn btn-outline-primary" id = "log_in_out" type = "button" onclick = 'window.location.href = "login.html"'>로그인</a>
+                    <a style = "margin: 5px "class="btn btn-outline-primary" id = "btn_join" type = "button" onclick = 'window.location.href = "join.html"'>회원가입</a>
+                </div>
+            </div>
+        </nav>
+        <main class = "container center">
+            <br><br><br>
+            <h1>실시간 전철 운행 정보</h1>
+            <button onclick = "loadDoc('1호선')">1호선</button>
+            <button onclick = "loadDoc('2호선')">2호선</button>
+            <button onclick = "loadDoc('3호선')">3호선</button>
+            <button onclick = "loadDoc('4호선')">4호선</button>
+            <button onclick = "loadDoc('5호선')">5호선</button>
+            <button onclick = "loadDoc('6호선')">6호선</button>
+            <button onclick = "loadDoc('7호선')">7호선</button>
+            <button onclick = "loadDoc('8호선')">8호선</button>
+            <button onclick = "loadDoc('9호선')">9호선</button>
+            <button onclick = "loadDoc('경의중앙선')">경의중앙선</button>
+            <button onclick = "loadDoc('경춘선')">경춘선</button>
+            <button onclick = "loadDoc('신분당선')">신분당선</button>
+            <button onclick = "loadDoc('공항철도')">공항철도</button>
+            <button onclick = "loadDoc('우이신설선')">우이신설경전철</button>
+            <br><br>
+            <table id = "demo" class = "center" style = "width: 100%">
+            </table>
+            <br><br><br>
+        </main>
+        <script src = "../public/js/jquery.cookie.js"></script>
+        <script type = "text/javascript" src = "https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script>
+            function loadDoc(lineno) {
+                getstations(lineno)
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        myFunction(lineno, this);
+                    }
+                };
+                xhttp.open("GET", `http://swopenapi.seoul.go.kr/api/subway/7141685873706f7434376d4f6d4e74/xml/realtimePosition/0/1000/${lineno}`, true);
+                xhttp.send();
+            }
+
+            function getstations(lineno) {
+                // 호선이 선택되면 역 목록 가져오기
+                var sendData = {lineno: lineno};
+                if(lineno === "우이신설선"){
+                    sendData = {lineno: "우이신설경전철"};
+                }
+                var ajaxData = {
+                    type: "GET",
+                    url: "getStations",
+                    data: sendData,
+                    dataType: "json",
+                    success: get_onSuccess,
+                    error: get_onError
+                };
+                $.ajax(ajaxData);
+            }
+
+            function get_onSuccess(data, status, xhr) {
+                console.log(data.stations)
+                $('#demo').html("");
+                $('#demo').append(`<tr><th style = "width: 40%;">▲ 상행</th><th class = "box-lightgray" style = "width: 20%;"></th><th style = "width: 40%;">하행 ▼</th></tr>`);
+                for(var i = 0; i < data.stations.length; i++){
+                    console.log(data.stations[i].stationcd, data.stations[i].stationname)
+                    $('#demo').append(`<tr style = "height: 5em;"><td style = "outline-style: dotted; outline-width: thin;" id = "${data.stations[i].stationname}U"></td><td style = "outline-style: solid; outline-width: thin;" class = "box-lightgray">${data.stations[i].stationname}</td><td style = "outline-style: dotted; outline-width: thin;" id = "${data.stations[i].stationname}L"></td></tr>`);
+                }
+            }
+
+            function get_onError(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR.responseText);
+            }
+
+            function myFunction(lineno, xml) {
+                var i;
+                var xmlDoc = xml.responseXML;
+                var table = "";
+                var x = xmlDoc.getElementsByTagName("row");
+                for (i = 0; i < x.length; i++) { 
+                    let arrived;
+                    if(x[i].getElementsByTagName("trainSttus")[0].childNodes[0].nodeValue === 1) arrived = "접근";
+                    else if(x[i].getElementsByTagName("trainSttus")[0].childNodes[0].nodeValue === 2) arrived = "도착";
+                    else arrived = "출발";
+                    if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 0){
+                        $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}U`).append(`<img src="./${lineno}.png" style = "width: 4em;"><br>${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue}행<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
+
+                    }
+                    else if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 1){
+                        $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}L`).append(`<img src="./${lineno}.png" style = "width: 4em;"><br>${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue}행<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
