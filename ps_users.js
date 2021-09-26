@@ -4,14 +4,6 @@ var con = mysqlconfig.con;
 const crypto = require("crypto");
 var shasum = crypto.createHash("sha256");
 
-function join_html(req, res, next){
-    res.sendFile('join.html', {root: __dirname});
-}
-
-function login_html(req, res, next){
-    res.sendFile('login.html', {root: __dirname});
-}
-
 function login(req, res, next){
     console.log(req.query.email);
     var email = req.query.email;
@@ -83,7 +75,5 @@ function join(req, res, next){
 }
 
 exports.login = login;
-exports.login_html = login_html;
 exports.join = join;
-exports.join_html = join_html;
 exports.logout = logout;

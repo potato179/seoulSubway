@@ -49,19 +49,41 @@
     </head>
     <body onload = "logincookie()">
         <!--해더-->
-        <header class="p-3 bg-dark text-white">
-            <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                        <img src="./public/img/icon.png" height="40em" style="vertical-align: middle;">&nbsp;&nbsp;&nbsp;
-                    </a>
-                    <a class="white navbar-brand" href="#" style="font-weight: bold;">짜장메트로 철도역 정보</a>
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <nav class = "bg-dark navbar navbar-expand-lg navbar-dark fixed-top" style = "background-color: rgba(227, 242, 253, 0.5); backdrop-filter: blur(5px);">
+            <div class = "container">
+                <img src = "./public/img/icon.png" width = "50px;">&nbsp;&nbsp;
+                <a class="navbar-brand" href="#" style = "font-weight: bold;">짜장메트로</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class = "collapse navbar-collapse" id = "navbarCollapse">
+                    <ul class = "navbar-nav mr-auto">
+                        <li class = "nav-item active">
+                            <a class = "nav-link" href = "./index.html">홈<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class = "nav-item active">
+                            <a class = "nav-link" href = "./arrivals.html">실시간 도착정보<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class = "nav-item active">
+                            <a class = "nav-link" href = "./station.html">역 정보<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class = "nav-item active">
+                            <a class = "nav-link" href = "./trainInfo.html">전동차 정보<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class = "nav-item active">
+                            <a class = "nav-link" href = "./community.html">게시판<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class = "nav-item active">
+                            <a class = "nav-link" href = "./info.html">누리집 정보<span class="sr-only">(current)</span></a>
+                        </li>
                     </ul>
+                    <a style = "margin: 5px " class="btn btn-outline-primary" id = "log_in_out" type = "button" onclick = 'window.location.href = "login.html"'>로그인</a>
+                    <a style = "margin: 5px "class="btn btn-outline-primary" id = "btn_join" type = "button" onclick = 'window.location.href = "join.html"'>회원가입</a>
                 </div>
             </div>
-        </header>
-        <div class="bg-dark">
+        </nav>
+        <div class = "bg-dark">
+            <br><br><br>
             <div class="center container">
                 <br><br>
                 <!--호선 선택-->

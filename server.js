@@ -8,30 +8,29 @@ const con = mysqlconfig.con;
 
 const ps_users = require("./ps_users.js");
 const ps_questions = require("./ps_questions.js");
-const ps_notice = require("./ps_notice.js");
-const ps_getstation = require("./ps_getstation.js")
+const ps_getstation = require("./ps_getstation.js");
+const ps_pages = require("./ps_pages.js");
 
 const hostname = "127.0.0.1";
 const port = "3000";
 
 var urls = [
     {url: "/login", ps: ps_users.login},
-    {url: "/login.html", ps: ps_users.login_html},
-    {url: "/logout", ps: ps_users.logout},
     {url: "/join", ps: ps_users.join},
-    {url: "/join.html", ps: ps_users.join_html},
+    {url: "/logout", ps: ps_users.logout},
     {url: "/get_questions", ps: ps_questions.get_questions},
     {url: "/view_question", ps: ps_questions.view_question},
     {url: "/write_question", ps: ps_questions.write_question},
-    {url: "/writequestion.html", ps: ps_questions.write_question_page},
-    {url: "/get_notice", ps: ps_notice.get_notice},
-    {url: "/view_notice", ps: ps_notice.view_notice},
-    {url: "/write_notice", ps: ps_notice.write_notice},
-    {url: "/writenotice.html", ps: ps_notice.write_notice_page},
-    {url: "/station.html", ps: ps_getstation.station_html},
     {url: "/getstationinfo", ps: ps_getstation.getstationinfo},
     {url: "/getStations", ps: ps_getstation.getStations},
-    {url: "/arrivals.html", ps: ps_getstation.arrivals_html}
+    {url: "/join.html", ps: ps_pages.join_html},
+    {url: "/login.html", ps: ps_pages.login_html},
+    {url: "/writequestion.html", ps: ps_pages.write_question_page},
+    {url: "/writenotice.html", ps: ps_pages.write_notice_page},
+    {url: "/station.html", ps: ps_pages.station_html},
+    {url: "/arrivals.html", ps: ps_pages.arrivals_html},
+    {url: "/trainInfo.html", ps: ps_pages.trainInfo_html},
+    {url: "/info.html", ps: ps_pages.info_html}
 ];
 
 process.argv.forEach(function(item, index) {

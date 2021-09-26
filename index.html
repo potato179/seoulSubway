@@ -64,6 +64,7 @@
         </style>
     </head>
     <body class = "" onload = "logincookie()">
+        <!--
         <div id="infoWindow">
             <div id="stationInfoHeader">
                 <button class = "dot" onclick = "closeWindow()"></button>
@@ -73,6 +74,7 @@
             </div>
             <iframe style = "width: 100%; height: 100%;" src = "./station.html"></iframe>
         </div>
+        -->
         <nav class = "navbar navbar-expand-lg navbar-light fixed-top" style = "background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(5px);">
             <div class = "container">
                 <img src = "./public/img/icon.png" width = "50px;">&nbsp;&nbsp;
@@ -89,13 +91,16 @@
                             <a class="nav-link" href="./arrivals.html">실시간 도착정보<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="./notice.html">공지사항<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="./station.html">역 정보<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="./community.html">질문게시판<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="./trainInfo.html">전동차 정보<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="./community.html">정보<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="./community.html">게시판<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="./info.html">누리집 정보<span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                     <a style = "margin: 5px " class="btn btn-outline-primary" id = "log_in_out" type = "button" onclick = 'window.location.href = "login.html"'>로그인</a>

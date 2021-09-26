@@ -1,10 +1,6 @@
 const stationlist = require("./public/js/stations.json")
 const seoulmetro_exit = require("./public/js/seoulmetro_exit.json")
 
-function station_html(req, res, next){
-    res.sendFile('station.html', {root: __dirname});
-}
-
 function getstationinfo(req, res, next){
     var stationcd = req.query.searchtext;
     if(stationcd !== "100C" && stationcd !== "101C" && stationcd !== "102C"){
@@ -158,11 +154,5 @@ function getStations(req, res, next){
     res.send({stations});
 }
 
-function arrivals_html(req, res, next){
-    res.sendFile("arrivals.html", {root: __dirname});
-}
-
-exports.station_html = station_html;
 exports.getstationinfo = getstationinfo;
 exports.getStations = getStations;
-exports.arrivals_html = arrivals_html;

@@ -37,11 +37,6 @@ function write_question(req, res, next){
     });
 }
 
-function write_question_page(req, res, next){
-    res.sendfile("writequestion.html", {root: __dirname});
-}
-
 exports.get_questions = get_questions;
 exports.view_question = view_question;
 exports.write_question = write_question;
-exports.write_question_page = write_question_page;
