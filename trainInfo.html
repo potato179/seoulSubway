@@ -70,7 +70,7 @@
                 <button class = "white" style = "background-color: #cd7c2f" onclick = "">서울교통공사 6000호대</button>
                 <button class = "white" style = "background-color: #747f00" onclick = "">서울교통공사 7000호대</button>
                 <button class = "white" style = "background-color: #e6186c" onclick = "">서울교통공사 8000호대</button>
-                <button class = "white" style = "background-color: #bdb092" onclick = "">서울 메트로9호선 9000호대</button>
+                <button class = "white" style = "background-color: #bdb092" onclick = "">서울시메트로9호선 9000호대</button>
                 <button class = "white" style = "background-color: #77c4a3" onclick = "">한국철도공사 321000호대</button>
                 <button class = "white" style = "background-color: #77c4a3" onclick = "">한국철도공사 331000호대</button>
                 <button class = "white" style = "background-color: #fabe00" onclick = "">한국철도공사 351000호대</button>
@@ -99,69 +99,7 @@
         <script src = "../public/js/jquery.cookie.js"></script>
         <script type = "text/javascript" src = "https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script>
-            function loadDoc(lineno) {
-                console.log("새로고침 했습니다.");
-                getstations(lineno)
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        myFunction(lineno, this);
-                    }
-                };
-                xhttp.open("GET", `http://swopenapi.seoul.go.kr/api/subway/7141685873706f7434376d4f6d4e74/xml/realtimePosition/0/1000/${lineno}`, true);
-                xhttp.send();
-            }
 
-            function getstations(lineno) {
-                // 호선이 선택되면 역 목록 가져오기
-                var sendData = {lineno: lineno};
-                if(lineno === "우이신설선"){
-                    sendData = {lineno: "우이신설경전철"};
-                }
-                var ajaxData = {
-                    type: "GET",
-                    url: "getStations",
-                    data: sendData,
-                    dataType: "json",
-                    success: get_onSuccess,
-                    error: get_onError
-                };
-                $.ajax(ajaxData);
-            }
-
-            function get_onSuccess(data, status, xhr) {
-                console.log(data.stations)
-                $('#demo').html("");
-                $('#demo').append(`<tr><th style = "width: 40%;">▲ 상행</th><th class = "box-lightgray" style = "width: 20%;"></th><th style = "width: 40%;">하행 ▼</th></tr>`);
-                for(var i = 0; i < data.stations.length; i++){
-                    console.log(data.stations[i].stationcd, data.stations[i].stationname)
-                    $('#demo').append(`<tr style = "height: 5em;"><td style = "border-bottom: dashed thin lightgray;" id = "${data.stations[i].stationname}U"></td><td class = "box-lightgray">${data.stations[i].stationname}</td><td style = "border-bottom: dashed thin lightgray;" id = "${data.stations[i].stationname}L"></td></tr>`);
-                }
-            }
-
-            function get_onError(jqXHR, textStatus, errorThrown) {
-                console.log(jqXHR.responseText);
-            }
-
-            function myFunction(lineno, xml) {
-                var i;
-                var xmlDoc = xml.responseXML;
-                var table = "";
-                var x = xmlDoc.getElementsByTagName("row");
-                for (i = 0; i < x.length; i++) { 
-                    let arrived;
-                    if(x[i].getElementsByTagName("trainSttus")[0].childNodes[0].nodeValue === "0") arrived = "접근";
-                    else if(x[i].getElementsByTagName("trainSttus")[0].childNodes[0].nodeValue === "1") arrived = "도착";
-                    else arrived = "출발";
-                    if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 0){
-                        $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}U`).append(`<img src="./${lineno}.png" style = "width: 4em;"><br>${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue}행<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
-
-                    }
-                    else if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 1){
-                        $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}L`).append(`<img src="./${lineno}.png" style = "width: 4em;"><br>${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue}행<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
-                    }
-                }
-            }
         </script>
     </body>
 </html>
