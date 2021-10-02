@@ -56,6 +56,9 @@ function getstationinfo(req, res, next){
                 next_code = ""; 
                 next_name = "";
             }
+            if(stationcd == 1701){
+                
+            }
             if(stationcd == 1702){
                 // 1호선 가산디지털단지역 이전역은 구로역
                 prev_code = "1701"; 
