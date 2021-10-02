@@ -64,8 +64,8 @@
                 </p>
                 <div class="collapse" id = "collapseExample">
                     <div class = "border">
-                        <button class = "white" style = "background-color: #0052a4" onclick = "">서울교통공사 1000호대</button>
-                        <button class = "white" style = "background-color: #0052a4" onclick = "">한국철도공사 311000&312000호대</button>
+                        <button class = "white" style = "background-color: #0052a4" onclick = "callInfo('S1_1000')">서울교통공사 1000호대</button>
+                        <button class = "white" style = "background-color: #0052a4" onclick = "callInfo('KR_311000')">한국철도공사 311000&312000호대</button>
                         <button class = "white" style = "background-color: #00a84d" onclick = "">서울교통공사 2000호대</button>
                         <button class = "white" style = "background-color: #ef7c1c" onclick = "">서울교통공사 3000호대</button>
                         <button class = "white" style = "background-color: #ef7c1c" onclick = "">한국철도공사 3000호대</button>
@@ -96,15 +96,15 @@
                 </div>
             </div>
             <br><br>
-            <table id = "demo" class = "center" style = "width: 100%">
-            </table>
-            <br><br><br>
+            <div id = "info"></div>
         </main>
         
         <script src = "../public/js/jquery.cookie.js"></script>
         <script type = "text/javascript" src = "https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script>
-
+            function callInfo(docs){
+                $("#info").html(`<iframe src = "./public/docs/${docs}.html" style = "width: 100%; height: 100%;" onload = "this.style.height=(this.contentWindow.document.body.scrollHeight+30)+'px';"></iframe>`)
+            }
         </script>
     </body>
 </html>
