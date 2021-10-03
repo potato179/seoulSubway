@@ -152,25 +152,19 @@
                         <div class="h-100 p-5 bg-light border rounded-3">
                             <h2>실시간 도착정보</h2><br>
                             <table style="width: 100%; font-size: 18px;">
-                                <th style="border-right: 1px solid black;">상행</th>
-                                <th>하행</th>
+                                <th style = "width: 50%; border-right: 1px solid black;">상행</th>
+                                <th style = "width: 50%;">하행</th>
                                 <tr>
-                                    <td style="border-right: 1px solid black;"><span
-                                            class="black">OO행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">O전</span></td>
-                                    <td><span class="black">OO행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">O전</span>
-                                    </td>
+                                    <td style="border-right: 1px solid black;"><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
+                                    <td><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
                                 </tr>
                                 <tr>
-                                    <td style="border-right: 1px solid black;"><span
-                                            class="black">OO행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">O전</span></td>
-                                    <td><span class="black">OO행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">O전</span>
-                                    </td>
+                                    <td style="border-right: 1px solid black;"><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
+                                    <td><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
                                 </tr>
                                 <tr>
-                                    <td style="border-right: 1px solid black;"><span
-                                            class="black">OO행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">O전</span></td>
-                                    <td><span class="black">OO행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">O전</span>
-                                    </td>
+                                    <td style="border-right: 1px solid black;"><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
+                                    <td><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
                                 </tr>
                             </table><br>
                             <button onclick = "showPopup()">전체 시간표</button>
@@ -203,43 +197,43 @@
             <table class="table" style="text-align: left;">
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">역명</th>
-                    <td id = "stationname">Lorem ipsum dolor sit amet</td>
+                    <td id = "stationname"></td>
                 </tr>
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">외국어 표기</th>
-                    <td id="foriegn">Lorem ipsum dolor sit amet</td>
+                    <td id="foriegn"></td>
                 </tr>
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">역번호</th>
-                    <td id="fr_code">Lorem ipsum dolor sit amet</td>
+                    <td id="fr_code"></td>
                 </tr>
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">AFC 역코드</th>
-                    <td id="station_cd">Lorem ipsum dolor sit amet</td>
+                    <td id="station_cd"></td>
                 </tr>
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">역사 이용 정보</th>
-                    <td id="stationInfo">Lorem ipsum dolor sit amet</td>
+                    <td id="stationInfo"></td>
                 </tr>
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">편의시설 정보</th>
-                    <td id="facilities">Lorem ipsum dolor sit amet</td>
+                    <td id="facilities"></td>
                 </tr>
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">역 주소</th>
-                    <td id="address">Lorem ipsum dolor sit amet</td>
+                    <td id="address"></td>
                 </tr>
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">역 위도/경도</th>
-                    <td id="cxy">Lorem ipsum dolor sit amet</td>
+                    <td id="cxy"></td>
                 </tr>
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">전화번호</th>
-                    <td id="telno">Lorem ipsum dolor sit amet</td>
+                    <td id="telno"></td>
                 </tr>
                 <tr>
                     <th scope="row" style="background-color: lightgray; width: 25%;">역명 유래</th>
-                    <td id="origin">Lorem ipsum dolor sit amet</td>
+                    <td id="origin"></td>
                 </tr>
             </table>
             <h4>역 이용 안내도</h4>
@@ -261,6 +255,7 @@
         <script>
             let prev_code;
             let next_code;
+            let stations;
             function logincookie() {
                 //로그인 정보 호출
                 var userEmail = $.cookie("userEmail");
@@ -288,7 +283,7 @@
 
             function getstations(lineno) {
                 // 호선이 선택되면 역 목록 가져오기
-                var sendData = { lineno: lineno };
+                var sendData = {lineno: lineno};
                 var ajaxData = {
                     type: "GET",
                     url: "getStations",
@@ -301,10 +296,10 @@
             }
 
             function get_onSuccess(data, status, xhr) {
-                console.log(data.stations)
+                stations = [];
                 $('#selectStations').children("option").remove();
                 for(var i = 0; i < data.stations.length; i++){
-                    console.log(data.stations[i].stationcd, data.stations[i].stationname)
+                    stations.push(data.stations[i].stationname)
                     $('#selectStations').append(`<option value = "${data.stations[i].stationcd}">${data.stations[i].stationname}</option>`);
                 }
             }
@@ -340,7 +335,6 @@
             }
 
             function search_onSuccess(data, status, xhr) {
-                console.log(data);
                 if (data.line_num === "1호선") {
                     $("#linecolor").css("background-color", "#0052a4");
                     $("#linecolor-border").css("border", "0.25em solid #0052a4");
@@ -451,16 +445,31 @@
                 $("#origin").html(data.origin);
 
                 $("#transfers").html("");
-                var transfer = data.transfer;
-                try{
-                    var jbSplit = transfer.split('X');
-                }
-                catch(error){
-                    var jbSplit = [transfer.toString()];
-                }
-                for ( var i in jbSplit ) {
-                    $("#transfers").append(`<button onclick = "searchstation('${jbSplit[i]}')">${jbSplit[i]}</button>`)
-                    console.log(jbSplit[i]);
+                if(data.transfer){
+                    var transfer = data.transfer;
+                    try{
+                        var jbSplit = transfer.split('X');
+                    }
+                    catch(error){
+                        var jbSplit = [transfer.toString()];
+                    }
+                    for(var i in jbSplit){  
+                        var sendData = {searchtext: jbSplit[i]};
+                        var ajaxData = {
+                            type: "GET",
+                            url: "getstationinfo",
+                            data: sendData,
+                            dataType: "json",
+                            success: getTransferLineNo,
+                            error: search_onError
+                        };
+                        $.ajax(ajaxData);
+
+                        function getTransferLineNo(transferData, status, xhr){
+                            console.log(i);
+                            $("#transfers").append(`<button onclick = "searchstation('${jbSplit[i]}')">${transferData.line_num} 환승</button>`)
+                        }
+                    }   
                 }
 
                 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -470,14 +479,49 @@
                     };
                 var map = new kakao.maps.Map(mapContainer, mapOption);
                 $("#exitinfo").html(data.exitinfo);
-
                 $("#stationmap").html(`<img src = "./public/img/stationmap/${data.station_cd}.png" style = "width: 100%;">`);
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        arrivals(data.line_num, this);
+                    }
+                };
+                xhttp.open("GET", `http://swopenapi.seoul.go.kr/api/subway/7141685873706f7434376d4f6d4e74/xml/realtimePosition/0/1000/${data.line_num}`, true);
+                xhttp.send();
+
+                function arrivals(lineno, xml){
+                    var i;
+                    var xmlDoc = xml.responseXML;
+                    var table = "";
+                    var upperTemp = [data.station_nm];
+                    var lowerTemp = [data.station_nm];
+                    var x = xmlDoc.getElementsByTagName("row");
+                    for (i = 0; i < x.length; i++) { 
+                        if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 0){
+                            upperTemp.push(x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]);
+                        }
+                        else if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 1){
+                            lowerTemp.push(x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]);
+                        }
+                    }
+                    var upper = stations.filter(x => upperTemp.includes(x));
+                    var lower = stations.filter(x => lowerTemp.includes(x));
+
+                    for(; upper[0] !== data.station_nm;){
+                        upper.shift(upper[0])
+                    }
+                    for(j = 1; j <= 3; j++){
+                        
+                    }
+                    console.log(stations, upper, lower)
+                }
             }
 
             function search_onError(jqXHR, textStatus, errorThrown) {
                 console.log(jqXHR.responseText);
             }
-
+            
             function infoDisplay(info) {
                 console.log(info)
                 $("#basicInfo").css("display", 'none');
