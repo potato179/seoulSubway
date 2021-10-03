@@ -155,16 +155,16 @@
                                 <th style = "width: 50%; border-right: 1px solid black;">상행</th>
                                 <th style = "width: 50%;">하행</th>
                                 <tr>
-                                    <td style="border-right: 1px solid black;"><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
-                                    <td><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
+                                    <td style = "border-right: 1px solid black;"><span id = "UP1" class = "black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "UP_P1" class = "red">-전</span></td>
+                                    <td><span id = "LOW1" class = "black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "LOW_P1" class = "red">-전</span></td>
                                 </tr>
                                 <tr>
-                                    <td style="border-right: 1px solid black;"><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
-                                    <td><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
+                                    <td style = "border-right: 1px solid black;"><span id = "UP2" class = "black">--d행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "UP_P2" class = "red">-전</span></td>
+                                    <td><span id = "LOW2" class = "black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "LOW_P2" class = "red">-전</span></td>
                                 </tr>
                                 <tr>
-                                    <td style="border-right: 1px solid black;"><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
-                                    <td><span class="black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">-전</span></td>
+                                    <td style = "border-right: 1px solid black;"><span id = "UP3" class = "black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "UP_P3" class = "red">-전</span></td>
+                                    <td><span id = "LOW3" class = "black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "LOW_P3" class = "red">-전</span></td>
                                 </tr>
                             </table><br>
                             <button onclick = "showPopup()">전체 시간표</button>
@@ -299,7 +299,7 @@
                 stations = [];
                 $('#selectStations').children("option").remove();
                 for(var i = 0; i < data.stations.length; i++){
-                    stations.push(data.stations[i].stationname)
+                    stations.push({"stationname": data.stations[i].stationname, "upperNo": "", "upperFor": "", "lowerNo": "", "lowerFor": "",})
                     $('#selectStations').append(`<option value = "${data.stations[i].stationcd}">${data.stations[i].stationname}</option>`);
                 }
             }
@@ -491,30 +491,35 @@
                 xhttp.send();
 
                 function arrivals(lineno, xml){
-                    var i;
                     var xmlDoc = xml.responseXML;
-                    var table = "";
-                    var upperTemp = [data.station_nm];
-                    var lowerTemp = [data.station_nm];
                     var x = xmlDoc.getElementsByTagName("row");
-                    for (i = 0; i < x.length; i++) { 
+                    for (var i = 0; i < x.length; i++) { 
                         if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 0){
-                            upperTemp.push(x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]);
+                            for(var j = 0; j < stations.length; j++){
+                                if(stations[j].stationname === x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue){
+                                    stations[j].upperNo = x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue;
+                                    stations[j].upperFor = x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue;
+                                }
+                            }
                         }
                         else if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 1){
-                            lowerTemp.push(x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]);
+                            for(var j = 0; j < stations.length; j++){
+                                if(stations[j].stationname === x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue){
+                                    stations[j].lowerNo = x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue;
+                                    stations[j].lowerFor = x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue;
+                                }
+                            }
                         }
                     }
-                    var upper = stations.filter(x => upperTemp.includes(x));
-                    var lower = stations.filter(x => lowerTemp.includes(x));
 
-                    for(; upper[0] !== data.station_nm;){
-                        upper.shift(upper[0])
+                    var k = 0;
+                    for(var i = stations.indexOf(data.station_nm); i <= stations.length; i++){
+                        if(k == 3) break;
+                        if(stations[i].upperNo){
+                            k += 1;
+                            $(`UP${k}`).html(stations[i].upperFor)
+                        }
                     }
-                    for(j = 1; j <= 3; j++){
-                        
-                    }
-                    console.log(stations, upper, lower)
                 }
             }
 
