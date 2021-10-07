@@ -480,47 +480,6 @@
                 var map = new kakao.maps.Map(mapContainer, mapOption);
                 $("#exitinfo").html(data.exitinfo);
                 $("#stationmap").html(`<img src = "./public/img/stationmap/${data.station_cd}.png" style = "width: 100%;">`);
-
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        arrivals(data.line_num, this);
-                    }
-                };
-                xhttp.open("GET", `http://swopenapi.seoul.go.kr/api/subway/7141685873706f7434376d4f6d4e74/xml/realtimePosition/0/1000/${data.line_num}`, true);
-                xhttp.send();
-
-                function arrivals(lineno, xml){
-                    var xmlDoc = xml.responseXML;
-                    var x = xmlDoc.getElementsByTagName("row");
-                    for (var i = 0; i < x.length; i++) { 
-                        if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 0){
-                            for(var j = 0; j < stations.length; j++){
-                                if(stations[j].stationname === x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue){
-                                    stations[j].upperNo = x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue;
-                                    stations[j].upperFor = x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue;
-                                }
-                            }
-                        }
-                        else if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 1){
-                            for(var j = 0; j < stations.length; j++){
-                                if(stations[j].stationname === x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue){
-                                    stations[j].lowerNo = x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue;
-                                    stations[j].lowerFor = x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue;
-                                }
-                            }
-                        }
-                    }
-
-                    var k = 0;
-                    for(var i = stations.indexOf(data.station_nm); i <= stations.length; i++){
-                        if(k == 3) break;
-                        if(stations[i].upperNo){
-                            k += 1;
-                            $(`UP${k}`).html(stations[i].upperFor)
-                        }
-                    }
-                }
             }
 
             function search_onError(jqXHR, textStatus, errorThrown) {
