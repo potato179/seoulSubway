@@ -52,33 +52,37 @@
         <nav class = "bg-dark navbar navbar-expand-lg navbar-dark fixed-top" style = "background-color: rgba(227, 242, 253, 0.5); backdrop-filter: blur(5px);">
             <div class = "container">
                 <img src = "./public/img/icon.png" width = "50px;">&nbsp;&nbsp;
-                <a class="navbar-brand" href="#" style = "font-weight: bold;">짜장메트로</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
-                <span class="navbar-toggler-icon"></span>
+                <a class = "navbar-brand" href = "#" style = "font-weight: bold;">짜장메트로</a>
+                <button class = "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+                <span class = "navbar-toggler-icon"></span>
                 </button>
                 <div class = "collapse navbar-collapse" id = "navbarCollapse">
                     <ul class = "navbar-nav mr-auto">
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./index.html">홈<span class="sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./index.html">홈<span class = "sr-only">(current)</span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./arrivals.html">실시간 도착정보<span class="sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./arrivals.html">실시간 도착정보<span class = "sr-only">(current)</span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./station.html">역 정보<span class="sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./station.html">역 정보<span class = "sr-only">(current)</span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./trainInfo.html">전동차 정보<span class="sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./community.html">게시판<span class = "sr-only">(current)</span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./community.html">게시판<span class="sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./info.html">누리집 정보<span class = "sr-only">(current)</span></a>
                         </li>
-                        <li class = "nav-item active">
-                            <a class = "nav-link" href = "./info.html">누리집 정보<span class="sr-only">(current)</span></a>
+                        <li class = "nav-item dropdown">
+                            <a class = "nav-link dropdown-toggle" href = "#" id = "dropdown07XL" data-bs-toggle = "dropdown" aria-expanded = "false">자료실</a>
+                            <ul class = "dropdown-menu" aria-labelledby = "dropdown07XL">
+                                <li><a class = "dropdown-item" href = "./trainInfo.html#">전동차 정보</a></li>
+                                <li><a class = "dropdown-item" href = "#">가상 행선안내기</a></li>
+                            </ul>
                         </li>
                     </ul>
-                    <a style = "margin: 5px " class="btn btn-outline-primary" id = "log_in_out" type = "button" onclick = 'window.location.href = "login.html"'>로그인</a>
-                    <a style = "margin: 5px "class="btn btn-outline-primary" id = "btn_join" type = "button" onclick = 'window.location.href = "join.html"'>회원가입</a>
+                    <a style = "margin: 5px " class = "btn btn-outline-primary" id = "log_in_out" type = "button" onclick = 'window.location.href = "login.html"'>로그인</a>
+                    <a style = "margin: 5px "class = "btn btn-outline-primary" id = "btn_join" type = "button" onclick = 'window.location.href = "join.html"'>회원가입</a>
                 </div>
             </div>
         </nav>
@@ -147,42 +151,34 @@
         <div class="center box-lightgray black">
             <br><br>
             <div class="container">
-                <div class="row align-items-md-stretch">
-                    <div class="center col-md-4">
-                        <div class="h-100 p-5 bg-light border rounded-3">
+                <div class = "row row-cols-1 row-cols-md-2 g-2">
+                    <div class = "center col">
+                        <div class = "h-100 p-5 bg-light border rounded-3">
                             <h2>실시간 도착정보</h2><br>
-                            <table style="width: 100%; font-size: 18px;">
-                                <th style = "width: 50%; border-right: 1px solid black;">상행</th>
-                                <th style = "width: 50%;">하행</th>
-                                <tr>
-                                    <td style = "border-right: 1px solid black;"><span id = "UP1" class = "black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "UP_P1" class = "red">-전</span></td>
-                                    <td><span id = "LOW1" class = "black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "LOW_P1" class = "red">-전</span></td>
-                                </tr>
-                                <tr>
-                                    <td style = "border-right: 1px solid black;"><span id = "UP2" class = "black">--d행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "UP_P2" class = "red">-전</span></td>
-                                    <td><span id = "LOW2" class = "black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "LOW_P2" class = "red">-전</span></td>
-                                </tr>
-                                <tr>
-                                    <td style = "border-right: 1px solid black;"><span id = "UP3" class = "black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "UP_P3" class = "red">-전</span></td>
-                                    <td><span id = "LOW3" class = "black">--행</span>&nbsp;&nbsp;&nbsp;&nbsp;<span id = "LOW_P3" class = "red">-전</span></td>
-                                </tr>
-                            </table><br>
-                            <button onclick = "showPopup()">전체 시간표</button>
-                            <button>첫막차 정보</button>
+                            <div class = "card" style = "width: 100%; text-align: left;">
+                                <div class = "card-header">상행</div>
+                                <ul class = "list-group list-group-flush">
+                                    <li class = "list-group-item">이번열차: <span id = "UP1"></span><br><span id = "UP_P1"></span></li>
+                                    <li class = "list-group-item">다음열차: <span id = "UP2"></span><br><span id = "UP_P2"></span></li>
+                                </ul>
+                            </div>
+                            <div class = "card" style = "width: 100%; text-align: left;">
+                                <div class = "card-header">하행</div>
+                                <ul class = "list-group list-group-flush">
+                                    <li class = "list-group-item">이번열차: <span id = "LOW1"></span><br><span id = "LOW_P1"></span></li>
+                                    <li class = "list-group-item">다음열차: <span id = "LOW2"></span><br><span id = "LOW_P2"></span></li>
+                                </ul>
+                            </div><br>
                         </div>
                     </div>
-                    <div class="center col-md-4">
+                    <div class = "center col">
                         <div class="h-100 p-5 bg-light border rounded-3">
                             <h2>역사 이용 정보</h2><br>
                             <h5><i class="fas fa-door-open"></i> <span id = "doors"></span></h5>
                             <h5><i class="fas fa-walking"></i> <span id = "crossable"></span></h5>
-                            <h5><i class="fas fa-restroom"></i> <span id = "restroom"></span></h5>
-                        </div>
-                    </div>
-                    <div class="center col-md-4">
-                        <div class="h-100 p-5 bg-light border rounded-3">
-                            <h2>편의시설 정보</h2>
-
+                            <h5><i class="fas fa-restroom"></i> <span id = "restroom"></span></h5><br>
+                            <button onclick = "showPopup()">전체 시간표</button>
+                            <button>첫막차 정보</button>
                         </div>
                     </div>
                 </div>
@@ -443,6 +439,64 @@
                 $("#cxy").html(`위도: ${data.cx}, 경도: ${data.cy}`);
                 $("#telno").html(data.telno);
                 $("#origin").html(data.origin);
+                loadDoc(data.line_num, data.station_nm);
+                
+                function loadDoc(lineno, stationName) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            arrivals(lineno, stationName, this);
+                        }
+                    };
+                    xhttp.open("GET", `http://swopenapi.seoul.go.kr/api/subway/7141685873706f7434376d4f6d4e74/xml/realtimeStationArrival/0/999/${stationName}`, true);
+                    xhttp.send();
+                }
+
+                function arrivals(lineno, stationName, xml){
+                    let lineId;
+                    if(lineno === "1호선") lineId = "1001";
+                    else if(lineno === "2호선") lineid = "1002";
+                    else if(lineno === "3호선") lineid = "1003";
+                    else if(lineno === "4호선") lineid = "1004";
+                    else if(lineno === "5호선") lineid = "1005";
+                    else if(lineno === "6호선") lineid = "1006";
+                    else if(lineno === "7호선") lineid = "1007";
+                    else if(lineno === "8호선") lineid = "1008";
+                    else if(lineno === "9호선") lineid = "1009";
+                    else if(lineno === "경의중앙선") lineid = "1063";
+                    else if(lineno === "공항철도") lineid = "1065";
+                    else if(lineno === "경춘선") lineid = "1067";
+                    else if(lineno === "수인분당선") lineid = "1075";
+                    else if(lineno === "신분당선") lineid = "1077";
+
+                    var xmlDoc = xml.responseXML;
+                    var table = "";
+                    var x = xmlDoc.getElementsByTagName("row");
+
+                    for (i = 0; i < x.length; i++) { 
+                        var upCnt = 0;
+                        var lowCnt = 0;
+                        if(x[i].getElementsByTagName("subwayId")[0].childNodes[0].nodeValue === lineid){
+                            if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "상행" || x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "내선"){
+                                upCnt += 1;
+                                if(upCnt < 3){
+                                    $(`#UP${upCnt}`).html(x[i].getElementsByTagName("trainLineNm")[0].childNodes[0].nodeValue);
+                                    $(`#UP_P${upCnt}`).html(x[i].getElementsByTagName("arvlMsg2")[0].childNodes[0].nodeValue)
+                                }
+                            }
+                            if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "하행" || x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "외선"){
+                                lowCnt += 1;
+                                if(lowCnt < 3){
+                                    console.log(lowCnt)
+                                    $(`#LOW${lowCnt}`).html(x[i].getElementsByTagName("trainLineNm")[0].childNodes[0].nodeValue);
+                                    $(`#LOW_P${lowCnt}`).html(x[i].getElementsByTagName("arvlMsg2")[0].childNodes[0].nodeValue)
+                                }
+                            }
+
+                        }
+                        
+                    }               
+                }
 
                 $("#transfers").html("");
                 if(data.transfer){
