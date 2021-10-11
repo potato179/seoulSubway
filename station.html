@@ -158,15 +158,15 @@
                             <div class = "card" style = "width: 100%; text-align: left;">
                                 <div class = "card-header">상행</div>
                                 <ul class = "list-group list-group-flush">
-                                    <li class = "list-group-item">이번열차: <span id = "UP1"></span><br><span id = "UP_P1"></span></li>
-                                    <li class = "list-group-item">다음열차: <span id = "UP2"></span><br><span id = "UP_P2"></span></li>
+                                    <li class = "list-group-item">이번열차: <span class = "blue" id = "UP1"></span> <span class = "red" id = "UP_P1"></span></li>
+                                    <li class = "list-group-item">다음열차: <span class = "blue" id = "UP2"></span> <span class = "red" id = "UP_P2"></span></li>
                                 </ul>
                             </div>
                             <div class = "card" style = "width: 100%; text-align: left;">
                                 <div class = "card-header">하행</div>
                                 <ul class = "list-group list-group-flush">
-                                    <li class = "list-group-item">이번열차: <span id = "LOW1"></span><br><span id = "LOW_P1"></span></li>
-                                    <li class = "list-group-item">다음열차: <span id = "LOW2"></span><br><span id = "LOW_P2"></span></li>
+                                    <li class = "list-group-item">이번열차: <span class = "blue" id = "LOW1"></span> <span class = "red" id = "LOW_P1"></span></li>
+                                    <li class = "list-group-item">다음열차: <span class = "blue" id = "LOW2"></span> <span class = "red" id = "LOW_P2"></span></li>
                                 </ul>
                             </div><br>
                         </div>
@@ -473,24 +473,20 @@
                     var table = "";
                     var x = xmlDoc.getElementsByTagName("row");
 
-                    for (i = 0; i < x.length; i++) { 
+                    for (var i = 0; i < x.length; i++) { 
                         var upCnt = 0;
                         var lowCnt = 0;
                         if(x[i].getElementsByTagName("subwayId")[0].childNodes[0].nodeValue === lineid){
+                            console.log(upCnt, lowCnt)
                             if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "상행" || x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "내선"){
                                 upCnt += 1;
-                                if(upCnt < 3){
-                                    $(`#UP${upCnt}`).html(x[i].getElementsByTagName("trainLineNm")[0].childNodes[0].nodeValue);
-                                    $(`#UP_P${upCnt}`).html(x[i].getElementsByTagName("arvlMsg2")[0].childNodes[0].nodeValue)
-                                }
+                                $(`#UP${upCnt}`).html(x[i].getElementsByTagName("trainLineNm")[0].childNodes[0].nodeValue.split("-")[0]);
+                                $(`#UP_P${upCnt}`).html(x[i].getElementsByTagName("arvlMsg2")[0].childNodes[0].nodeValue)
                             }
                             if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "하행" || x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "외선"){
                                 lowCnt += 1;
-                                if(lowCnt < 3){
-                                    console.log(lowCnt)
-                                    $(`#LOW${lowCnt}`).html(x[i].getElementsByTagName("trainLineNm")[0].childNodes[0].nodeValue);
-                                    $(`#LOW_P${lowCnt}`).html(x[i].getElementsByTagName("arvlMsg2")[0].childNodes[0].nodeValue)
-                                }
+                                $(`#LOW${lowCnt}`).html(x[i].getElementsByTagName("trainLineNm")[0].childNodes[0].nodeValue.split("-")[0]);
+                                $(`#LOW_P${lowCnt}`).html(x[i].getElementsByTagName("arvlMsg2")[0].childNodes[0].nodeValue)
                             }
 
                         }

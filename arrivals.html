@@ -134,11 +134,10 @@
             }
 
             function arrivals(lineno, xml) {
-                var i;
                 var xmlDoc = xml.responseXML;
                 var table = "";
                 var x = xmlDoc.getElementsByTagName("row");
-                for (i = 0; i < x.length; i++) { 
+                for (var i = 0; i < x.length; i++) { 
                     let arrived;
                     if(x[i].getElementsByTagName("trainSttus")[0].childNodes[0].nodeValue === "0") arrived = "접근";
                     else if(x[i].getElementsByTagName("trainSttus")[0].childNodes[0].nodeValue === "1") arrived = "도착";
