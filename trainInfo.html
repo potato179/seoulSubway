@@ -64,18 +64,18 @@
             <br><br><br>
             <h1>전동차 정보</h1>
             <p>* 버튼을 클릭하시면 전동차 정보 페이지로 이동됩니다.</p>
-            <button class = "white" style = "background-color: #0052a4" onclick = "callInfo('S1_1000')">서울교통공사 1000호대</button>
-            <button class = "white" style = "background-color: #0052a4" onclick = "callInfo('KR_311000')">한국철도공사 311000&312000호대</button>
-            <button class = "white" style = "background-color: #00a84d" onclick = "">서울교통공사 2000호대</button>
-            <button class = "white" style = "background-color: #ef7c1c" onclick = "">서울교통공사 3000호대</button>
-            <button class = "white" style = "background-color: #ef7c1c" onclick = "">한국철도공사 3000호대</button>
-            <button class = "white" style = "background-color: #00a4e3" onclick = "">서울교통공사 4000호대</button>
-            <button class = "white" style = "background-color: #00a4e3" onclick = "">한국철도공사 341000호대</button>
-            <button class = "white" style = "background-color: #996cac" onclick = "">서울교통공사 5000호대</button>
-            <button class = "white" style = "background-color: #cd7c2f" onclick = "">서울교통공사 6000호대</button>
-            <button class = "white" style = "background-color: #747f00" onclick = "">서울교통공사/인천교통공사 7000호대</button>
-            <button class = "white" style = "background-color: #e6186c" onclick = "">서울교통공사 8000호대</button>
-            <button class = "white" style = "background-color: #bdb092" onclick = "">서울시메트로9호선 9000호대</button>
+            <button class = "white" style = "background-color: #0052a4" onclick = "window.open('./public/docs/S1_1000.html')">서울교통공사 1000호대</button>
+            <button class = "white" style = "background-color: #0052a4" onclick = "window.open('./public/docs/KR_311000.html')">한국철도공사 311000&312000&319000호대</button>
+            <button class = "white" style = "background-color: #00a84d" onclick = "window.open('./public/docs/S1_2000.html')">서울교통공사 2000호대</button>
+            <button class = "white" style = "background-color: #ef7c1c" onclick = "window.open('./public/docs/S1_3000.html')">서울교통공사 3000호대</button>
+            <button class = "white" style = "background-color: #ef7c1c" onclick = "window.open('./public/docs/KR_3000.html')">한국철도공사 3000호대</button>
+            <button class = "white" style = "background-color: #00a4e3" onclick = "window.open('./public/docs/S1_4000.html')">서울교통공사 4000호대</button>
+            <button class = "white" style = "background-color: #00a4e3" onclick = "window.open('./public/docs/KR_341000.html')">한국철도공사 341000호대</button>
+            <button class = "white" style = "background-color: #996cac" onclick = "window.open('./public/docs/S5_5000.html')">서울교통공사 5000호대</button>
+            <button class = "white" style = "background-color: #cd7c2f" onclick = "window.open('./public/docs/S5_6000.html')">서울교통공사 6000호대</button>
+            <button class = "white" style = "background-color: #747f00" onclick = "window.open('./public/docs/S5z_7000.html')">서울교통공사/인천교통공사 7000호대</button>
+            <button class = "white" style = "background-color: #e6186c" onclick = "window.open('./public/docs/S5_8000.html')">서울교통공사 8000호대</button>
+            <button class = "white" style = "background-color: #bdb092" onclick = "window.open('./public/docs/S9_9000.html')">서울시메트로9호선 9000호대</button>
             <button class = "white" style = "background-color: #77c4a3" onclick = "">한국철도공사 321000호대</button>
             <button class = "white" style = "background-color: #77c4a3" onclick = "">한국철도공사 331000호대</button>
             <button class = "white" style = "background-color: #fabe00" onclick = "">한국철도공사 351000호대</button>
@@ -99,10 +99,5 @@
         
         <script src = "../public/js/jquery.cookie.js"></script>
         <script type = "text/javascript" src = "https://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script>
-            function callInfo(docs){
-                $("#info").html(`<iframe src = "./public/docs/${docs}.html" style = "width: 100%; height: 100%;" onload = "this.style.height=(this.contentWindow.document.body.scrollHeight+30)+'px';"></iframe>`)
-            }
-        </script>
     </body>
 </html>
