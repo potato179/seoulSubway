@@ -14,20 +14,100 @@
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://potato179.github.io/style/potato-min.css">
         <style>
-            body{
+            html,body {
+                height: 100%;
+            }
+            body {
                 font-family: 'Nanum Gothic', sans-serif;        
+                display: flex;
+                align-items: center;
+                padding-top: 40px;
+                padding-bottom: 40px;
+                background-color: #f5f5f5;
+            }
+            .form-signin {
+                width: 100%;
+                max-width: 330px;
+                padding: 15px;
+                margin: auto;
+            }
+            .form-signin .checkbox {
+                font-weight: 400;
+            }
+            .form-signin .form-floating:focus-within {
+                z-index: 2;
+            }
+            .form-signin input[type="email"] {
+                margin-bottom: -1px;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+            .form-signin input[type="password"] {
+                margin-bottom: 10px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
             }
         </style>
     </head>
     <body>
+        <nav class = "navbar navbar-expand-lg navbar-light fixed-top" style = "background-color: #f5f5f5; backdrop-filter: blur(5px);">
+            <div class = "container">
+                <img src = "./public/img/icon.png" width = "50px;">&nbsp;&nbsp;
+                <a class = "navbar-brand" href = "./index.html" style = "font-weight: bold;">짜장메트로</a>
+                <button class = "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+                <span class = "navbar-toggler-icon"></span>
+                </button>
+                <div class = "collapse navbar-collapse" id = "navbarCollapse">
+                    <ul class = "navbar-nav mr-auto">
+                        <li class = "nav-item active">
+                            <a class = "nav-link" href = "./index.html">홈<span class = "sr-only">(current)</span></a>
+                        </li>
+                        <li class = "nav-item active">
+                            <a class = "nav-link" href = "./arrivals.html">실시간 도착정보<span class = "sr-only">(current)</span></a>
+                        </li>
+                        <li class = "nav-item active">
+                            <a class = "nav-link" href = "./station.html">역 정보<span class = "sr-only">(current)</span></a>
+                        </li>
+                        <li class = "nav-item active">
+                            <a class = "nav-link" href = "./community.html">게시판<span class = "sr-only">(current)</span></a>
+                        </li>
+                        <li class = "nav-item active">
+                            <a class = "nav-link" href = "./info.html">누리집 정보<span class = "sr-only">(current)</span></a>
+                        </li>
+                        <li class = "nav-item dropdown">
+                            <a class = "nav-link dropdown-toggle" href = "#" id = "dropdown07XL" data-bs-toggle = "dropdown" aria-expanded = "false">자료실</a>
+                            <ul class = "dropdown-menu" aria-labelledby = "dropdown07XL">
+                                <li><a class = "dropdown-item" href = "./trainInfo.html#">전동차 정보</a></li>
+                                <li><a class = "dropdown-item" href = "#">가상 행선안내기</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <a style = "margin: 5px " class = "btn btn-outline-primary" id = "log_in_out" type = "button" onclick = 'window.location.href = "login.html"'>로그인</a>
+                    <a style = "margin: 5px "class = "btn btn-outline-primary" id = "btn_join" type = "button" onclick = 'window.location.href = "join.html"'>회원가입</a>
+                </div>
+            </div>
+        </nav>
         <form style = "text-align: center;" class = "container form-signin">
-            <h2 class="h3 mb-3 font-weight-normal">회원가입을 하세요</h2>
-            <input id="email" name="email" style="margin-bottom: 10px;" type="email"  class="form-control" placeholder="사용자 이메일" required></input>
-            <input id="name" name="name" type="text" class="form-control" placeholder = "이름" required></input>
-            <input id="pw" name="pw" type="password" class="form-control" placeholder = "비밀번호는 안전하게 암호화되어 보관됩니다." required></input>
-            <input id="pwc" name="pwc" type="password" class="form-control" placeholder = "비밀번호 확인" required></input>
-            <button class="btn btn-lg btn-outline-success  btn-block" type="button" onclick="join();">회원가입</button>
-            <a class="btn btn-lg btn-block" href="./index.html">취소</a>
+            <h2>회원가입</h2><br>
+            <div class="form-floating">
+                <input type = "email" class = "form-control" id = "email floatingEmail" placeholder = "이메일 주소">
+                <label for = "floatingEmail">이메일 주소</label>
+            </div>
+            <div class="form-floating">
+                <input type = "email" class = "form-control" id = "name floatingName" placeholder = "사용자명">
+                <label for = "floatingName">사용자명</label>
+            </div>
+            <div class="form-floating">
+                <input type = "password" class = "form-control" id = "pw floatingPassword" placeholder = "비밀번호">
+                <label for = "floatingPassword">비밀번호</label>
+            </div>
+            <div class="form-floating">
+                <input type = "password" class = "form-control" id = "pwc floatingPasswordCheck" placeholder = "비밀번호">
+                <label for = "floatingPasswordCheck">비밀번호 확인</label>
+            </div><br>
+            <button class = "btn btn-lg btn-outline-success btn-block" type = "button" onclick = "join();">회원가입</button><br><br>
+            <a href = "./login.html">로그인</a>
+            <a href = "./index.html">돌아가기</a>
         </form>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script src = "../public/js/jquery.cookie.js"></script>
