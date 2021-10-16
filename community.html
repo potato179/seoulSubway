@@ -57,16 +57,17 @@
                 </div>
             </div>
         </nav>
-        <main role="main" class="container">
-            <br><br><br>
-            <br><hr><br>
-            <h1 class = "center bold white">질문게시판</h1><br>
+        <div class = "center">
+            <br><br><br><br>
+            <h1>질문게시판</h1>
+        </div>
+        <main role = "main" class = "container">
             <br><hr><br>
             <button id = "writequestion" onclick = "window.location.href = 'writequestion.html'">글쓰기</button>
             <div id="view_q">
 
             </div>
-            <table id="q_table" class="table">
+            <table id = "q_table" class = "table">
                 <thead>
                     <tr class = "gray">
                         <th scope = "col">#</th>
@@ -75,7 +76,7 @@
                         <th scope = "col">처리현황</th>
                     </tr>
                 </thead>
-                <tbody id="q_list">
+                <tbody id = "q_list" class = "black">
                 </tbody>
             </table>
             </div>            
@@ -114,7 +115,7 @@
                         //$("#questions").html("daflasdhfkadhfakds");
                         var tempStr = "";
                         data.forEach(function(item, index){
-                            tempStr += `<tr class = "white" onclick = 'ViewQuestion(${item.id})'>
+                            tempStr += `<tr onclick = 'ViewQuestion(${item.id})'>
                                     <th scope="row">${item.id}</th>
                                     <td>${item.title}</td>
                                     <td>${item.writer}</td>
