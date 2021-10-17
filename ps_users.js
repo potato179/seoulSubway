@@ -7,6 +7,7 @@ var shasum = crypto.createHash("sha256");
 function login(req, res, next){
     console.log(req.query.email);
     var email = req.query.email;
+    console.log(req.query.pw)
     shasum.update(req.query.pw)
     var pw = shasum.digest("hex")
     

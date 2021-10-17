@@ -89,22 +89,28 @@
         </nav>
         <form style = "text-align: center;" class = "container form-signin">
             <h2>회원가입</h2><br>
-            <div class="form-floating">
+            <div class = "form-floating">
                 <input type = "email" class = "form-control" id = "email floatingEmail" placeholder = "이메일 주소">
                 <label for = "floatingEmail">이메일 주소</label>
             </div>
-            <div class="form-floating">
+            <div class = "form-floating">
                 <input type = "email" class = "form-control" id = "name floatingName" placeholder = "사용자명">
                 <label for = "floatingName">사용자명</label>
             </div>
-            <div class="form-floating">
-                <input type = "password" class = "form-control" id = "pw floatingPassword" placeholder = "비밀번호">
+            <div class = "form-floating">
+                <input type = "password" class = "form-control" id = "pwc floatingPassword" placeholder = "비밀번호">
                 <label for = "floatingPassword">비밀번호</label>
             </div>
-            <div class="form-floating">
-                <input type = "password" class = "form-control" id = "pwc floatingPasswordCheck" placeholder = "비밀번호">
+            <div class = "form-floating">
+                <input type = "password" class = "form-control" id = "pwc floatingPassword" placeholder = "비밀번호">
+                <label for = "floatingPassword">비밀번호</label>
+            </div>
+            <div class = "form-floating">
+                <input type = "password" class = "form-control" id = "pwc floatingPasswordCheck" placeholder = "비밀번호 확인">
                 <label for = "floatingPasswordCheck">비밀번호 확인</label>
-            </div><br>
+            </div>
+            <div class = "form-floating">
+            <br>
             <button class = "btn btn-lg btn-outline-success btn-block" type = "button" onclick = "join();">회원가입</button><br><br>
             <a href = "./login.html">로그인</a>
             <a href = "./index.html">돌아가기</a>
