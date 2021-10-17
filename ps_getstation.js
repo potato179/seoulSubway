@@ -94,6 +94,7 @@ function getstationinfo(req, res, next){
                 next_code = ""; 
                 next_name = "";
             }
+            
         }
     }
     console.log(line_num, station_nm, fr_code, prev_code, next_code, transfer, doors, restroom, crossable, address, cx, cy, telno, origin);
