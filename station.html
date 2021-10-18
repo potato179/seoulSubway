@@ -16,6 +16,7 @@
         <style>
             body {
                 font-family: 'Nanum Gothic', sans-serif;
+                background-color: #F8F9FA;
             }
 
             .bd-placeholder-img {
@@ -184,8 +185,8 @@
                 </div>
             </div>
             <br><br>
-            <button onclick = "infoDisplay('basicInfo')">기본 정보</button>
-            <button onclick = "infoDisplay('exitInfo')">주변 정보</button>
+            <button id = "basicInfoButton" class = "btn btn-light" onclick = "infoDisplay('basicInfo')" style = "border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 7px; border-top-right-radius: 7px;">기본 정보</button>
+            <button id = "exitInfoButton" class = "btn btn-secondary" onclick = "infoDisplay('exitInfo')" style = "border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 7px; border-top-right-radius: 7px;">주변 정보</button>
         </div>
         <div id = "basicInfo" class = "container px-4 py-3 my-5 text-center" style = "display: block;">
             <h2>기본 정보</h2>
@@ -524,7 +525,7 @@
                 };
                 var map = new kakao.maps.Map(mapContainer, mapOption);
                 $("#exitinfo").html(data.exitinfo);
-                $("#stationmap").html(`<img src = "./public/img/stationmap/${data.station_cd}.png" style = "width: 100%;">`);
+                $("#stationmap").html(`<img src = "./public/img/stationmap/${data.station_cd}.png" alt = "역 이용 안내도가 없습니다." style = "width: 100%;">`);
             }
 
             function search_onError(jqXHR, textStatus, errorThrown) {
@@ -535,7 +536,10 @@
                 console.log(info)
                 $("#basicInfo").css("display", 'none');
                 $("#exitInfo").css("display", 'none');
-                $(`#${info}`).css("display", 'block');
+                $("#basicInfoButton").attr("class", "btn btn-secondary");
+                $("#exitInfoButton").attr("class", "btn btn-secondary");
+                $(`#${info}`).css("display", "block");
+                $(`#${info}Button`).attr("class", "btn btn-light");
             }
         </script>
     </body>
