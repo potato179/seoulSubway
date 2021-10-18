@@ -24,7 +24,7 @@ function getstationinfo(req, res, next){
             var lost_found = stationlist[i].lost_found; // 유실물센터 여부
             var parking = stationlist[i].parking; // 주차장 여부
             var bicycle = stationlist[i].bicycle; // 자전거 보관소 여부
-            var atm = stationlist[i].atm; //  ATM 여부
+            var atm = stationlist[i].atm; // ATM 여부
             var train_ticket = stationlist[i].train_ticket; // 기차표 예매 여부
             var lounge = stationlist[i].lounge; // 문화공간 여부
             var nursing_room = stationlist[i].nursing_room; // 수유실 여부
@@ -52,49 +52,99 @@ function getstationinfo(req, res, next){
             }
 
             if(stationcd == 1812){
-                // 1호선 인천역 종점
                 next_code = ""; 
                 next_name = "";
             }
-            if(stationcd == 1701){
-                
-            }
             if(stationcd == 1702){
-                // 1호선 가산디지털단지역 이전역은 구로역
                 prev_code = "1701"; 
                 prev_name = "구로";
             }
+            if(stationcd == 1703){
+                next_code = 1704; 
+                next_name = "석수";
+            }
+            if(stationcd == 1704){
+                prev_code = 1703; 
+                prev_name = "금천구청";
+            }
+            if(stationcd == 1750){
+                next_code = ""; 
+                next_name = "";
+            }
+            if(stationcd == 1716){
+                next_code = 1717; 
+                next_name = "세마";
+            }
+            if(stationcd == 1717){
+                prev_code = 1716; 
+                prev_name = "병점";
+            }
+            if(stationcd == 1749){
+                next_code = ""; 
+                next_name = "";
+            }
             if(stationcd == 243){
-                // 2호선 충정로역 다음역은 시청역
                 next_code = 201; 
                 next_name = "시청";
             }
             if(stationcd == 201){
-                // 2호선 시청역 이전역은 충정로역
                 prev_code = 243;
                 prev_name = "충정로";
             }
             if(stationcd == 212){
-                // 2호선(본선) 건대입구역 이전은역은 성수역
                 prev_code = 211;
                 prev_name = "성수";
             }
             if(stationcd == 246){
-                // 2호선(성수지선) 신설동역 종점
                 next_code = ""; 
                 next_name = "";
             }
             if(stationcd == 235){
-                // 2호선(본선) 문래역 이전역은 신도림역
                 prev_code = 234;
                 prev_name = "신도림";
             }
             if(stationcd == 200){
-                // 2호선(신정지선) 까치산역 종점
                 next_code = ""; 
                 next_name = "";
             }
-            
+            if(stationcd == 2555){
+                prev_code = 2549; 
+                prev_name = "강동";
+            }
+            if(stationcd == 2554){
+                next_code = 2562; 
+                next_name = "강일";
+            }
+            if(stationcd == 2562){
+                prev_code = 2554; 
+                prev_name = "상일동";
+            }
+            if(stationcd == 2561){
+                next_code = ""; 
+                next_name = "";
+            }
+            if(stationcd == 2616){
+                next_code = 2611; 
+                next_name = "응암";
+            }
+            if(stationcd == 2611){
+                prev_code = 2616; 
+                prev_name = "구산";
+                next_code = 2617; 
+                next_name = "새절";
+            }
+            if(stationcd == 2617){
+                prev_code = 2611; 
+                prev_name = "응암";
+            }
+            if(stationcd == 1305){
+                next_code = 1309; 
+                next_name = "상봉";
+            }
+            if(stationcd == 1306){
+                prev_code = ""; 
+                prev_name = "";
+            }
         }
     }
     console.log(line_num, station_nm, fr_code, prev_code, next_code, transfer, doors, restroom, crossable, address, cx, cy, telno, origin);
