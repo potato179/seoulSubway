@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <title>수도권 전동차 정보</title>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/06fb83cb17.js" crossorigin="anonymous"></script>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://potato179.github.io/style/potato-min.css">
+        <script src = "https://code.jquery.com/jquery-3.5.1.slim.min.js"integrity = "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin = "anonymous"></script>
+        <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity = "sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin = "anonymous">
+        <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel = "stylesheet" integrity = "sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin = "anonymous">
+        <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity = "sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin = "anonymous"></script>
+        <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity = "sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin = "anonymous"></script>
+        <script src = "https://kit.fontawesome.com/06fb83cb17.js" crossorigin = "anonymous"></script>
+        <link rel = "preconnect" href = "https://fonts.gstatic.com">
+        <link href = "https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap" rel = "stylesheet">
+        <link rel = "stylesheet" href = "https://potato179.github.io/style/potato-min.css">
         <style>
             body {
                 font-family: 'Nanum Gothic', sans-serif;
@@ -53,7 +53,7 @@
             <div class = "container">
                 <img src = "./public/img/icon.png" width = "50px;">&nbsp;&nbsp;
                 <a class = "navbar-brand" href = "#" style = "font-weight: bold;">짜장메트로</a>
-                <button class = "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+                <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbarCollapse" aria-controls = "navbarCollapse" aria-expanded = "false">
                 <span class = "navbar-toggler-icon"></span>
                 </button>
                 <div class = "collapse navbar-collapse" id = "navbarCollapse">
@@ -88,10 +88,10 @@
         </nav>
         <div class = "bg-dark">
             <br><br><br>
-            <div class="center container">
+            <div class = "center container">
                 <br><br>
                 <!--호선 선택-->
-                <form id="search-form">
+                <form id = "search-form">
                     <select onchange = "getstations(this.value)">
                         <option value = "">호선을 선택하세요.</option>
                         <option value = "1호선">1호선</option>
@@ -124,33 +124,33 @@
                     <!--검색 버튼-->
                     <button type = "button" onclick = "searchstation('')">이동</button>
                 </form><br><br>
-                <div style="display: flex; justify-content: center; align-items: center;">
-                    <div id="linecolor" style="width: 100%; background-color: #00498B; border-radius: 2em; padding: 0.25em; padding-left: 1em; padding-right: 1em; position: relative;">
+                <div style = "display: flex; justify-content: center; align-items: center;">
+                    <div id = "linecolor" style = "width: 100%; background-color: #77c4a3; border-radius: 2em; padding: 0.25em; padding-left: 1em; padding-right: 1em; position: relative;">
                         <!--이전역-->
-                        <div id="prev_stationname" onclick="searchstation(-1)" class="white left" style="float: left"></div>
+                        <div id = "prev_stationname" onclick = "searchstation(-1)" class = "white left" style = "float: left"></div>
                         <!--다음역-->
-                        <div id="next_stationname" onclick="searchstation(1)" class="white right"></div>
+                        <div id = "next_stationname" onclick = "searchstation(1)" class = "white right">문산</div>
                     </div>
-                    <div id="linecolor-border" class="center" style="width: 50%; background-color: white; border: 0.25em solid #00498B; border-radius: 2.5em; padding: 0.25em; position: absolute; display: table-cell; vertical-align: middle; line-height: 0.1em;">
+                    <div id = "linecolor-border" class = "center" style = "width: 50%; background-color: white; border: 0.25em solid #77c4a3; border-radius: 2.5em; padding: 0.25em; position: absolute; display: table-cell; vertical-align: middle; line-height: 0.1em;">
                         <!--역 이름-->
-                        <h2 id = "title"></h2>
+                        <h2 id = "title">임진강</h2>
                         <!--영어 역명-->
-                        <p id = "english"></p>
+                        <p id = "english">Imjingang</p>
                     </div>
                 </div><br><br>
 
-                <div style="padding: 0.25em;">
+                <div style = "padding: 0.25em;">
                     <!--역번호 | 운영기관-->
-                    <div id="station_num" class="white" style="float: left"></div>
+                    <div id = "station_num" class = "white" style = "float: left">K336 | 한국철도공사</div>
                     <!--환승노선-->
                     <div id = "transfers" style = "float: right;">
                     </div>
                 </div><br><br>
             </div>
         </div>
-        <div class="center box-lightgray black">
+        <div class = "center box-lightgray black">
             <br><br>
-            <div class="container">
+            <div class = "container">
                 <div class = "row row-cols-1 row-cols-md-2 g-2">
                     <div class = "center col">
                         <div class = "h-100 p-5 bg-light border rounded-3">
@@ -172,11 +172,11 @@
                         </div>
                     </div>
                     <div class = "center col">
-                        <div class="h-100 p-5 bg-light border rounded-3">
+                        <div class = "h-100 p-5 bg-light border rounded-3">
                             <h2>역사 이용 정보</h2><br>
-                            <h5><i class="fas fa-door-open"></i> <span id = "doors"></span></h5>
-                            <h5><i class="fas fa-walking"></i> <span id = "crossable"></span></h5>
-                            <h5><i class="fas fa-restroom"></i> <span id = "restroom"></span></h5><br>
+                            <h5><i class = "fas fa-door-open"></i> <span id = "doors">내리는문: 오른쪽</span></h5>
+                            <h5><i class = "fas fa-walking"></i> <span id = "crossable">반대편 횡단 불가</span></h5>
+                            <h5><i class = "fas fa-restroom"></i> <span id = "restroom">화장실 개찰구 밖</span></h5><br>
                             <button onclick = "showPopup()">전체 시간표</button>
                             <button>첫막차 정보</button>
                         </div>
@@ -184,65 +184,60 @@
                 </div>
             </div>
             <br><br>
-            <button onclick="infoDisplay('basicInfo')">기본 정보</button>
-            <button onclick="infoDisplay('arrivalInfo')">도착 정보</button>
-            <button onclick="infoDisplay('exitInfo')">주변 정보</button>
+            <button onclick = "infoDisplay('basicInfo')">기본 정보</button>
+            <button onclick = "infoDisplay('exitInfo')">주변 정보</button>
         </div>
-        <div id="basicInfo" class="container px-4 py-3 my-5 text-center" style="display: block;">
+        <div id = "basicInfo" class = "container px-4 py-3 my-5 text-center" style = "display: block;">
             <h2>기본 정보</h2>
-            <table class="table" style="text-align: left;">
+            <table class = "table" style = "text-align: left;">
                 <tr>
-                    <th scope="row" style="background-color: lightgray; width: 25%;">역명</th>
-                    <td id = "stationname"></td>
+                    <th scope = "row" style = "background-color: lightgray; width: 25%;">역명</th>
+                    <td id = "stationname">임진강</td>
                 </tr>
                 <tr>
-                    <th scope="row" style="background-color: lightgray; width: 25%;">외국어 표기</th>
-                    <td id="foriegn"></td>
+                    <th scope = "row" style = "background-color: lightgray; width: 25%;">외국어 표기</th>
+                    <td id = "foriegn">Imjingang | イ?ジンガン | ?津江</td>
                 </tr>
                 <tr>
-                    <th scope="row" style="background-color: lightgray; width: 25%;">역번호</th>
-                    <td id="fr_code"></td>
+                    <th scope = "row" style = "background-color: lightgray; width: 25%;">역번호</th>
+                    <td id = "fr_code">K336</td>
                 </tr>
                 <tr>
-                    <th scope="row" style="background-color: lightgray; width: 25%;">AFC 역코드</th>
-                    <td id="station_cd"></td>
+                    <th scope = "row" style = "background-color: lightgray; width: 25%;">AFC 역코드</th>
+                    <td id = "station_cd">1285</td>
                 </tr>
                 <tr>
-                    <th scope="row" style="background-color: lightgray; width: 25%;">역사 이용 정보</th>
-                    <td id="stationInfo"></td>
+                    <th scope = "row" style = "background-color: lightgray; width: 25%;">역사 이용 정보</th>
+                    <td id = "stationInfo">내리는문: 오른쪽 | 반대편 횡단 불가 | 화장실 개찰구 밖</td>
                 </tr>
                 <tr>
-                    <th scope="row" style="background-color: lightgray; width: 25%;">편의시설 정보</th>
-                    <td id="facilities"></td>
+                    <th scope = "row" style = "background-color: lightgray; width: 25%;">편의시설 정보</th>
+                    <td id = "facilities">주차장 기차표 발권</td>
                 </tr>
                 <tr>
-                    <th scope="row" style="background-color: lightgray; width: 25%;">역 주소</th>
-                    <td id="address"></td>
+                    <th scope = "row" style = "background-color: lightgray; width: 25%;">역 주소</th>
+                    <td id = "address">경기도 파주시 문산읍 임진각로 115</td>
                 </tr>
                 <tr>
-                    <th scope="row" style="background-color: lightgray; width: 25%;">역 위도/경도</th>
-                    <td id="cxy"></td>
+                    <th scope = "row" style = "background-color: lightgray; width: 25%;">역 위도/경도</th>
+                    <td id = "cxy">위도: 37.888599396, 경도: 126.746922571</td>
                 </tr>
                 <tr>
-                    <th scope="row" style="background-color: lightgray; width: 25%;">전화번호</th>
-                    <td id="telno"></td>
+                    <th scope = "row" style = "background-color: lightgray; width: 25%;">전화번호</th>
+                    <td id = "telno">1544-7788</td>
                 </tr>
                 <tr>
-                    <th scope="row" style="background-color: lightgray; width: 25%;">역명 유래</th>
-                    <td id="origin"></td>
+                    <th scope = "row" style = "background-color: lightgray; width: 25%;">역명 유래</th>
+                    <td id = "origin"></td>
                 </tr>
             </table>
             <h4>역 이용 안내도</h4>
-            <div id="stationmap" class="well"></div>
+            <div id = "stationmap" class = "well"></div>
         </div>
-        <div id="arrivalInfo" class="container px-4 py-3 my-5 text-center" style="display: none;">
-            <h2>도착 정보</h2>
-            <p id="arrivalinfo" style="width: 100%; text-align: left; margin: 0.25em;">도착정보</p>
-        </div>
-        <div id="exitInfo" class="container px-4 py-3 my-5 text-center" style="display: none;">
+        <div id = "exitInfo" class = "container px-4 py-3 my-5 text-center" style = "display: none;">
             <h2>주변 정보</h2>
-            <div id="map" style="width:100%;height:350px;"></div>
-            <p id="exitinfo" style="width: 100%; text-align: left; margin: 0.25em;">1번 출구: asdf</p>
+            <div id = "map" style = "width:100%;height:350px;"></div>
+            <p id = "exitinfo" style = "width: 100%; text-align: left; margin: 0.25em;">1번 출구: </p>
         </div>
         <div class = "b-example-divider" style = "height: 2em;"></div>
         <script src = "../public/js/jquery.cookie.js"></script>
@@ -497,13 +492,14 @@
                 $("#transfers").html("");
                 if(data.transfer){
                     var transfer = data.transfer;
+                    var i = 0;
                     try{
                         var jbSplit = transfer.split('X');
                     }
                     catch(error){
                         var jbSplit = [transfer.toString()];
                     }
-                    for(var i in jbSplit){  
+                    for(i in jbSplit){  
                         var sendData = {searchtext: jbSplit[i]};
                         var ajaxData = {
                             type: "GET",
@@ -514,19 +510,18 @@
                             error: search_onError
                         };
                         $.ajax(ajaxData);
-
                         function getTransferLineNo(transferData, status, xhr){
-                            console.log(i);
-                            $("#transfers").append(`<button onclick = "searchstation('${jbSplit[i]}')">${transferData.line_num} 환승</button>`)
+                            console.log(transferData);
+                            $("#transfers").append(`<button onclick = "searchstation('${transferData.station_cd}')">${transferData.line_num} 환승</button>`)
                         }
                     }   
                 }
 
                 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-                    mapOption = {
-                        center: new kakao.maps.LatLng(data.cx, data.cy), // 지도의 중심좌표
-                        level: 3 // 지도의 확대 레벨
-                    };
+                mapOption = {
+                    center: new kakao.maps.LatLng(data.cx, data.cy), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
                 var map = new kakao.maps.Map(mapContainer, mapOption);
                 $("#exitinfo").html(data.exitinfo);
                 $("#stationmap").html(`<img src = "./public/img/stationmap/${data.station_cd}.png" style = "width: 100%;">`);
@@ -539,7 +534,6 @@
             function infoDisplay(info) {
                 console.log(info)
                 $("#basicInfo").css("display", 'none');
-                $("#arrivalInfo").css("display", 'none');
                 $("#exitInfo").css("display", 'none');
                 $(`#${info}`).css("display", 'block');
             }
