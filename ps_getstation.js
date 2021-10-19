@@ -137,6 +137,14 @@ function getstationinfo(req, res, next){
                 prev_code = 2611; 
                 prev_name = "응암";
             }
+            if(stationcd == 1251){
+                next_code = ""; 
+                next_name = "";
+            }
+            if(stationcd == 1264){
+                prev_code = 1265; 
+                prev_name = "가좌";
+            }
             if(stationcd == 1305){
                 next_code = 1309; 
                 next_name = "상봉";

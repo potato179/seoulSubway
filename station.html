@@ -128,9 +128,11 @@
                 <div style = "display: flex; justify-content: center; align-items: center;">
                     <div id = "linecolor" style = "width: 100%; background-color: #77c4a3; border-radius: 2em; padding: 0.25em; padding-left: 1em; padding-right: 1em; position: relative;">
                         <!--이전역-->
-                        <div id = "prev_stationname" onclick = "searchstation(-1)" class = "white left" style = "float: left"></div>
+                        <a id = "prev_stationname" href = "javascript:searchstation(-1)" class = "white left" style = "float: left; text-decoration:none"></a>
+                        <a id = "prev_stationname_branch" href = "" class = "white" style = "float: left; text-decoration:none"></a>
                         <!--다음역-->
-                        <div id = "next_stationname" onclick = "searchstation(1)" class = "white right">문산</div>
+                        <a id = "next_stationname_branch" href = "" class = "white" style = "float: right; text-decoration:none"></a>
+                        <a id = "next_stationname" href = "javascript:searchstation(1)" class = "white right" style = "float: right; text-decoration:none">문산</a>
                     </div>
                     <div id = "linecolor-border" class = "center" style = "width: 50%; background-color: white; border: 0.25em solid #77c4a3; border-radius: 2.5em; padding: 0.25em; position: absolute; display: table-cell; vertical-align: middle; line-height: 0.1em;">
                         <!--역 이름-->
@@ -327,6 +329,14 @@
             }
 
             function search_onSuccess(data, status, xhr) {
+                $("#next_stationname_branch").html("");
+                $("#prev_stationname_branch").html("");
+                if(data.station_cd === 1701){
+                    $("#next_stationname_branch").html("<br>가산디지털단지");
+                    $("#next_stationname_branch").prop("href", "javascript:searchstation('1702')");
+                }
+                
+
                 if (data.line_num === "1호선") {
                     $("#linecolor").css("background-color", "#0052a4");
                     $("#linecolor-border").css("border", "0.25em solid #0052a4");

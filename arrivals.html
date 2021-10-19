@@ -139,14 +139,18 @@
                 var x = xmlDoc.getElementsByTagName("row");
                 for (var i = 0; i < x.length; i++) { 
                     let arrived;
+                    let destination = x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue;
+                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "1") destination = "용산(ITX-청춘)";
+                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "53") destination = "석남";
+                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "65") destination = "하남검단산";
                     if(x[i].getElementsByTagName("trainSttus")[0].childNodes[0].nodeValue === "0") arrived = "접근";
                     else if(x[i].getElementsByTagName("trainSttus")[0].childNodes[0].nodeValue === "1") arrived = "도착";
                     else arrived = "출발";
                     if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 0){
-                        $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}U`).append(`<img src = "./public/img/trains/334_335+346_348.png" style = "width: 3em;"><br>${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue}행<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
+                        $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}U`).append(`<img src = "./public/img/trains/334_335+346_348.png" style = "width: 3em;"><br>#${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${destination}행<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
                     }
                     else if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 1){
-                        $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}L`).append(`<img src = "./public/img/trains/334_335+346_348.png" style = "width: 3em;"><br>${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue}행<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
+                        $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}L`).append(`<img src = "./public/img/trains/334_335+346_348.png" style = "width: 3em;"><br>#${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${destination}행<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
                     }
                 }
             }
