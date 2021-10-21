@@ -505,22 +505,14 @@
                             if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "상행" || x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "내선"){
                                 upCnt += 1;
                                 $(`#UP${upCnt}`).html(x[i].getElementsByTagName("trainLineNm")[0].childNodes[0].nodeValue.split("-")[0]);
-                                if(lineno === "2호선" && x[i].getElementsByTagName("trainLineNm")[0].childNodes[0].nodeValue.split("-")[0] === "성수행 "){
-                                    $(`#UP${upCnt}`).html("내선순환");
-                                }
                                 $(`#UP_P${upCnt}`).html(x[i].getElementsByTagName("arvlMsg2")[0].childNodes[0].nodeValue)
                             }
                             if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "하행" || x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue === "외선"){
                                 lowCnt += 1;
                                 $(`#LOW${lowCnt}`).html(x[i].getElementsByTagName("trainLineNm")[0].childNodes[0].nodeValue.split("-")[0]);
-                                if(lineno === "2호선" && x[i].getElementsByTagName("trainLineNm")[0].childNodes[0].nodeValue.split("-")[0] === "성수행 "){
-                                    $(`#LOW${lowCnt}`).html("외선순환");
-                                }
                                 $(`#LOW_P${lowCnt}`).html(x[i].getElementsByTagName("arvlMsg2")[0].childNodes[0].nodeValue)
                             }
-
                         }
-                        
                     }               
                 }
 
