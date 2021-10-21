@@ -99,7 +99,15 @@ function getstationinfo(req, res, next){
                 next_code = ""; 
                 next_name = "";
             }
+            if(stationcd == 244){
+                prev_code = 211; 
+                prev_name = "성수";
+            }
             if(stationcd == 235){
+                prev_code = 234;
+                prev_name = "신도림";
+            }
+            if(stationcd == 247){
                 prev_code = 234;
                 prev_name = "신도림";
             }
