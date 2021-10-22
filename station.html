@@ -179,7 +179,7 @@
                             <h5><i class = "fas fa-door-open"></i> <span id = "doors">내리는문: 오른쪽</span></h5>
                             <h5><i class = "fas fa-walking"></i> <span id = "crossable">반대편 횡단 불가</span></h5>
                             <h5><i class = "fas fa-restroom"></i> <span id = "restroom">화장실 개찰구 밖</span></h5><br>
-                            <button onclick = "showPopup()">전체 시간표</button>
+                            <button id = "showTimetable" onclick = "">전체 시간표</button>
                             <button>첫막차 정보</button>
                         </div>
                     </div>
@@ -268,10 +268,6 @@
                     $("#log_in_out").html("로그인");
                     $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
                 }
-            }
-
-            function showPopup() { 
-                window.open("timetable.html", "전철 시간표", "width = 800, height = 600"); 
             }
 
             function getstations(lineno) {
@@ -463,6 +459,7 @@
                 $("#cxy").html(`위도: ${data.cx}, 경도: ${data.cy}`);
                 $("#telno").html(data.telno);
                 $("#origin").html(data.origin);
+                $("#showTimetable").attr("onclick", `window.open("/timetable.html?${data.fr_code}/${data.operator}/${data.line_num}", "", "width = 800, height = 600")`);
                 loadDoc(data.line_num, data.station_nm);
                 
                 function loadDoc(lineno, stationName) {

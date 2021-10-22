@@ -29,6 +29,7 @@ var urls = [
     {url: "/writenotice.html", ps: ps_pages.write_notice_page},
     {url: "/station.html", ps: ps_pages.station_html},
     {url: "/arrivals.html", ps: ps_pages.arrivals_html},
+    {url: "/timetable.html", ps: ps_pages.timetable_html},
     {url: "/trainInfo.html", ps: ps_pages.trainInfo_html},
     {url: "/info.html", ps: ps_pages.info_html}
 ];

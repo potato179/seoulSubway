@@ -22,6 +22,10 @@ function arrivals_html(req, res, next){
     res.sendFile("arrivals.html", {root: __dirname});
 }
 
+function timetable_html(req, res, next){
+    res.sendFile("timetable.html", {root: __dirname});
+}
+
 function trainInfo_html(req, res, next){
     res.sendFile("trainInfo.html", {root: __dirname});
 }
@@ -36,5 +40,6 @@ exports.write_question_page = write_question_page;
 exports.write_notice_page = write_notice_page;
 exports.station_html = station_html;
 exports.arrivals_html = arrivals_html;
+exports.timetable_html = timetable_html;
 exports.trainInfo_html = trainInfo_html;
 exports.info_html = info_html;

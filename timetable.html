@@ -23,6 +23,7 @@
 <body onload = "loadDoc()">
     <br><br><br>
     <div class = "container center">
+        <h1 id = "title"></h1><br>
         <div style = "float: left;">
             <h2>상행</h2>
             <table id = "upper"></table><br>
@@ -34,15 +35,133 @@
     </div>
     <script>
         function loadDoc() {
+            temp = location.href.split("?");
+            data = temp[1].split("/");
+            fr_code = decodeURI(data[0]);
+            operator = decodeURI(data[1]);
+            line_num = decodeURI(data[2]);
+            if(decodeURI(data[1]) === "한국철도공사"){
+                if(decodeURI(data[2]) === "1호선"){
+                    operator = "KR";
+                    line_num = "1";
+                }
+                if(decodeURI(data[2]) === "3호선"){
+                    operator = "KR";
+                    line_num = "3";
+                }
+                if(decodeURI(data[2]) === "4호선"){
+                    operator = "KR";
+                    line_num = "4";
+                }
+                if(decodeURI(data[2]) === "수인분당선"){
+                    operator = "KR";
+                    line_num = "K1";
+                }
+                if(decodeURI(data[2]) === "경춘선"){
+                    operator = "KR";
+                    line_num = "K2";
+                }
+                if(decodeURI(data[2]) === "경의중앙선"){
+                    operator = "KR";
+                    line_num = "K4";
+                }
+                if(decodeURI(data[2]) === "경강선"){
+                    operator = "KR";
+                    line_num = "K5";
+                }
+                if(decodeURI(data[2]) === "서해선"){
+                    operator = "SW";
+                    line_num = "WS";
+                }
+            }   
+            if(decodeURI(data[1]) === "서울교통공사"){
+                if(decodeURI(data[2]) === "1호선"){
+                    operator = "S1";
+                    line_num = "1";
+                }
+                if(decodeURI(data[2]) === "2호선"){
+                    operator = "S1";
+                    line_num = "2";
+                }
+                if(decodeURI(data[2]) === "3호선"){
+                    operator = "S1";
+                    line_num = "3";
+                }
+                if(decodeURI(data[2]) === "4호선"){
+                    operator = "S1";
+                    line_num = "4";
+                }
+                if(decodeURI(data[2]) === "5호선"){
+                    operator = "S5";
+                    line_num = "5";
+                }
+                if(decodeURI(data[2]) === "6호선"){
+                    operator = "S5";
+                    line_num = "6";
+                }
+                if(decodeURI(data[2]) === "7호선"){
+                    operator = "S5";
+                    line_num = "7";
+                }
+                if(decodeURI(data[2]) === "8호선"){
+                    operator = "S5";
+                    line_num = "8";
+                }
+                if(decodeURI(data[2]) === "9호선"){
+                    operator = "S9";
+                    line_num = "9";
+                }
+            }   
+            if(decodeURI(data[1]) === "서울시메트로9호선"){
+                operator = "S9"
+                line_num = "9";
+            }   
+            if(decodeURI(data[1]) === "우이신설경전철 주식회사"){
+                operator = "UI"
+                line_num = "UI";
+            }   
+            if(decodeURI(data[1]) === "주식회사 우진메트로"){
+                operator = "UL"
+                line_num = "U1";
+            }   
+            if(decodeURI(data[1]) === "공항철도"){
+                operator = "AR"
+                line_num = "A1";
+            }   
+            if(decodeURI(data[1]) === "신분당선주식회사"){
+                operator = "DX"
+                line_num = "D1";
+            }   
+            if(decodeURI(data[1]) === "용인경량전철주식회사"){
+                operator = "EV"
+                line_num = "E1";
+            }   
+            if(decodeURI(data[1]) === "김포골드라인운영"){
+                operator = "GM"
+                line_num = "G1";
+            }   
+            if(decodeURI(data[1]) === "인천교통공사"){
+                if(decodeURI(data[2]) === "인천1호선"){
+                    operator = "IC";
+                    line_num = "I1";
+                }
+                if(decodeURI(data[2]) === "인천2호선"){
+                    operator = "IC";
+                    line_num = "I2";
+                }
+            }   
+
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     myFunction(this);
                 }
             };
-            xhttp.open("GET", "http://openapi.kric.go.kr/openapi/convenientInfo/stationTimetable?serviceKey=$2a$10$c7RRD1KpGe4Z6e1qtKqO6OKfFRkS7NOBKTCERY2m/1Gpx1mv8p8ui&format=xml&railOprIsttCd=KR&lnCd=K4&stinCd=K320&dayCd=8", true);
+            xhttp.open("GET", `http://openapi.kric.go.kr/openapi/convenientInfo/stationTimetable?serviceKey=$2a$10$c7RRD1KpGe4Z6e1qtKqO6OKfFRkS7NOBKTCERY2m/1Gpx1mv8p8ui&format=xml&railOprIsttCd=${operator}&lnCd=${line_num}&stinCd=${fr_code}&dayCd=8`, true);
             xhttp.send();
+            
         }
+
         function myFunction(xml) {
             var i;
             var xmlDoc = xml.responseXML;
