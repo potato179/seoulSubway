@@ -2,17 +2,14 @@ const mysqlconfig = require('./public/js/mysql_con.js');
 var con = mysqlconfig.con;
 
 const crypto = require("crypto");
-var shasum = crypto.createHash("sha256");
 
 function login(req, res, next){
-    console.log(req.query.email);
+    var shasum = crypto.createHash("sha256");
     var email = req.query.email;
-    console.log(req.query.pw)
-    shasum.update(req.query.pw)
-    var pw = shasum.digest("hex")
-    
-    var q = `select * from users where email = "${email}"`
-    con.query(q, function (err, result) {
+    shasum.update(req.query.pw);
+    var pw = shasum.digest("hex");
+
+    con.query(`select * from users where email = "${email}"`, function (err, result) {
         if (err) throw err;
         console.log(result);
         if(result[0] === undefined){
@@ -46,18 +43,17 @@ function logout(req, res, next){
 }
 
 function join(req, res, next){
+    var shasum = crypto.createHash("sha256");
     var name = req.query.name;
     var email = req.query.email;
     shasum.update(req.query.pw)
     var pw = shasum.digest("hex")
     
-    var f = `select * from users where email = "${email}"`;
-    con.query(f, function (err, result) {
+    con.query(`select * from users where email = "${email}"`, function (err, result) {
         if (err) throw err;
         console.log(result);
         if(result[0] === undefined){
-            var q = `insert into users (name, email, password) values("${name}", "${email}", "${pw}")`
-            con.query(q, function (err, result) {
+            con.query(`insert into users (name, email, password) values("${name}", "${email}", "${pw}")`, function (err, result) {
                 if(err) throw err;
                 console.log(result);
                 res.send({

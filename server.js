@@ -23,10 +23,11 @@ var urls = [
     {url: "/write_question", ps: ps_questions.write_question},
     {url: "/getstationinfo", ps: ps_getstation.getstationinfo},
     {url: "/getStations", ps: ps_getstation.getStations},
+    {url: "/index.html", ps: ps_pages.index_html},
     {url: "/join.html", ps: ps_pages.join_html},
     {url: "/login.html", ps: ps_pages.login_html},
     {url: "/writequestion.html", ps: ps_pages.write_question_page},
-    {url: "/writenotice.html", ps: ps_pages.write_notice_page},
+    {url: "/community.html", ps: ps_pages.community_html},
     {url: "/station.html", ps: ps_pages.station_html},
     {url: "/arrivals.html", ps: ps_pages.arrivals_html},
     {url: "/timetable.html", ps: ps_pages.timetable_html},
@@ -47,22 +48,6 @@ app.listen(port, hostname, () => {
 
 app.get("/", function(req, res, next){
     res.sendfile("index.html", {root: __dirname});
-});
-
-app.get("/index.html", function(req, res, next){
-    res.sendfile("index.html", {root: __dirname});
-});
-
-app.get("/train.html", function(req, res, next){
-    res.sendfile("train.html", {root: __dirname});
-});
-
-app.get("/notice.html", function(req, res, next){
-    res.sendfile("notice.html", {root: __dirname});
-});
-
-app.get("/community.html", function(req, res, next){
-    res.sendfile("community.html", {root: __dirname});
 });
 
 urls.forEach(function(element, index){

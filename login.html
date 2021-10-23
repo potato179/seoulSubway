@@ -63,25 +63,25 @@
             <div class = "container">
                 <img src = "./public/img/icon.png" width = "50px;">&nbsp;&nbsp;
                 <a class = "navbar-brand" href = "./index.html" style = "font-weight: bold;">짜장메트로</a>
-                <button class = "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+                <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbarCollapse" aria-controls = "navbarCollapse" aria-expanded = "false">
                 <span class = "navbar-toggler-icon"></span>
                 </button>
                 <div class = "collapse navbar-collapse" id = "navbarCollapse">
                     <ul class = "navbar-nav mr-auto">
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./index.html">홈<span class = "sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./index.html">홈<span class = "sr-only"></span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./arrivals.html">실시간 도착정보<span class = "sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./arrivals.html">실시간 도착정보<span class = "sr-only"></span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./station.html">역 정보<span class = "sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./station.html?1270">역 정보<span class = "sr-only"></span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./community.html">게시판<span class = "sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./community.html">게시판<span class = "sr-only"></span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./info.html">누리집 정보<span class = "sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./info.html">누리집 정보<span class = "sr-only"></span></a>
                         </li>
                         <li class = "nav-item dropdown">
                             <a class = "nav-link dropdown-toggle" href = "#" id = "dropdown07XL" data-bs-toggle = "dropdown" aria-expanded = "false">자료실</a>
@@ -91,8 +91,8 @@
                             </ul>
                         </li>
                     </ul>
-                    <a style = "margin: 5px " class = "btn btn-outline-primary" id = "log_in_out" type = "button" onclick = 'window.location.href = "login.html"'>로그인</a>
-                    <a style = "margin: 5px "class = "btn btn-outline-primary" id = "btn_join" type = "button" onclick = 'window.location.href = "join.html"'>회원가입</a>
+                    <a style = "margin: 5px" class = "btn btn-outline-primary" id = "log_in_out" type = "button" onclick = 'window.location.href = "login.html"'>로그인</a>
+                    <a style = "margin: 5px" class = "btn btn-outline-primary" id = "btn_join" type = "button" onclick = 'window.location.href = "join.html"'>회원가입</a>
                 </div>
             </div>
         </nav>
@@ -114,7 +114,7 @@
                                     </div>
                                     <div class="form-group last mb-3">
                                         <label for = "password">비밀번호</label>
-                                        <input type = "password" class = "form-control" id = "password">
+                                        <input type = "password" class = "form-control" id = "pw">
                                     </div><br><br>
                                     <div class = "center">
                                         <button type = "submit" class = "btn btn-lg btn-outline-success btn-block" onclick = "signin();">로그인</button><br><br>
@@ -133,7 +133,7 @@
             function signin() {
                 var email = $('#email').val();
                 var pw = $('#pw').val();
-                var sendData =  { email: email, pw: pw };
+                var sendData =  {email: email, pw: pw};
 
                 var ajaxData = { 
                     type: "GET", 
@@ -143,26 +143,23 @@
                     success :  onSuccess,
                     error: onError
                 };
-
-                $.ajax( ajaxData );
+                $.ajax(ajaxData);
             }
 
             function onSuccess (data, status, xhr) { 
                 console.log(data);
 
                 if(data.condition == "success"){
-                    // 로그인 성공 메인화면 가게 해준다.
                     alert(data.message);        
-                    window.location.href = "index.html"
+                    window.location.href = "./index.html";
                 }
                 else if(data.condition == "fail"){
-                    //존재하지 않은 유저 || 비밀번호 불일치
                     alert(data.message);
                 }
             }
 
             function onError (jqXHR, textStatus, errorThrown) { 
-                console.log(jqXHR.responseText); 
+                alert(`오류가 발생하였습니다: ${jqXHR.responseText}`); 
             }
         </script>
     </body>

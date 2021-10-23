@@ -22,12 +22,11 @@ function view_question(req, res, next){
 }
 
 function write_question(req, res, next){
-    var tit = req.query.title;
-    var wtr = req.query.writer;
-    var ct = req.query.content;
-    var ca = req.query.category;
-    var s = `insert into questions (title, writer, content, category) values("${tit}", "${wtr}", "${ct}", "${ca}");`;
-    con.query(s, function(err, result){
+    var title = req.query.title;
+    var writer = req.query.writer;
+    var content = req.query.content;
+    var category = req.query.category;
+    con.query(`insert into questions (title, writer, content, category, comments) values("${title}", "${writer}", "${content}", "${category}", "");`, function(err, result){
         if(err) throw err;
         console.log(result);
         res.send({

@@ -60,19 +60,19 @@
                 <div class = "collapse navbar-collapse" id = "navbarCollapse">
                     <ul class = "navbar-nav mr-auto">
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./index.html">홈<span class = "sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./index.html">홈<span class = "sr-only"></span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./arrivals.html">실시간 도착정보<span class = "sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./arrivals.html">실시간 도착정보<span class = "sr-only"></span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./station.html">역 정보<span class = "sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./station.html?1270">역 정보<span class = "sr-only"></span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./community.html">게시판<span class = "sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./community.html">게시판<span class = "sr-only"></span></a>
                         </li>
                         <li class = "nav-item active">
-                            <a class = "nav-link" href = "./info.html">누리집 정보<span class = "sr-only">(current)</span></a>
+                            <a class = "nav-link" href = "./info.html">누리집 정보<span class = "sr-only"></span></a>
                         </li>
                         <li class = "nav-item dropdown">
                             <a class = "nav-link dropdown-toggle" href = "#" id = "dropdown07XL" data-bs-toggle = "dropdown" aria-expanded = "false">자료실</a>
@@ -130,20 +130,20 @@
                         <!--이전역-->
                         <a id = "prev_stationname" href = "javascript:searchstation(-1)" class = "white left" style = "float: left; text-decoration:none;"></a>
                         <!--다음역-->
-                        <a id = "next_stationname" href = "javascript:searchstation(1)" class = "white right" style = "float: right; text-decoration:none">문산</a><br>
+                        <a id = "next_stationname" href = "javascript:searchstation(1)" class = "white right" style = "float: right; text-decoration:none"></a><br>
                         <div id = "branch_container"></div>
                     </div>
                     <div id = "linecolor-border" class = "center" style = "width: 50%; background-color: white; border: 0.25em solid #77c4a3; border-radius: 2.5em; padding: 0.25em; position: absolute; display: table-cell; vertical-align: middle; line-height: 0.1em;">
                         <!--역 이름-->
-                        <h2 id = "title">임진강</h2>
+                        <h2 id = "title"></h2>
                         <!--영어 역명-->
-                        <p id = "english">Imjingang</p>
+                        <p id = "english"></p>
                     </div>
                 </div><br><br>
 
                 <div style = "padding: 0.25em;">
                     <!--역번호 | 운영기관-->
-                    <div id = "station_num" class = "white" style = "float: left">K336 | 한국철도공사</div>
+                    <div id = "station_num" class = "white" style = "float: left">K</div>
                     <!--환승노선-->
                     <div id = "transfers" style = "float: right;">
                     </div>
@@ -194,39 +194,39 @@
             <table class = "table" style = "text-align: left;">
                 <tr>
                     <th scope = "row" style = "background-color: lightgray; width: 25%;">역명</th>
-                    <td id = "stationname">임진강</td>
+                    <td id = "stationname"></td>
                 </tr>
                 <tr>
                     <th scope = "row" style = "background-color: lightgray; width: 25%;">외국어 표기</th>
-                    <td id = "foriegn">Imjingang | イ?ジンガン | ?津江</td>
+                    <td id = "foriegn"></td>
                 </tr>
                 <tr>
                     <th scope = "row" style = "background-color: lightgray; width: 25%;">역번호</th>
-                    <td id = "fr_code">K336</td>
+                    <td id = "fr_code"></td>
                 </tr>
                 <tr>
                     <th scope = "row" style = "background-color: lightgray; width: 25%;">AFC 역코드</th>
-                    <td id = "station_cd">1285</td>
+                    <td id = "station_cd"></td>
                 </tr>
                 <tr>
                     <th scope = "row" style = "background-color: lightgray; width: 25%;">역사 이용 정보</th>
-                    <td id = "stationInfo">내리는문: 오른쪽 | 반대편 횡단 불가 | 화장실 개찰구 밖</td>
+                    <td id = "stationInfo"></td>
                 </tr>
                 <tr>
                     <th scope = "row" style = "background-color: lightgray; width: 25%;">편의시설 정보</th>
-                    <td id = "facilities">주차장 기차표 발권</td>
+                    <td id = "facilities"></td>
                 </tr>
                 <tr>
                     <th scope = "row" style = "background-color: lightgray; width: 25%;">역 주소</th>
-                    <td id = "address">경기도 파주시 문산읍 임진각로 115</td>
+                    <td id = "address"></td>
                 </tr>
                 <tr>
                     <th scope = "row" style = "background-color: lightgray; width: 25%;">역 위도/경도</th>
-                    <td id = "cxy">위도: 37.888599396, 경도: 126.746922571</td>
+                    <td id = "cxy"></td>
                 </tr>
                 <tr>
                     <th scope = "row" style = "background-color: lightgray; width: 25%;">전화번호</th>
-                    <td id = "telno">1544-7788</td>
+                    <td id = "telno"></td>
                 </tr>
                 <tr>
                     <th scope = "row" style = "background-color: lightgray; width: 25%;">역명 유래</th>
@@ -246,6 +246,9 @@
         <script type = "text/javascript" src = "https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script type = "text/javascript" src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=7f26ddb0373cd3b598ff54652cbbdc24"></script>
         <script>
+            data = location.href.split("?")[1];
+            searchstation(data);
+
             let prev_code;
             let next_code;
             let stations;
@@ -454,7 +457,7 @@
                 $("#crossable").html(`반대편 횡단 ${(data.crossable == "Y") ? "가능" : "불가"}`);
                 $("#restroom").html(`화장실 개찰구 ${(data.restroom == "Y") ? "안" : "밖"}`);
                 $("#stationInfo").html(`내리는문: ${(data.doors == "R") ? "오른쪽" : "왼쪽"} | 반대편 횡단 ${(data.crossable == "Y") ? "가능" : "불가"} | 화장실 개찰구 ${(data.restroom == "Y") ? "안" : "밖"}`);
-                $("#facilities").html(`${(data.wheelchair_charge == "Y") ? "전동휠체어 충전기" : ""} ${(data.lost_found == "Y") ? "유실물센터" : ""} ${(data.parking == "Y") ? "주차장" : ""} ${(data.bicycle == "Y") ? "자전거 보관소" : ""} ${(data.document == "Y") ? "무인 민원 발급기" : ""} ${(data.atm == "Y") ? "ATM" : ""} ${(data.train_ticket == "Y") ? "기차표 발권" : ""} ${(data.lounge == "Y") ? "문화공간&만남의장소" : ""} ${(data.nursing_room == "Y") ? "수유실" : ""} ${(data.camera == "Y") ? "즉석사진기" : ""} ${(data.phone_charge == "Y") ? "휴대폰 충전기" : ""} ${(data.locker == "Y") ? "물품보관함" : ""}`);
+                $("#facilities").html(`${(data.wheelchair_charge == "Y") ? "전동휠체어충전기" : ""} ${(data.lost_found == "Y") ? "유실물센터" : ""} ${(data.parking == "Y") ? "주차장" : ""} ${(data.bicycle == "Y") ? "자전거보관소" : ""} ${(data.document == "Y") ? "민원발급기" : ""} ${(data.atm == "Y") ? "ATM" : ""} ${(data.train_ticket == "Y") ? "기차표발권" : ""} ${(data.lounge == "Y") ? "문화공간&만남의장소" : ""} ${(data.nursing_room == "Y") ? "수유실" : ""} ${(data.camera == "Y") ? "즉석사진기" : ""} ${(data.phone_charge == "Y") ? "휴대폰충전기" : ""} ${(data.locker == "Y") ? "물품보관함" : ""}`);
                 $("#address").html(data.address);
                 $("#cxy").html(`위도: ${data.cx}, 경도: ${data.cy}`);
                 $("#telno").html(data.telno);
@@ -469,13 +472,34 @@
                             arrivals(lineno, stationName, this);
                         }
                     };
+                    if(stationName === "응암"){
+                        stationName = "응암순환(상선)";
+                    }
+                    if(stationName === "공릉"){
+                        stationName = "공릉(서울산업대입구)";
+                    }
+                    if(stationName === "남한산성입구"){
+                        stationName = "남한산성입구(성남법원, 검찰청)";
+                    }
+                    if(stationName === "대모산입구"){
+                        stationName = "대모산";
+                    }
+                    if(stationName === "천호"){
+                        stationName = "천호(풍납토성)";
+                    }
+                    if(stationName === "몽촌토성"){
+                        stationName = "몽촌토성(평화의문)";
+                    }
+                    if(stationName === "평택지제"){
+                        stationName = "지제";
+                    }
                     xhttp.open("GET", `http://swopenapi.seoul.go.kr/api/subway/7141685873706f7434376d4f6d4e74/xml/realtimeStationArrival/0/999/${stationName}`, true);
                     xhttp.send();
                 }
 
                 function arrivals(lineno, stationName, xml){
                     let lineId;
-                    if(lineno === "1호선") lineId = "1001";
+                    if(lineno === "1호선") lineid = "1001";
                     else if(lineno === "2호선") lineid = "1002";
                     else if(lineno === "3호선") lineid = "1003";
                     else if(lineno === "4호선") lineid = "1004";
@@ -489,6 +513,7 @@
                     else if(lineno === "경춘선") lineid = "1067";
                     else if(lineno === "수인분당선") lineid = "1075";
                     else if(lineno === "신분당선") lineid = "1077";
+                    else if(lineno === "우이신설경전철") lineid = "1092";
                     
                     var xmlDoc = xml.responseXML;
                     var table = "";
