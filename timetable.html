@@ -159,7 +159,7 @@
             };
             xhttp.open("GET", `http://openapi.kric.go.kr/openapi/convenientInfo/stationTimetable?serviceKey=$2a$10$c7RRD1KpGe4Z6e1qtKqO6OKfFRkS7NOBKTCERY2m/1Gpx1mv8p8ui&format=xml&railOprIsttCd=${operator}&lnCd=${line_num}&stinCd=${fr_code}&dayCd=8`, true);
             xhttp.send();
-            
+            console.log(operator, line_num)
         }
 
         function myFunction(xml) {
