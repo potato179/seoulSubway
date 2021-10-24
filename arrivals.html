@@ -4,7 +4,7 @@
         <meta charset = "UTF-8">
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <title>수도권 전동차 정보</title>
-        <script src = "https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity = "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin = "anonymous"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity = "sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin = "anonymous">
         <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel = "stylesheet" integrity = "sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin = "anonymous">
         <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity = "sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin = "anonymous"></script>
@@ -22,7 +22,7 @@
             }
         </style>
     </head>
-    <body>
+    <body onload = "logincookie()">
         <nav class = "navbar navbar-expand-lg navbar-light fixed-top" style = "background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(5px);">
             <div class = "container">
                 <img src = "./public/img/icon.png" width = "50px;">&nbsp;&nbsp;
@@ -73,7 +73,7 @@
             <button class = "white" style = "background-color: #e6186c" onclick = "loadDoc('8호선')">8호선</button>
             <button class = "white" style = "background-color: #bdb092" onclick = "loadDoc('9호선')">9호선</button>
             <button class = "white" style = "background-color: #77c4a3" onclick = "loadDoc('경의중앙선')">경의중앙선</button>
-            <button class = "white" style = "background-color: #178c72" onclick = "loadDoc('경춘선')">경춘선</button>
+            <button class = "white" style = "background-color: #72ac9f" onclick = "loadDoc('경춘선')">경춘선</button>
             <button class = "white" style = "background-color: #d4003b" onclick = "loadDoc('신분당선')">신분당선</button>
             <button class = "white" style = "background-color: #0090d2" onclick = "loadDoc('공항철도')">공항철도</button>
             <button class = "white" style = "background-color: #B7C450" onclick = "loadDoc('우이신설선')">우이신설경전철</button>
@@ -85,8 +85,27 @@
         </main>
         
         <script src = "../public/js/jquery.cookie.js"></script>
-        <script type = "text/javascript" src = "https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script>
+            function logincookie() {
+                var userEmail = $.cookie("userEmail");
+                if (userEmail != '' && userEmail != null) {
+                    console.log("쿠키 존재: " + userEmail);
+                    $("#log_in_out").html("로그아웃");
+                    $("#log_in_out").attr("onclick", 'window.location.href = "logout"');
+                    var username = $.cookie("username");
+                    $("#btn_join").html(username + "님, 반갑습니다");
+                    var t = document.getElementById("btn_join");
+                    t.style.color = "red";
+                    $("#btn_join").attr("onclick", '');
+                }
+                else {
+                    console.log("쿠키가 존재하지 않습니다");
+
+                    $("#log_in_out").html("로그인");
+                    $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
+                }
+            }
+
             var stations = [];
             let lineNumber;
             function loadDoc(lineno) {
@@ -141,24 +160,72 @@
             }
 
             function arrivals(lineno, xml) {
+                let trainImg;
+                if(lineno === "1호선"){
+                    trainImg = "./public/img/trains/111_116.png";
+                }
+                if(lineno === "2호선"){
+                    trainImg = "./public/img/trains/214+232_238+256+273_284+293.png";
+                }
+                if(lineno === "3호선"){
+                    trainImg = "./public/img/trains/334_335+346_348.png";
+                }
+                if(lineno === "4호선"){
+                    trainImg = "./public/img/trains/401_426.png";
+                }
+                if(lineno === "5호선"){
+                    trainImg = "./public/img/trains/501_546.png";
+                }
+                if(lineno === "6호선"){
+                    trainImg = "./public/img/trains/601_641.png";
+                }
+                if(lineno === "7호선"){
+                    trainImg = "./public/img/trains/701_717.png";
+                }
+                if(lineno === "8호선"){
+                    trainImg = "./public/img/trains/801_815.png";
+                }
+                if(lineno === "9호선"){
+                    trainImg = "./public/img/trains/901_945.png";
+                }
+                if(lineno === "경의중앙선"){
+                    trainImg = "./public/img/trains/31183_31189+31192_31203+32119_32121+33101_33127.png";
+                }
+                if(lineno === "경춘선"){
+                    trainImg = "./public/img/trains/36101_36114.png";
+                }
+                if(lineno === "신분당선"){
+                    trainImg = "./public/img/trains/D001_D023.png";
+                }
+                if(lineno === "공항철도"){
+                    trainImg = "./public/img/trains/A201_A222.png";
+                }
+                if(lineno === "우이신설선"){
+                    trainImg = "./public/img/trains/UL001_UL018.png";
+                }
                 var xmlDoc = xml.responseXML;
                 var table = "";
+                var checkOverlap = [];
                 var x = xmlDoc.getElementsByTagName("row");
                 for (var i = 0; i < x.length; i++) { 
                     let arrived;
-                    let destination = x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue;
-                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "1") destination = "용산(ITX-청춘)";
-                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "53") destination = "석남";
-                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "65") destination = "하남검단산";
+                    let destination = x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue + "행";
+                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "1") destination = "용산행(ITX-청춘)";
+                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "53") destination = "석남행";
+                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "65") destination = "하남검단산행";
+                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "성수종착") destination = "순환";
                     if(x[i].getElementsByTagName("trainSttus")[0].childNodes[0].nodeValue === "0") arrived = "접근";
                     else if(x[i].getElementsByTagName("trainSttus")[0].childNodes[0].nodeValue === "1") arrived = "도착";
                     else arrived = "출발";
-                    if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 0){
-                        $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}U`).append(`<img src = "./public/img/trains/334_335+346_348.png" style = "width: 3em;"><br>#${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${destination}행<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
+                    if(checkOverlap.indexOf(x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue) < 0){
+                        if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 0){
+                            $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}U`).append(`<img src = "${trainImg}" style = "width: 3em;"><br>#${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${destination}<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
+                        }
+                        else if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 1){
+                            $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}L`).append(`<img src = "${trainImg}" style = "width: 3em;"><br>#${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${destination}<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
+                        }
                     }
-                    else if(x[i].getElementsByTagName("updnLine")[0].childNodes[0].nodeValue == 1){
-                        $(`#${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue.split("(")[0]}L`).append(`<img src = "./public/img/trains/334_335+346_348.png" style = "width: 3em;"><br>#${x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue} ${destination}행<br>${x[i].getElementsByTagName("statnNm")[0].childNodes[0].nodeValue} ${arrived}<br>`)
-                    }
+                    checkOverlap.push(x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue);
                 }
             }
         </script>

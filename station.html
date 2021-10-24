@@ -4,7 +4,7 @@
         <meta charset = "UTF-8">
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <title>수도권 전동차 정보</title>
-        <script src = "https://code.jquery.com/jquery-3.5.1.slim.min.js"integrity = "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin = "anonymous"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity = "sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin = "anonymous">
         <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel = "stylesheet" integrity = "sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin = "anonymous">
         <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity = "sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin = "anonymous"></script>
@@ -180,7 +180,8 @@
                             <h5><i class = "fas fa-walking"></i> <span id = "crossable">반대편 횡단 불가</span></h5>
                             <h5><i class = "fas fa-restroom"></i> <span id = "restroom">화장실 개찰구 밖</span></h5><br>
                             <button id = "showTimetable" onclick = "">전체 시간표</button>
-                            <button>첫막차 정보</button>
+                            <button>첫막차 정보</button><br><br>
+                            <p>* 자료 제공: 서울시 교통정보과[TOPIS]</p>
                         </div>
                     </div>
                 </div>
@@ -243,17 +244,9 @@
         </div>
         <div class = "b-example-divider" style = "height: 2em;"></div>
         <script src = "../public/js/jquery.cookie.js"></script>
-        <script type = "text/javascript" src = "https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script type = "text/javascript" src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=7f26ddb0373cd3b598ff54652cbbdc24"></script>
         <script>
-            data = location.href.split("?")[1];
-            searchstation(data);
-
-            let prev_code;
-            let next_code;
-            let stations;
             function logincookie() {
-                //로그인 정보 호출
                 var userEmail = $.cookie("userEmail");
                 if (userEmail != '' && userEmail != null) {
                     console.log("쿠키 존재: " + userEmail);
@@ -267,11 +260,16 @@
                 }
                 else {
                     console.log("쿠키가 존재하지 않습니다");
-
                     $("#log_in_out").html("로그인");
                     $("#log_in_out").attr("onclick", 'window.location.href = "login.html"');
                 }
             }
+
+            data = location.href.split("?")[1];
+            searchstation(data);
+            let prev_code;
+            let next_code;
+            let stations;
 
             function getstations(lineno) {
                 // 호선이 선택되면 역 목록 가져오기
