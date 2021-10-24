@@ -161,56 +161,62 @@
 
             function arrivals(lineno, xml) {
                 let trainImg;
-                if(lineno === "1호선"){
-                    trainImg = "./public/img/trains/111_116.png";
-                }
-                if(lineno === "2호선"){
-                    trainImg = "./public/img/trains/214+232_238+256+273_284+293.png";
-                }
-                if(lineno === "3호선"){
-                    trainImg = "./public/img/trains/334_335+346_348.png";
-                }
-                if(lineno === "4호선"){
-                    trainImg = "./public/img/trains/401_426.png";
-                }
-                if(lineno === "5호선"){
-                    trainImg = "./public/img/trains/501_546.png";
-                }
-                if(lineno === "6호선"){
-                    trainImg = "./public/img/trains/601_641.png";
-                }
-                if(lineno === "7호선"){
-                    trainImg = "./public/img/trains/701_717.png";
-                }
-                if(lineno === "8호선"){
-                    trainImg = "./public/img/trains/801_815.png";
-                }
-                if(lineno === "9호선"){
-                    trainImg = "./public/img/trains/901_945.png";
-                }
-                if(lineno === "경의중앙선"){
-                    trainImg = "./public/img/trains/31183_31189+31192_31203+32119_32121+33101_33127.png";
-                }
-                if(lineno === "경춘선"){
-                    trainImg = "./public/img/trains/36101_36114.png";
-                }
-                if(lineno === "신분당선"){
-                    trainImg = "./public/img/trains/D001_D023.png";
-                }
-                if(lineno === "공항철도"){
-                    trainImg = "./public/img/trains/A201_A222.png";
-                }
-                if(lineno === "우이신설선"){
-                    trainImg = "./public/img/trains/UL001_UL018.png";
-                }
                 var xmlDoc = xml.responseXML;
                 var table = "";
                 var checkOverlap = [];
                 var x = xmlDoc.getElementsByTagName("row");
-                for (var i = 0; i < x.length; i++) { 
+                for (var i = 0; i < x.length; i++) {
+                    if(lineno === "1호선"){
+                        trainImg = "./public/img/trains/111_116.png";
+                    }
+                    if(lineno === "2호선"){
+                        trainImg = "./public/img/trains/214+232_238+256+273_284+293.png";
+                    }
+                    if(lineno === "3호선"){
+                        trainImg = "./public/img/trains/334_335+346_348.png";
+                    }
+                    if(lineno === "4호선"){
+                        trainImg = "./public/img/trains/401_426.png";
+                    }
+                    if(lineno === "5호선"){
+                        trainImg = "./public/img/trains/501_546.png";
+                    }
+                    if(lineno === "6호선"){
+                        trainImg = "./public/img/trains/601_641.png";
+                    }
+                    if(lineno === "7호선"){
+                        trainImg = "./public/img/trains/701_717.png";
+                    }
+                    if(lineno === "8호선"){
+                        trainImg = "./public/img/trains/801_815.png";
+                    }
+                    if(lineno === "9호선"){
+                        trainImg = "./public/img/trains/901_945.png";
+                    }
+                    if(lineno === "경의중앙선"){
+                        trainImg = "./public/img/trains/31183_31189+31192_31203+32119_32121+33101_33127.png";
+                    }
+                    if(lineno === "경춘선"){
+                        trainImg = "./public/img/trains/36101_36114.png";
+                    }
+                    if(lineno === "신분당선"){
+                        trainImg = "./public/img/trains/D001_D023.png";
+                    }
+                    if(lineno === "공항철도"){
+                        trainImg = "./public/img/trains/A201_A222.png";
+                    }
+                    if(lineno === "우이신설선"){
+                        trainImg = "./public/img/trains/UL001_UL018.png";
+                    }
                     let arrived;
                     let destination = x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue + "행";
-                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "1") destination = "용산행(ITX-청춘)";
+                    if(lineno === "경춘선"){
+                        if(x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue.charAt(0) === "2"){
+                            if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "1") destination = "용산행(ITX-청춘)";
+                            if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "춘천") destination = "춘천행(ITX-청춘)";
+                            trainImg = "./public/img/trains/368000.png"
+                        }
+                    }
                     if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "53") destination = "석남행";
                     if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "65") destination = "하남검단산행";
                     if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "성수종착") destination = "순환";

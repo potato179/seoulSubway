@@ -240,6 +240,10 @@
         <div id = "exitInfo" class = "container px-4 py-3 my-5 text-center" style = "display: none;">
             <h2>주변 정보</h2>
             <div id = "kakaoMap" style = "width:100%;height:350px;"></div>
+            <div style = "width: 100%; text-align: left; margin: 0.25em;">
+                <button id = "googleMap" onclick = "">구글지도</button>
+                <button id = "naverMap" onclick = "">네이버지도</button>
+            </div>
             <p id = "exitinfo" style = "width: 100%; text-align: left; margin: 0.25em;">1번 출구: </p>
         </div>
         <div class = "b-example-divider" style = "height: 2em;"></div>
@@ -637,6 +641,9 @@
                     level: 3
                 };
                 var map = new kakao.maps.Map(mapContainer, mapOption);
+                $("#googleMap").attr("onclick", `window.open("https://www.google.com/maps/@${data.cx},${data.cy},17.5z")`);
+                $("#naverMap").attr("onclick", `window.open("https://map.naver.com/?mapMode=0&lat=${data.cx}&lng=${data.cy}")`);
+
                 $("#exitinfo").html(data.exitinfo);
                 $("#stationmap").html(`<img src = "./public/img/stationmap/${data.station_cd}.png" alt = "역 이용 안내도가 없습니다." style = "width: 100%;">`);
             }
