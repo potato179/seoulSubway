@@ -43,9 +43,9 @@ function logout(req, res, next){
 }
 
 function join(req, res, next){
-    var shasum = crypto.createHash("sha256");
     var name = req.query.name;
     var email = req.query.email;
+    var shasum = crypto.createHash("sha256");
     shasum.update(req.query.pw)
     var pw = shasum.digest("hex")
     
