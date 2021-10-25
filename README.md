@@ -95,7 +95,5 @@ CREATE TABLE questions (
 
 ## 제작자 및 도움을 주신 분들
 - 사이트 총 책임자: 홍은표(potato179)
-- 사이트 디자인: 
-- DB 및 서버 관리:
 - 기타 도움: 강유찬
 * 열차 사진: http://www.trainfrontview.net/
