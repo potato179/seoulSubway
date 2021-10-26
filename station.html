@@ -50,7 +50,7 @@
     </head>
     <body onload = "logincookie()">
         <!--해더-->
-        <nav class = "bg-dark navbar navbar-expand-lg navbar-dark fixed-top" style = "background-color: rgba(227, 242, 253, 0.5); backdrop-filter: blur(5px);">
+        <nav class = "navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class = "container">
                 <img src = "./public/img/icon.png" width = "50px;">&nbsp;&nbsp;
                 <a class = "navbar-brand" href = "./index.html" style = "font-weight: bold;">짜장메트로</a>
@@ -474,6 +474,15 @@
                             arrivals(lineno, stationName, this);
                         }
                     };
+                    if(stationName === "평택지제"){
+                        stationName = "지제";
+                    }
+                    if(stationName === "신촌"){
+                        stationName = "신촌(경의.중앙선)";
+                    }
+                    if(stationName === "2신촌"){
+                        stationName = "신촌";
+                    }
                     if(stationName === "응암"){
                         stationName = "응암순환(상선)";
                     }
@@ -491,9 +500,6 @@
                     }
                     if(stationName === "몽촌토성"){
                         stationName = "몽촌토성(평화의문)";
-                    }
-                    if(stationName === "평택지제"){
-                        stationName = "지제";
                     }
                     xhttp.open("GET", `http://swopenapi.seoul.go.kr/api/subway/7141685873706f7434376d4f6d4e74/xml/realtimeStationArrival/0/999/${stationName}`, true);
                     xhttp.send();
