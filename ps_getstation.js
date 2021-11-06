@@ -224,5 +224,26 @@ function getStations(req, res, next){
     res.send({stations});
 }
 
+function getStationByFrcode(req, res, next){
+    var orgStinCd = req.query.orgStinCd;
+    var tmnStinCd = req.query.tmnStinCd;
+    for(var i = 0; i < stationlist.length; i++){
+        if(stationlist[i].fr_code === orgStinCd){
+            var orgStinCd_name = stationlist[i].station_nm; // 역명
+        }
+    }
+    for(var i = 0; i < stationlist.length; i++){
+        if(stationlist[i].fr_code === tmnStinCd){
+            var tmnStinCd_name = stationlist[i].station_nm; // 역명
+        }
+    }
+    // 데이터 전송
+    res.send({
+        orgStinCd_name: orgStinCd_name,
+        tmnStinCd_name: tmnStinCd_name
+    });
+}
+
 exports.getstationinfo = getstationinfo;
 exports.getStations = getStations;
+exports.getStationByFrcode = getStationByFrcode;

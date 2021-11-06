@@ -23,6 +23,7 @@ var urls = [
     {url: "/write_question", ps: ps_questions.write_question},
     {url: "/getstationinfo", ps: ps_getstation.getstationinfo},
     {url: "/getStations", ps: ps_getstation.getStations},
+    {url: "/getStationByFrcode", ps: ps_getstation.getStationByFrcode},
     {url: "/index.html", ps: ps_pages.index_html},
     {url: "/join.html", ps: ps_pages.join_html},
     {url: "/login.html", ps: ps_pages.login_html},

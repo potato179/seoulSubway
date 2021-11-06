@@ -23,6 +23,7 @@
 <body onload = "loadDoc()">
     <br><br><br>
     <div class = "container center">
+        <input type = "button" value = "인쇄하기" id = "print" onclick = "window.print()"/>
         <h1 id = "title"></h1><br>
         <div style = "float: left;">
             <h2>상행</h2>
@@ -151,47 +152,85 @@
                 }
             }   
 
+            let date = new Date();   
+            let day = date.getDay(); 
+            let dayCd;
+            if(day == 0){
+                dayCd = 9;
+            } 
+            else if(day == 6){
+                dayCd = 7;
+            }
+            else{
+                dayCd = 8;
+            }
+
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     myFunction(this);
                 }
             };
-            xhttp.open("GET", `http://openapi.kric.go.kr/openapi/convenientInfo/stationTimetable?serviceKey=$2a$10$c7RRD1KpGe4Z6e1qtKqO6OKfFRkS7NOBKTCERY2m/1Gpx1mv8p8ui&format=xml&railOprIsttCd=${operator}&lnCd=${line_num}&stinCd=${fr_code}&dayCd=8`, true);
+            xhttp.open("GET", `http://openapi.kric.go.kr/openapi/convenientInfo/stationTimetable?serviceKey=$2a$10$c7RRD1KpGe4Z6e1qtKqO6OKfFRkS7NOBKTCERY2m/1Gpx1mv8p8ui&format=xml&railOprIsttCd=${operator}&lnCd=${line_num}&stinCd=${fr_code}&dayCd=${dayCd}`, true);
             xhttp.send();
             console.log(operator, line_num)
         }
 
         function myFunction(xml) {
-            var i;
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = ("0" + (1 + date.getMonth())).slice(-2);
+            var day = ("0" + date.getDate()).slice(-2);
+            let today = year + month + day;
+            
+            var upperList = [];
+            var lowerList = [];
+            var upperTable = "<tr><th>열번</th><th>도착시각</th><th>출발시각</th><th>출발역</th><th>도착역</th></tr>";
+            var lowerTable = "<tr><th>열번</th><th>도착시각</th><th>출발시각</th><th>출발역</th><th>도착역</th></tr>";
             var xmlDoc = xml.responseXML;
-            var upperTable = "<tr><th>열번</th><th>정차시간</th><th>출발시간</th><th>출발역</th><th>도착역</th></tr>";
-            var lowerTable = "<tr><th>열번</th><th>정차시간</th><th>출발시간</th><th>출발역</th><th>도착역</th></tr>";
             var x = xmlDoc.getElementsByTagName("item");
-            for (i = 0; i < x.length; i++) { 
-                if(x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue.charAt(x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue.length-1)*1 % 2 == 0){
-                    upperTable += `<tr>
-                        <td><a href = "https://rail.blue/railroad/logis/Default.aspx?date=20210825&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}" target = "popup" onclick = "javascript:void(0);" onclick = "window.open("https://rail.blue/railroad/logis/Default.aspx?date=20210825&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}", "전철 상세 정보", 'width=300,height=250');">${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}</a></td>
-                        <td>${x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
-                        <td>${x[i].getElementsByTagName("dptTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
-                        <td>${x[i].getElementsByTagName("orgStinCd")[0].childNodes[0].nodeValue}</td>
-                        <td>${x[i].getElementsByTagName("tmnStinCd")[0].childNodes[0].nodeValue}</td>
-                    </tr>`;
-                }
-                else{
-                    lowerTable += `<tr>
-                        <td><a href = "https://rail.blue/railroad/logis/Default.aspx?date=20210825&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}" target = "popup" onclick = "javascript:void(0);" onclick = "window.open("https://rail.blue/railroad/logis/Default.aspx?date=20210825&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}", "전철 상세 정보", 'width=300,height=250');">${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}</a></td>
-                        <td>${x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
-                        <td>${x[i].getElementsByTagName("dptTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
-                        <td>${x[i].getElementsByTagName("orgStinCd")[0].childNodes[0].nodeValue}</td>
-                        <td>${x[i].getElementsByTagName("tmnStinCd")[0].childNodes[0].nodeValue}</td>
-                    </tr>`;
-                }
 
+            for (let i = 0; i < x.length; i++) {
+                let cnt = i;
+                var sendData = {orgStinCd: x[i].getElementsByTagName("orgStinCd")[0].childNodes[0].nodeValue, tmnStinCd: x[i].getElementsByTagName("tmnStinCd")[0].childNodes[0].nodeValue};
+                var ajaxData = {
+                    type: "GET",
+                    url: "getStationByFrcode",
+                    data: sendData,
+                    dataType: "json",
+                    success: function(data){
+                        if(x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue.charAt(x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue.length-1)*1 % 2 == 0){
+                            upperList.push([x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6), x[i].getElementsByTagName("dptTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6), x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue, data.orgStinCd_name, data.tmnStinCd_name])
+                            upperTable += `<tr>
+                                <td><a href = "https://rail.blue/railroad/logis/Default.aspx?date=${today}&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}" target = "popup" onclick = "javascript:void(0);" onclick = "window.open("https://rail.blue/railroad/logis/Default.aspx?date=20210825&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}", "전철 상세 정보", 'width=300,height=250');">${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}</a></td>
+                                <td>${x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
+                                <td>${x[i].getElementsByTagName("dptTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
+                                <td>${data.orgStinCd_name}</td>
+                                <td>${data.tmnStinCd_name}</td>
+                            </tr>`;
+                        }
+                        else{
+                            lowerList.push([x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6), x[i].getElementsByTagName("dptTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6), x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue, data.orgStinCd_name, data.tmnStinCd_name])
+                            lowerTable += `<tr>
+                                <td><a href = "https://rail.blue/railroad/logis/Default.aspx?date=${today}&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}" target = "popup" onclick = "javascript:void(0);" onclick = "window.open("https://rail.blue/railroad/logis/Default.aspx?date=20210825&train=${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}", "전철 상세 정보", 'width=300,height=250');">${x[i].getElementsByTagName("trnNo")[0].childNodes[0].nodeValue}</a></td>
+                                <td>${x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
+                                <td>${x[i].getElementsByTagName("dptTm")[0].childNodes[0].nodeValue.slice(0, 2) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(2, 4) + ':' + x[i].getElementsByTagName("arvTm")[0].childNodes[0].nodeValue.slice(4,6)}</td>
+                                <td>${data.orgStinCd_name}</td>
+                                <td>${data.tmnStinCd_name}</td>
+                            </tr>`;
+                        }
+                    }
+                };  
+                $.ajax(ajaxData).then(function(){
+                    upperList.sort();
+                    document.getElementById("upper").innerHTML = upperTable;
+                    document.getElementById("lower").innerHTML = lowerTable;
+                });        
+                console.log(upperList, lowerList)
             }
             
-            document.getElementById("upper").innerHTML = upperTable;
-            document.getElementById("lower").innerHTML = lowerTable;
+            // document.getElementById("upper").innerHTML = upperTable;
+            // document.getElementById("lower").innerHTML = lowerTable;
         }
     </script>
 </body>
