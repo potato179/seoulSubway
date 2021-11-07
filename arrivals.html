@@ -73,7 +73,7 @@
             <button class = "white" style = "background-color: #e6186c" onclick = "loadDoc('8호선')">8호선</button>
             <button class = "white" style = "background-color: #bdb092" onclick = "loadDoc('9호선')">9호선</button>
             <button class = "white" style = "background-color: #77c4a3" onclick = "loadDoc('경의중앙선')">경의중앙선</button>
-            <button class = "white" style = "background-color: #72ac9f" onclick = "loadDoc('경춘선')">경춘선</button>
+            <button class = "white" style = "background-color: #178c72" onclick = "loadDoc('경춘선')">경춘선</button>
             <button class = "white" style = "background-color: #d4003b" onclick = "loadDoc('신분당선')">신분당선</button>
             <button class = "white" style = "background-color: #0090d2" onclick = "loadDoc('공항철도')">공항철도</button>
             <button class = "white" style = "background-color: #B7C450" onclick = "loadDoc('우이신설선')">우이신설경전철</button>
@@ -140,17 +140,61 @@
             }
 
             function get_onSuccess(data, status, xhr) {
-                console.log(data.stations)
                 $('#demo').html("");
+
+                if (lineNumber === "1호선") {
+                    linecolor = "#0052A4";
+                }
+                else if (lineNumber === "2호선") {
+                    linecolor = "#00a84d";
+                }
+                else if (lineNumber === "3호선") {
+                    linecolor = "#ef7c1c";
+                }
+                else if (lineNumber === "4호선") {
+                    linecolor = "#00a4e3";
+                }
+                else if (lineNumber === "5호선") {
+                    linecolor = "#996cac";
+                }
+                else if (lineNumber === "6호선") {
+                    linecolor = "#cd7c2f";
+                }
+                else if (lineNumber === "7호선") {
+                    linecolor = "#747f00";
+                }
+                else if (lineNumber === "8호선") {
+                    linecolor = "#e6186c";
+                }
+                else if (lineNumber === "9호선") {
+                    linecolor = "#bdb092";
+                }
+                else if (lineNumber === "경의중앙선") {
+                    linecolor = "#77c4a3";
+                }
+                else if (lineNumber === "경춘선") {
+                    linecolor = "#178c72";
+                }
+                else if (lineNumber === "공항철도") {
+                    linecolor = "#0090d2";
+                }
+                else if (lineNumber === "신분당선") {
+                    linecolor = "#d4003b";
+                }
+                else if (lineNumber === "우이신설선") {
+                    linecolor = "#B7C450";
+                }
+
                 if(lineNumber === "2호선" || lineNumber === "공항철도"){
-                    $('#demo').append(`<tr><th style = "width: 40%;">하행 ▼</th><th class = "box-lightgray" style = "width: 20%;"></th><th style = "width: 40%;">▲ 상행</th></tr>`);
+                    $('#demo').append(`<tr><th style = "width: 40%;">하행 ▼</th><th style = "width: 20%;">${lineNumber}</th><th style = "width: 40%;">▲ 상행</th></tr>`);
                 }
                 else{
-                    $('#demo').append(`<tr><th style = "width: 40%;">▲ 상행</th><th class = "box-lightgray" style = "width: 20%;"></th><th style = "width: 40%;">하행 ▼</th></tr>`);
+                    $('#demo').append(`<tr><th style = "width: 40%;">▲ 상행</th><th style = "width: 20%;">${lineNumber}</th><th style = "width: 40%;">하행 ▼</th></tr>`);
                 }
+
                 for(var i = 0; i < data.stations.length; i++){
                     console.log(data.stations[i].stationcd, data.stations[i].stationname)
-                    $('#demo').append(`<tr style = "height: 8em;"><td style = "border-bottom: dashed thin lightgray;" id = "${data.stations[i].stationname}U"></td><td class = "box-lightgray">${data.stations[i].stationname}</td><td style = "border-bottom: dashed thin lightgray;" id = "${data.stations[i].stationname}L"></td></tr>`);
+                    $('#demo').append(`<tr style = "height: 8em;"><td style = "border-bottom: dashed thin lightgray;" id = "${data.stations[i].stationname}U"></td><td class = "white" style = "background: ${linecolor}">${data.stations[i].stationname}</td><td style = "border-bottom: dashed thin lightgray;" id = "${data.stations[i].stationname}L"></td></tr>`);
                     stations.push(data.stations[i].stationname)
                 }
             }
@@ -214,7 +258,7 @@
                         if(x[i].getElementsByTagName("trainNo")[0].childNodes[0].nodeValue.charAt(0) === "2"){
                             if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "1") destination = "용산행(ITX-청춘)";
                             if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "춘천") destination = "춘천행(ITX-청춘)";
-                            trainImg = "./public/img/trains/368000.png"
+                            trainImg = "./public/img/trains/368000.png";
                         }
                     }
                     if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "53") destination = "석남행";
