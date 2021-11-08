@@ -261,6 +261,7 @@
                             trainImg = "./public/img/trains/368000.png";
                         }
                     }
+                    if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "1") destination = "광운대행";
                     if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "53") destination = "석남행";
                     if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "65") destination = "하남검단산행";
                     if(x[i].getElementsByTagName("statnTnm")[0].childNodes[0].nodeValue === "성수종착") destination = "순환";
