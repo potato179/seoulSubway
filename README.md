@@ -1,6 +1,6 @@
 # 수도권 광역전철 정보 (SeoulSubway)
-## 역 정보 목록: public/js/stations.json
-## 전철 노선도: index.html   
+### 역 정보 목록: public/js/stations.json
+### 전철 노선도: index.html   
 
 ## 0. 제작목적
 - 전동차 및 역 정보를 쉽게 검색할 수 있다.
