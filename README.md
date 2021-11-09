@@ -1,5 +1,5 @@
 # 수도권 광역전철 정보 (SeoulSubway)
-### 역 정보 목록: public/js/stations.json
+### **[23345줄 노가다!]** 역 정보 목록: public/js/stations.json
 ### 전철 노선도: index.html   
 
 ## 0. 제작목적
