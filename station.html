@@ -117,6 +117,7 @@
                         <option value = "김포도시철도">김포도시철도</option>
                         <option value = "인천1호선">인천1호선</option>
                         <option value = "인천2호선">인천2호선</option>
+                        <option value = "신림선">신림선</option>
                     </select>
                     <!--역 이름 선택-->
                     <select id = "selectStations">
@@ -417,8 +418,8 @@
                     $("#linecolor-border").css("border", "0.25em solid #fabe00");
                 }
                 else if (data.line_num === "신분당선") {
-                    $("#linecolor").css("background-color", "#d4003b");
-                    $("#linecolor-border").css("border", "0.25em solid #d4003b");
+                    $("#linecolor").css("background-color", "#6789ca");
+                    $("#linecolor-border").css("border", "0.25em solid #6789ca");
                 }
                 else if (data.line_num === "김포도시철도") {
                     $("#linecolor").css("background-color", "#ad8605");
@@ -441,6 +442,10 @@
                     $("#linecolor-border").css("border", "0.25em solid #759cce");
                 }
                 else if (data.line_num === "인천2호선") {
+                    $("#linecolor").css("background-color", "#f5a251");
+                    $("#linecolor-border").css("border", "0.25em solid #f5a251");
+                }
+                else if (data.line_num === "신림선") {
                     $("#linecolor").css("background-color", "#f5a251");
                     $("#linecolor-border").css("border", "0.25em solid #f5a251");
                 }
@@ -635,6 +640,9 @@
                             }
                             else if (transferData.line_num === "인천2호선") {
                                 linecolor = "#f5a251";
+                            }
+                            else if (transferData.line_num === "신림선") {
+                                linecolor = "#6789ca";
                             }
                             $("#transfers").append(`<button class = "white" style = "background-color: ${linecolor}" onclick = "searchstation('${transferData.station_cd}')">${transferData.line_num} 환승</button>`);
                         }
